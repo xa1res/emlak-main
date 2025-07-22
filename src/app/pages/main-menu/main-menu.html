@@ -34,16 +34,16 @@
 
   <div class="one-cıkanlar-bolumu">
     <h2 class="onecikanlar-text">Öne Çıkanlar</h2>
-      <div class="onecikanlar-listesi" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; align-items: center;">
-        <button (click)="geri()" style="font-size: 2rem; background: none; border: none; cursor: pointer;">&#8592;</button>
+      <div class="onecikanlar-listesi">
+        <button (click)="geri()" class="geri-buton">&#8592;</button>
         <ng-container *ngFor="let ilan of aktifIlanlar">
-          <a [routerLink]="['/ilan', ilan.id]" class="onecikanlar-link" style="text-decoration:none;color:inherit;">
-            <div class="slider-card" [ngClass]="kaymaYonu === 'left' ? 'slide-left' : kaymaYonu === 'right' ? 'slide-right' : ''" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0001; padding: 16px; width: 320px; display: flex; flex-direction: column; align-items: center;">
-              <img [src]="ilan.imageURL" alt="İlan Fotoğrafı" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;" />
-              <h3 style="font-size: 1.1rem; margin: 0 0 8px 0; text-align: center;">{{ ilan.title }}</h3>
-              <div style="font-weight: bold; color: #2a7; font-size: 1.1rem; margin-bottom: 4px;">{{ ilan.price | number }} TL</div>
-              <div style="color: #555; font-size: 0.95rem; margin-bottom: 4px;">{{ ilan.location }}</div>
-              <div style="color: #888; font-size: 0.9rem;">{{ ilan.emlakci }}</div>
+          <a [routerLink]="['/ilan', ilan.id]" class="onecikanlar-link">
+            <div class="slider-card" [ngClass]="kaymaYonu === 'left' ? 'slide-left' : kaymaYonu === 'right' ? 'slide-right' : ''">
+              <img [src]="ilan.imageURL" alt="İlan Fotoğrafı" class="slider-card-img" />
+              <h3 class="slider-card-title">{{ ilan.title }}</h3>
+              <div class="slider-card-price">{{ ilan.price | number }} TL</div>
+              <div class="slider-card-location">{{ ilan.location }}</div>
+              <div class="slider-card-emlakci">{{ ilan.emlakci }}</div>
             </div>
           </a>
         </ng-container>

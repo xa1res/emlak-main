@@ -1,10 +1,11 @@
+
 <div *ngIf="ilan && danisman; else notFound" class="ilan-detay-sayfa">
   <div class="ilan-detay-kartı">
     <div class="ilan-detay-ana-icerik">
+      <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
       <img [src]="ilan.imageURL" alt="{{ ilan.title }}" class="ilan-detay-image" />
 
       <div class="ilan-detay-bilgiler">
-        <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
         <div class="ilan-detay-fiyat">{{ ilan.price | number }} TL</div>
         <div class="ilan-detay-lokasyon-wrapper">
           <span class="ilan-detay-lokasyon">
@@ -141,3 +142,4 @@
 <ng-template #notFound>
   <div class="ilan-detay-notfound">İlan bulunamadı.</div>
 </ng-template>
+```
