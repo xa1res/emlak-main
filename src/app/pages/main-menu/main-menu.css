@@ -1,11 +1,11 @@
-.anamenu{
+.anamenu {
   background-color: #dadada;
 }
 
 .mainPhoto-section {
   width: 100%;
   height: 80vh;
-  background-image: url('/assets/buying-a-home.jpg');
+  background-image: url("/assets/buying-a-home.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -29,133 +29,133 @@
 }
 
 .ana-menu-icerik {
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-title {
-    font-size: 600%;
-    align-self: center;
-    margin-top: 0;
-    margin-bottom: 50px;
-    animation: main-title-anim 700ms ;
+  font-size: 600%;
+  align-self: center;
+  margin-top: 0;
+  margin-bottom: 50px;
+  animation: main-title-anim 700ms;
 }
 
 @keyframes main-title-anim {
-  0%{
+  0% {
     margin-top: -1300px;
   }
 }
 
-.sub-title{
-    font-size: 160%;
-    align-self: center;
-    margin-top: 0;
-    animation: sub-title-anim 1000ms ;
+.sub-title {
+  font-size: 160%;
+  align-self: center;
+  margin-top: 0;
+  animation: sub-title-anim 1000ms;
 }
 
 @keyframes sub-title-anim {
-  0%{
+  0% {
     margin-left: -2000px;
   }
-  50%{
+  50% {
     margin-left: -2000px;
   }
 }
 
-.danısmanlar-blok{
+.danısmanlar-blok {
   margin-top: 52px;
-
 }
 
 .danısman-section {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 52px;
-    margin-bottom: 2px;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 52px;
+  margin-bottom: 2px;
 }
 
 .danısman-hasandugan,
 .danısman-serifecelik {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fff;
-    border: 1.5px solid #d1d1d1;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    padding: 24px 16px;
-    min-width: 21vh;
-    max-width: 42vh;
-    margin: 0 8px;
-    transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #d1d1d1;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px 16px;
+  min-width: 21vh;
+  max-width: 42vh;
+  margin: 0 8px;
+  transition: box-shadow 0.2s;
 }
 
 .danısman-hasandugan:hover,
 .danısman-serifecelik:hover {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.16);
 }
 
 .Hasanpfp-Foto,
 .Serifepfp-Foto {
-    width: 40vh;
-    height: 40vh;
-    object-fit: cover;
-    border-radius: 5%;
-    margin-bottom: 8px;
-    background: #eee; /* Fotoğraf yüklenmezse arka plan */
-    border-style: solid;
-    border-color: #d3d3d3;
-    border-width: 2px;
+  width: 40vh;
+  height: 40vh;
+  object-fit: cover;
+  border-radius: 5%;
+  margin-bottom: 8px;
+  background: #eee; /* Fotoğraf yüklenmezse arka plan */
+  border-style: solid;
+  border-color: #d3d3d3;
+  border-width: 2px;
 }
 
 .danısman-hasandugan p,
 .danısman-serifecelik p {
-    margin: 0;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-align: center;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .danısmanlar-blok {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .danısman-baslık {
-    text-align: center;
-    font-size: 45px;
-    font-weight: bold;
-    margin-bottom: 24px;
-    margin-top: 32px;
-    letter-spacing: 1px;
-    color: #333;
-    animation: danisman-text-anim 2400ms;
+  text-align: center;
+  font-size: 45px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  margin-top: 32px;
+  letter-spacing: 1px;
+  color: #333;
+  animation: danisman-text-anim 2400ms;
 }
 
 @keyframes danisman-text-anim {
-  0%{
+  0% {
     color: white;
   }
-  100%{
+  100% {
     color: black;
   }
 }
 
-
-.onecikanlar-text{
+.onecikanlar-text {
   text-align: center;
   font-size: 35px;
 }
 
-.one-cıkanlar-bolumu{
+.one-cıkanlar-bolumu {
   padding: 40px 20px;
+  margin-bottom: 60px;
+  margin-top: 40px;
 }
 
 .onecikanlar-listesi {
@@ -168,15 +168,16 @@
   min-height: 260px;
 }
 
-.ileri-buton{
+.ileri-buton {
   font-size: 2rem;
-  background: none; 
+  background: none;
   border: none;
   cursor: pointer;
 }
 
 .onecikanlar-listesi .slider-card {
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, opacity;
   width: 400px;
   padding: 24px;
@@ -203,39 +204,40 @@
   margin-bottom: 6px;
 }
 
-@media (max-width: 1200px) {
-  .onecikanlar-listesi .slider-card {
-    width: 95vw;
-    max-width: 400px;
-  }
-}
-
-.slider-card.slide-left {
-  animation: slideLeftAnim 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-
-.slider-card.slide-right {
-  animation: slideRightAnim 0.3s cubic-bezier(0.4,0,0.2,1);
+.onecikanlar-listesi .slider-card {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+  width: 400px;
+  padding: 24px;
 }
 
 @keyframes slideLeftAnim {
   0% {
-    transform: translateX(20px);
-    opacity: 0.3;
+    transform: translateX(30px) scale(0.95) rotate(0deg);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1) rotate(0deg);
     opacity: 1;
   }
 }
 
 @keyframes slideRightAnim {
   0% {
-    transform: translateX(-20px);
-    opacity: 0.3;
+    transform: translateX(-30px) scale(0.95) rotate(0deg);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) scale(1) rotate(0deg);
     opacity: 1;
   }
+}
+
+.slider-card.slide-left {
+  animation: slideLeftAnim 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider-card.slide-right {
+  animation: slideRightAnim 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

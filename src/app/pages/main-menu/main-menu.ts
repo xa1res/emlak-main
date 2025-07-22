@@ -39,24 +39,30 @@ export class MainMenu implements AfterViewInit {
 
   ileri() {
     if (this.animating) return;
-    this.kaymaYonu = 'left';
     this.animating = true;
+    
+    this.aktifIndex = (this.aktifIndex + 1) % this.oneCikanlar.length;
+    
+    this.kaymaYonu = 'left';
+    
     setTimeout(() => {
-      this.aktifIndex = (this.aktifIndex + 1) % this.oneCikanlar.length;
-      this.animating = false;
       this.kaymaYonu = 'none';
-    }, 500);
+      this.animating = false;
+    }, 300);
   }
 
   geri() {
     if (this.animating) return;
-    this.kaymaYonu = 'right';
     this.animating = true;
+    
+    this.aktifIndex = (this.aktifIndex - 1 + this.oneCikanlar.length) % this.oneCikanlar.length;
+    
+    this.kaymaYonu = 'right';
+    
     setTimeout(() => {
-      this.aktifIndex = (this.aktifIndex - 1 + this.oneCikanlar.length) % this.oneCikanlar.length;
-      this.animating = false;
       this.kaymaYonu = 'none';
-    }, 500);
+      this.animating = false;
+    }, 300);
   }
 
   ngAfterViewInit(): void {

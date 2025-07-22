@@ -54,19 +54,4 @@ export class Danisman implements OnInit {
     });
   }
 
-  // Helper function to convert names to a URL-friendly slug (lowercase, replace spaces with hyphens)
-  // Türkçe karakterleri de işleyecek şekilde güncellendi
-  // convertToSlug(text: string): string {
-  //   text = text.toLowerCase();
-  //   text = text.replace(/ş/g, 's');
-  //   text = text.replace(/ç/g, 'c');
-  //   text = text.replace(/ğ/g, 'g');
-  //   text = text.replace(/ı/g, 'i');
-  //   text = text.replace(/ö/g, 'o');
-  //   text = text.replace(/ü/g, 'u');
-  //   text = text.replace(/[^a-z0-9\s-]/g, ''); // Harf, rakam, boşluk ve tire dışındaki karakterleri kaldır
-  //   text = text.replace(/\s+/g, '-'); // Birden fazla boşluğu tek tireye dönüştür
-  //   text = text.replace(/^-+|-+$/g, ''); // Başındaki ve sonundaki tireleri kaldır
-  //   return text;
-  // }
 }
