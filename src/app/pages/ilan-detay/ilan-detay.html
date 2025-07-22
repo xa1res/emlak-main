@@ -1,0 +1,143 @@
+<div *ngIf="ilan && danisman; else notFound" class="ilan-detay-sayfa">
+  <div class="ilan-detay-kartı">
+    <div class="ilan-detay-ana-icerik">
+      <img [src]="ilan.imageURL" alt="{{ ilan.title }}" class="ilan-detay-image" />
+
+      <div class="ilan-detay-bilgiler">
+        <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
+        <div class="ilan-detay-fiyat">{{ ilan.price | number }} TL</div>
+        <div class="ilan-detay-lokasyon-wrapper">
+          <span class="ilan-detay-lokasyon">
+            <b>Lokasyon:</b> {{ ilan.location }}
+          </span>
+          <a *ngIf="ilan.konumLinki" [href]="ilan.konumLinki" target="_blank" class="ilan-detay-map-link"> Haritada Görüntüle </a>
+        </div>
+        <div *ngIf="ilan.aciklama" class="ilan-detay-aciklama">
+          <h2>Açıklama</h2>
+          <ul>
+            <li *ngFor="let item of aciklamaSatirlari">
+              {{ item.trim() }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ilan-detay-sidebar">
+      <div class="ilan-detay-ozet-tablo">
+        <h2>Özet Bilgiler</h2>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Oda Sayısı</div>
+          <div class="ozet-deger">{{ ilan.odaSayisi }}</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Metrekare (m²)</div>
+          <div class="ozet-deger">{{ ilan.m2 }}</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Durum</div>
+          <div class="ozet-deger">{{ ilan.durum }}</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">İlan Tarihi</div>
+          <div class="ozet-deger">19 Temmuz 2025</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Emlak Tipi</div>
+          <div class="ozet-deger">{{ ilan.durum === 'Kiralık' ? 'Kiralık Daire' : 'Satılık Daire' }}</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Bina Yaşı</div>
+          <div class="ozet-deger">0</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Bulunduğu Kat</div>
+          <div class="ozet-deger">1</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Kat Sayısı</div>
+          <div class="ozet-deger">3</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Isıtma</div>
+          <div class="ozet-deger">Klima</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Banyo Sayısı</div>
+          <div class="ozet-deger">1</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Mutfak</div>
+          <div class="ozet-deger">Açık (Amerikan)</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Balkon</div>
+          <div class="ozet-deger">Var</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Asansör</div>
+          <div class="ozet-deger">Var</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Otopark</div>
+          <div class="ozet-deger">Kapalı Otopark</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Eşyalı</div>
+          <div class="ozet-deger">Hayır</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Kullanım Durumu</div>
+          <div class="ozet-deger">Boş</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Site İçerisinde</div>
+          <div class="ozet-deger">Hayır</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Krediye Uygun</div>
+          <div class="ozet-deger">Belirtilmemiş</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Tapu Durumu</div>
+          <div class="ozet-deger">Kat Mülkiyetli</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Kimden</div>
+          <div class="ozet-deger">Sahibinden</div>
+        </div>
+        <div class="ozet-satir">
+          <div class="ozet-baslik">Takas</div>
+          <div class="ozet-deger">Hayır</div>
+        </div>
+      </div>
+
+      <div class="ilan-detay-danisman">
+        <h2>Danışman Bilgisi</h2>
+        <div class="ilan-detay-danisman-icerik">
+          <img [src]="danisman.foto" alt="{{ danisman.isim }}" class="ilan-detay-danisman-foto" />
+          <div>
+            <div class="ilan-detay-danisman-isim">{{ danisman.isim }}</div>
+            <div class="ilan-detay-danisman-iletisim">
+              <a [href]="'tel:' + danisman.telefon">📞 {{ danisman.telefon }}</a>
+              <a [href]="'mailto:' + danisman.mail">✉️ {{ danisman.mail }}</a>
+              <a *ngIf="danisman.instagram" [href]="danisman.instagram" target="_blank">📸 Instagram</a>
+              <a *ngIf="danisman.whatsapp" [href]="danisman.whatsapp" target="_blank">💬 WhatsApp</a>
+              <a *ngIf="danisman.endeksa" [href]="danisman.endeksa" target="_blank">📊 Endeksa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ilan-detay-guvenlik-ipuclari">
+        <h2>Güvenlik İpuçları</h2>
+        <p>Satın alacağınız gayrimenkulü görmeden kapora ödemeyin, para göndermeyin.</p>
+        <p>Detaylı bilgi için <a href="#" class="guvenlik-link">tıklayın.</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<ng-template #notFound>
+  <div class="ilan-detay-notfound">İlan bulunamadı.</div>
+</ng-template>

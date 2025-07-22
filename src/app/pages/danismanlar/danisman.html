@@ -1,0 +1,60 @@
+<div *ngFor="let consultant of consultantData">
+  <div class="danisman-sayfa">
+    <div>
+      <h1 class="baslik">
+        {{ consultant.isim }}
+        <img [src]="consultant.foto" alt="{{ consultant.isim }}" />
+      </h1>
+    </div>
+
+    <div>
+      <h2 class="subtitle-portfoy">Portföyüm</h2>
+    </div>
+
+    <div class="danisman-ilanlar">
+      <a
+        *ngFor="let property of consultant.properties"
+        class="ilan-kutu"
+        [routerLink]="['/ilan', property.id]"
+      >
+        <img
+          [src]="property.imageURL"
+          alt="{{ property.title }}"
+          width="300"
+          height="200"
+          class="danisman-Photo"
+        />
+        <p class="ilan-fiyat">Fiyat: {{ property.price | number }} TL</p>
+        <p class="ilan-m2">
+          <mat-icon> border_all</mat-icon> m²: {{ property.m2 }}
+        </p>
+        <p class="ilan-oda">
+          <mat-icon>home</mat-icon> {{ property.odaSayisi }}
+        </p>
+        <h3 class="ilan-baslik">{{ property.title }}</h3>
+        <p class="ilan-lokasyon">
+          <mat-icon>location_on</mat-icon> {{ property.location }}
+        </p>
+        <p class="ilan-danisman">Danışman: {{ property.emlakci }}</p>
+        <p class="ilan-durum">{{ property.durum }}</p>
+      </a>
+    </div>
+
+    <div class="hakkimda-danisman">
+      <h1 class="hakkimda-title">Hakkımda</h1>
+      <h2 class="hakkimda-yazi">{{ consultant.hakkimda }}</h2>
+    </div>
+
+    <div class="iletisim-bolumu">
+      <h2 class="iletisim-baslik">İletişim</h2>
+      <div class="iletisim-linkleri">
+        <a [href]="'tel:' + consultant.telefon">📞 {{ consultant.telefon }}</a>
+        <a [href]="'mailto:' + consultant.mail">✉️ {{ consultant.mail }}</a>
+        <a [href]="consultant.instagram" target="_blank">📸 Instagram</a>
+        <a [href]="consultant.whatsapp" target="_blank">💬 WhatsApp</a>
+        <a [href]="consultant.endeksa" target="_blank">📊 Endeksa</a>
+      </div>
+    </div>
+      <app-footer></app-footer>
+  </div>
+</div>
