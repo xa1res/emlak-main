@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { CommonModule, NgIf, NgFor, CurrencyPipe } from '@angular/common';
-import { FooterComponent } from '../../components/footer/footer.component'; // FooterComponent yolu düzeltildi
-import { datas } from '../../../../public/assets/datas/generic-datas/data'; // datas yolu düzeltildi
+import { CommonModule, NgIf, NgFor } from '@angular/common';
+import { Footer } from '../footer/footer'; 
+import { datas } from '../../../../public/assets/datas/generic-datas/data';
 
-// Ilan ve Danisman arayüzlerini tanımlayın
 interface Ilan {
   id: string;
   imageURL: string;
@@ -19,7 +18,7 @@ interface Ilan {
   odaSayisi: string;
   ilanTarihi?: string;
   emlakTipi?: string;
-  binaYasi?: number | null; // Arsa için null olabilir
+  binaYasi?: number | null; 
   bulunduguKat?: string | null;
   katSayisi?: number | null;
   isitma?: string | null;
@@ -57,9 +56,7 @@ interface Danisman {
     CommonModule,
     NgIf,
     NgFor,
-    RouterLink,
-    CurrencyPipe,
-    FooterComponent
+    Footer 
   ],
   templateUrl: './ilan-detay.html',
   styleUrl: './ilan-detay.css'
@@ -92,8 +89,7 @@ export class IlanDetayComponent implements OnInit {
       : [];
   }
 
-  // Bu helper fonksiyonlar artık kullanılmıyor, ngOnInit içinde birleştirildi.
-  // İsterseniz silebilirsiniz.
+
   private findIlanById(id: string): Ilan | undefined {
     for (const data of datas) {
       const ilan = data.properties.find((p: Ilan) => p.id === id);
@@ -105,8 +101,6 @@ export class IlanDetayComponent implements OnInit {
   }
 
   private findDanismanByIlan(ilan: Ilan): Danisman | undefined {
-    // Burada ilan.emlakci ile datas dizisindeki danışmanı bulmalısınız.
-    // Eğer danışmanın ID'si olsaydı daha kolay olurdu.
     return datas.find((d: Danisman) => d.isim === ilan.emlakci);
   }
 }

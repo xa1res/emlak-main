@@ -22,15 +22,14 @@ export class MainMenu implements AfterViewInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private route: ActivatedRoute
   ) {
-    // Öne çıkanlar için ilk 4 ilanı alalım (örnek)
+   
     this.oneCikanlar = [
-      ...datas[0].properties.slice(0, 2), // Hasan Dugan'dan 2 ilan
-      ...datas[1].properties.slice(0, 2)  // Şerife Çelik'ten 2 ilan
+      ...datas[0].properties.slice(0, 8),
+      ...datas[1].properties.slice(0, 8)  
     ];
   }
 
   get aktifIlanlar() {
-    // 3'lü slider: aktifIndex, aktifIndex+1, aktifIndex+2
     const ilanlar = [];
     for (let i = 0; i < 3; i++) {
       ilanlar.push(this.oneCikanlar[(this.aktifIndex + i) % this.oneCikanlar.length]);
