@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { Footer } from '../footer/footer'; 
 import { datas } from '../../../../public/assets/datas/generic-datas/data';
+// Gerekli importları ekliyoruz
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+// Ilan interface'ine haritaUrl özelliğini ekliyoruz
 interface Ilan {
   id: string;
   imageURL: string;
@@ -15,7 +18,7 @@ interface Ilan {
   konumLinki?: string;
   aciklama?: string;
   m2: number;
-  odaSayisi: string;
+  odaSayisi: string | null;
   ilanTarihi?: string;
   emlakTipi?: string;
   binaYasi?: number | null; 
@@ -24,16 +27,17 @@ interface Ilan {
   isitma?: string | null;
   banyoSayisi?: string | null;
   mutfakTipi?: string | null;
-  balkon?: string;
-  asansor?: string;
-  otopark?: string;
-  esyali?: string;
-  kullanimDurumu?: string;
-  siteIcerisinde?: string;
-  krediyeUygun?: string;
+  balkon?: string | null;
+  asansor?: string | null;
+  otopark?: string | null;
+  esyali: string | null;
+  kullanimDurumu: string | null;
+  siteIcerisinde: string | null;
+  krediyeUygun?: string | null;
   tapuDurumu?: string;
   kimden?: string;
-  takas?: string;
+  takas?: string | null;
+  haritaUrl?: string; 
 }
 
 interface Danisman {
@@ -65,7 +69,7 @@ export class IlanDetayComponent implements OnInit {
   ilan: Ilan | undefined;
   danisman: Danisman | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -88,19 +92,10 @@ export class IlanDetayComponent implements OnInit {
       ? this.ilan.aciklama.split('\n').filter((line: string) => line.trim())
       : [];
   }
-
-
-  private findIlanById(id: string): Ilan | undefined {
-    for (const data of datas) {
-      const ilan = data.properties.find((p: Ilan) => p.id === id);
-      if (ilan) {
-        return ilan;
-      }
-    }
-    return undefined;
+  
+  public getGuvenliUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  private findDanismanByIlan(ilan: Ilan): Danisman | undefined {
-    return datas.find((d: Danisman) => d.isim === ilan.emlakci);
-  }
+
 }

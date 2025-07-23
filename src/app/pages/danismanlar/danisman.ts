@@ -16,7 +16,7 @@ interface Property {
   konumLinki: string;
   aciklama: string;
   m2: number;
-  odaSayisi: string;
+  odaSayisi: string | null;
 }
 
 interface Bilgi {

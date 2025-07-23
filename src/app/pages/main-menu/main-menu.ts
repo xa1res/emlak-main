@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Footer } from '../footer/footer';
 import { datas } from '../../../../public/assets/datas/generic-datas/data';
@@ -12,21 +12,50 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
   templateUrl: './main-menu.html',
   styleUrls: ['./main-menu.css']
 })
-export class MainMenu implements AfterViewInit {
+export class MainMenu implements AfterViewInit, OnDestroy {
   public oneCikanlar: any[] = [];
   public aktifIndex: number = 0;
   public kaymaYonu: 'none' | 'left' | 'right' = 'none';
   public animating = false;
-
+  private slideInterval: any;
+  
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private route: ActivatedRoute
   ) {
-   
     this.oneCikanlar = [
       ...datas[0].properties.slice(0, 8),
-      ...datas[1].properties.slice(0, 8)  
+      ...datas[1].properties.slice(0, 8)
     ];
+  }
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.startTimer();
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.clearTimer();
+    }
+  }
+
+  startTimer(): void {
+    this.slideInterval = setInterval(() => {
+      this.ileri();
+    }, 4000); 
+  }
+
+  clearTimer(): void {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
+  }
+
+  resetTimer(): void {
+    this.clearTimer();
+    this.startTimer();
   }
 
   get aktifIlanlar() {
@@ -49,6 +78,10 @@ export class MainMenu implements AfterViewInit {
       this.kaymaYonu = 'none';
       this.animating = false;
     }, 300);
+    
+    if (isPlatformBrowser(this.platformId)) {
+      this.resetTimer();
+    }
   }
 
   geri() {
@@ -63,6 +96,10 @@ export class MainMenu implements AfterViewInit {
       this.kaymaYonu = 'none';
       this.animating = false;
     }, 300);
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.resetTimer();
+    }
   }
 
   ngAfterViewInit(): void {

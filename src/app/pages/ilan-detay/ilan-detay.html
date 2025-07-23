@@ -1,4 +1,3 @@
-
 <div *ngIf="ilan && danisman; else notFound" class="ilan-detay-sayfa">
   <div class="ilan-detay-kartı">
     <div class="ilan-detay-ana-icerik">
@@ -21,98 +20,112 @@
             </li>
           </ul>
         </div>
+
+        <div *ngIf="ilan.haritaUrl" class="ilan-detay-harita">
+            <h2>Konum</h2>
+            <iframe 
+              [src]="getGuvenliUrl(ilan.haritaUrl)" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        
       </div>
     </div>
 
     <div class="ilan-detay-sidebar">
       <div class="ilan-detay-ozet-tablo">
         <h2>Özet Bilgiler</h2>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.odaSayisi">
           <div class="ozet-baslik">Oda Sayısı</div>
           <div class="ozet-deger">{{ ilan.odaSayisi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.m2 !== null && ilan.m2 !== undefined">
           <div class="ozet-baslik">Metrekare (m²)</div>
           <div class="ozet-deger">{{ ilan.m2 }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.durum">
           <div class="ozet-baslik">Durum</div>
           <div class="ozet-deger">{{ ilan.durum }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.ilanTarihi">
           <div class="ozet-baslik">İlan Tarihi</div>
-          <div class="ozet-deger">19 Temmuz 2025</div>
+          <div class="ozet-deger">{{ ilan.ilanTarihi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.emlakTipi">
           <div class="ozet-baslik">Emlak Tipi</div>
-          <div class="ozet-deger">{{ ilan.durum === 'Kiralık' ? 'Kiralık Daire' : 'Satılık Daire' }}</div>
+          <div class="ozet-deger">{{ ilan.emlakTipi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.binaYasi !== null && ilan.binaYasi !== undefined">
           <div class="ozet-baslik">Bina Yaşı</div>
-          <div class="ozet-deger">0</div>
+          <div class="ozet-deger">{{ ilan.binaYasi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.bulunduguKat">
           <div class="ozet-baslik">Bulunduğu Kat</div>
-          <div class="ozet-deger">1</div>
+          <div class="ozet-deger">{{ ilan.bulunduguKat }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.katSayisi !== null && ilan.katSayisi !== undefined">
           <div class="ozet-baslik">Kat Sayısı</div>
-          <div class="ozet-deger">3</div>
+          <div class="ozet-deger">{{ ilan.katSayisi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.isitma">
           <div class="ozet-baslik">Isıtma</div>
-          <div class="ozet-deger">Klima</div>
+          <div class="ozet-deger">{{ ilan.isitma }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.banyoSayisi">
           <div class="ozet-baslik">Banyo Sayısı</div>
-          <div class="ozet-deger">1</div>
+          <div class="ozet-deger">{{ ilan.banyoSayisi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.mutfakTipi">
           <div class="ozet-baslik">Mutfak</div>
-          <div class="ozet-deger">Açık (Amerikan)</div>
+          <div class="ozet-deger">{{ ilan.mutfakTipi }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.balkon">
           <div class="ozet-baslik">Balkon</div>
-          <div class="ozet-deger">Var</div>
+          <div class="ozet-deger">{{ ilan.balkon }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.asansor">
           <div class="ozet-baslik">Asansör</div>
-          <div class="ozet-deger">Var</div>
+          <div class="ozet-deger">{{ ilan.asansor }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.otopark">
           <div class="ozet-baslik">Otopark</div>
-          <div class="ozet-deger">Kapalı Otopark</div>
+          <div class="ozet-deger">{{ ilan.otopark }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.esyali">
           <div class="ozet-baslik">Eşyalı</div>
-          <div class="ozet-deger">Hayır</div>
+          <div class="ozet-deger">{{ ilan.esyali }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.kullanimDurumu">
           <div class="ozet-baslik">Kullanım Durumu</div>
-          <div class="ozet-deger">Boş</div>
+          <div class="ozet-deger">{{ ilan.kullanimDurumu }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.siteIcerisinde">
           <div class="ozet-baslik">Site İçerisinde</div>
-          <div class="ozet-deger">Hayır</div>
+          <div class="ozet-deger">{{ ilan.siteIcerisinde }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.krediyeUygun">
           <div class="ozet-baslik">Krediye Uygun</div>
-          <div class="ozet-deger">Belirtilmemiş</div>
+          <div class="ozet-deger">{{ ilan.krediyeUygun }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.tapuDurumu">
           <div class="ozet-baslik">Tapu Durumu</div>
-          <div class="ozet-deger">Kat Mülkiyetli</div>
+          <div class="ozet-deger">{{ ilan.tapuDurumu }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.kimden">
           <div class="ozet-baslik">Kimden</div>
-          <div class="ozet-deger">Sahibinden</div>
+          <div class="ozet-deger">{{ ilan.kimden }}</div>
         </div>
-        <div class="ozet-satir">
+        <div class="ozet-satir" *ngIf="ilan.takas">
           <div class="ozet-baslik">Takas</div>
-          <div class="ozet-deger">Hayır</div>
+          <div class="ozet-deger">{{ ilan.takas }}</div>
         </div>
       </div>
-
+      
       <div class="ilan-detay-danisman">
         <h2>Danışman Bilgisi</h2>
         <div class="ilan-detay-danisman-icerik">
@@ -142,4 +155,3 @@
 <ng-template #notFound>
   <div class="ilan-detay-notfound">İlan bulunamadı.</div>
 </ng-template>
-```
