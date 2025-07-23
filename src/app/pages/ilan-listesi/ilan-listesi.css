@@ -14,14 +14,11 @@
     --kenar-yuvarlakligi-kucuk: 8px;
   }
   
-  /* --- Genel Sayfa Yapısı (Güncellendi) --- */
   .liste-sayfa {
-    padding: 20px 20px 0px 20px;
     background-color: var(--renk-arka-plan);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   
-  /* --- Sayfa Başlığı (Satılık İlanlar / Kiralık İlanlar) --- */
   .baslik {
     align-items: center;
     background-color: var(--renk-kutu-arka-plan);
@@ -39,7 +36,6 @@
     box-shadow: var(--golge-hafif);
   }
   
-  /* --- İlanların Listelendiği Alan (Güncellendi) --- */
   .ilan-grid {
     display: flex;
     flex-wrap: wrap;

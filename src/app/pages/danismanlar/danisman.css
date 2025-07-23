@@ -15,7 +15,6 @@
 }
 
 .danisman-sayfa {
-  padding: 20px 20px 0px 20px;
   background-color: var(--renk-arka-plan);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
