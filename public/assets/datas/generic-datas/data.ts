@@ -3,7 +3,7 @@ export const datas = [
     foto: '/assets/hasanduganpfp.png',
     url: 'hasan-dugan',
     isim: 'Hasan Dugan',
-    hakkimda: "1974 Ankara doğumluyum. Öğrenim hayatımın tamamı Ankara'da geçti, 1998 yılında ODTÜ İstatistik Bölümünden mezun olduğumda kariyerim artık İstanbul'da devam ediyordu. 1998 de başlayan Bankacılık hayatım, Müfettiş, Şube Pazarlama, Bölge Pazarlama, Şube Müdürü olarak 17 yıl devam etti. Sonrasında özel sektörde, sektörün önde gelen firmalarında Finans Direktörlüğü, İç Denetim sorumlusu olarak çalıştım.  Ankara merkezli 212 Derece bünyesinde Koçluk eğitimleri alarak Koç unvanını aldım, Sermaye Piyasası Lisanslama Enstitüsü tarafından açılan Gayrimenkul Değerleme Lisansı eğitimi ve sınavlarını tamamlayarak Gayrimenkul Değerleme Uzmanı unvanını ve aynı zamanda Konkordato Komiserliği unvanını aldım. Emeklilik sonrası her zaman ilgimi çeken geçmişte şahsen alım satımlar yaptığım gayrimenkul sektöründe yola devam etme kararı aldım .  Kendi marka ve ofislerimizi oluşturduğum arkadaşlarım ile birlikte Ankara Çankaya Alacaatlı bölgesinde bulunan ofisimizde Gayrimenkul Danışmanı olarak çalışmaya devam etmekteyim. ",
+    hakkimda: "1974 Ankara doğumluyum. Öğrenim hayatımın tamamı Ankara'da geçti, 1998 yılında ODTÜ İstatistik Bölümünden mezun olduğumda kariyerim artık İstanbul'da devam ediyordu. 1998 de başlayan Bankacılık hayatım, Müfettiş, Şube Pazarlama, Bölge Pazarlama, Şube Müdürü olarak 17 yıl devam etti. Sonrasında özel sektörde, sektörün önde gelen firmalarında Finans Direktörlüğü, İç Denetim sorumlusu olarak çalıştım.  Ankara merkezli 212 Derece bünyesinde Koçluk eğitimleri alarak Koç unvanını aldım, Sermaye Piyasası Lisanslama Enstitüsü tarafından açılan Gayrimenkul Değerleme Lisansı eğitimi ve sınavlarını tamamlayarak Gayrimenkul Değerleme Uzmanı unvanını ve aynı zamanda Konkordato Komiserliği unvanını aldım. Emeklilik sonrası her zaman ilgimi çeken geçmişte şahsen alım satımlar yaptığım gayrimenkul sektöründe yola devam etme kararı aldım .  Kendi marka ve ofislerimizi oluşturduğum arkadaşlarım ile birlikte Ankara Çankaya Alacaatlı bölgesinde bulunan ofisimizde Gayrimenkul Danışmanı olarak çalışmaya devam etmekteyim. ",
     telefon: '+90 532 485 2602',
     mail: 'hdugan@gmail.com',
     instagram: 'https://instagram.com/hasandugangd',
@@ -41,6 +41,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Evet',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d195449.90519795005!2d32.556688!3d40.0552261!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d40.184385899999995!2d32.6879245!5e0!3m2!1str!2str!4v1753257992026!5m2!1str!2str',
+        imageCount: 35
       },
       {
         id: '1245053079',
@@ -73,6 +74,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d98033.57372711043!2d32.7515268!3d39.8395243!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.7507143!2d32.867073999999995!5e0!3m2!1str!2str!4v1753259085618!5m2!1str!2str',
+        imageCount: 4
       },
       {
         id: '1249834218',
@@ -105,6 +107,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97888.77104285988!2d32.6942884!3d39.9408507!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.957739499999995!2d32.713519399999996!5e0!3m2!1str!2str!4v1753259110047!5m2!1str!2str',
+        imageCount: 34
       },
       {
         id: '1256050414',
@@ -137,6 +140,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97831.9781699273!2d32.7894961!3d39.9805334!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d40.0408456!2d32.898933899999996!5e0!3m2!1str!2str!4v1753259138093!5m2!1str!2str',
+        imageCount: 16
       },
       {
         id: '1256021445',
@@ -169,6 +173,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: '<https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d12239.672056791022!2d32.8376234!3d39.9208509!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9186982!2d32.8545981!5e0!3m2!1str!2str!4v1753259948890!5m2!1str!2str',
+        imageCount: 4
       },
       {
         id: '1254656952',
@@ -201,6 +206,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Evet',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97987.17656186572!2d32.7697924!3d39.8720143!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.8157157!2d32.9000801!5e0!3m2!1str!2str!4v1753260007846!5m2!1str!2str',
+        imageCount: 5
       },
       {
         id: '1259297035',
@@ -211,7 +217,7 @@ export const datas = [
         emlakci: 'Hasan Dugan',
         durum: 'Kiralık',
         konumLinki: 'https://www.google.com/maps/dir//39.9598836,32.7777356/@39.9023307,32.6466085,12z?entry=ttu&g_ep=EgoyMDI1MDcxNS4xIKXMDSoASAFQAw%3D%3D',
-        aciklama: "Yeni Rezidansınız Ağustos 2025'te Hazır! Hem Konforlu Yaşam Hem Profesyonel Çalışma Alanı\nŞehrin kalbinde yükselen bu modern rezidans, Ağustos 2025'te oturuma hazır hale gelecek. Hem konut hem de işyeri olarak kullanabileceğiniz geniş ve fonksiyonel yaşam alanlarıyla, iş ve yaşam konforunu bir arada sunuyor. Eşya fotoğrafları projenin temsili reklam fotoğrafları olup Kiracı ile Mülk sahibi ortak kararı doğrultusunda eşya konulacaktır. \n55m² brüt 45m² net alana sahip dairemiz Batı cepheli olup öğleden sonra güneşi almakta ve günbatımı manzaralıdır. C1 - 55\n✔ Çift amaçlı kullanım: Daire veya ofis olarak kullanılabilir\n✔ 7/24 güvenlik ile huzurlu bir ortam\n✔ Her daireye özel kapalı otopark\n✔ Yerden ısıtma sistemi ile konforlu yaşam\n\n• Siemens 3'lü ankastre set (modern mutfak donanımı)\n• Çamaşır makinesi dolabı \n• Şık ve kullanışlı banyo ve WC tasarımı\n• Korkuluk, vestiyer ve çelik kapı (güvenlik ve estetik)\n• Laminat ve parke zemin (şık ve dayanıklı)\n• Winsa PVC pencereler (ısı ve ses yalıtımlı)\n•  3 adet asansör\n\n• Otobüs, minibüs durakları binanın hemen önünde\n• Metro (Hastane Durağı) sadece 1.4 km uzaklıkta\n\nÇEVREDEKİ ÖNEMLİ NOKTALAR\n\n✔ Nazım Hikmet Kültür Merkezi → 50 metre\n✔ Podium AVM → 750 metre\n✔ Onkoloji Hastanesi → 1.5 km\n✔ Yeni Adliye Sarayı (Eski MİT Yerleşkesi) → 2.1 km\n✔ ASELSAN Genel Müdürlüğü → 2.2 km\n✔ Acity AVM → 3 km\n✔ Cumhurbaşkanlığı Külliyesi → 4.8 km\n✔ Antares & Ankamall AVM → 4.8 - 5.5 km\n✔ Etlik & Bilkent Şehir Hastaneleri → 5.7 - 11 km\nTek Yetkili: Penta Nest Gayrimenkul\n☎ 0 532 485 26 02\n Hemen iletişime geçin, bu fırsatı kaçırmayın!",
+        aciklama: "Yeni Rezidansınız Ağustos 2025'te Hazır! Hem Konforlu Yaşam Hem Profesyonel Çalışma Alanı\nŞehrin kalbinde yükselen bu modern rezidans, Ağustos 2025'te oturuma hazır hale gelecek. Hem konut hem de işyeri olarak kullanabileceğiniz geniş ve fonksiyonel yaşam alanlarıyla, iş ve yaşam konforunu bir arada sunuyor. Eşya fotoğrafları projenin temsili reklam fotoğrafları olup Kiracı ile Mülk sahibi ortak kararı doğrultusunda eşya konulacaktır. \n55m² brüt 45m² net alana sahip dairemiz Batı cepheli olup öğleden sonra güneşi almakta ve günbatımı manzaralıdır. C1 - 55\n✔ Çift amaçlı kullanım: Daire veya ofis olarak kullanılabilir\n✔ 7/24 güvenlik ile huzurlu bir ortam\n✔ Her daireye özel kapalı otopark\n✔ Yerden ısıtma sistemi ile konforlu yaşam\n\n• Siemens 3'lü ankastre set (modern mutfak donanımı)\n• Çamaşır makinesi dolabı \n• Şık ve kullanışlı banyo ve WC tasarımı\n• Korkuluk, vestiyer ve çelik kapı (güvenlik ve estetik)\n• Laminat ve parke zemin (şık ve dayanıklı)\n• Winsa PVC pencereler (ısı ve ses yalıtımlı)\n•  3 adet asansör\n\n• Otobüs, minibüs durakları binanın hemen önünde\n• Metro (Hastane Durağı) sadece 1.4 km uzaklıkta\n\nÇEVREDEKİ ÖNEMLİ NOKTALAR\n\n✔ Nazım Hikmet Kültür Merkezi → 50 metre\n✔ Podium AVM → 750 metre\n✔ Onkoloji Hastanesi → 1.5 km\n✔ Yeni Adliye Sarayı (Eski MİT Yerleşkesi) → 2.1 km\n✔ ASELSAN Genel Müdürlüğü → 2.2 km\n✔ Acity AVM → 3 km\n✔ Cumhurbaşkanlığı Külliyesi → 4.8 km\n✔ Antares & Ankamall AVM → 4.8 - 5.5 km\n✔ Etlik & Bilkent Şehir Hastaneleri → 5.7 - 11 km\nTek Yetkili: Penta Nest Gayrimenkul\n☎ 0 532 485 26 02\n Hemen iletişime geçin, bu fırsatı kaçırmayın!",
         m2: 55,
         odaSayisi: '1+1',
         ilanTarihi: '2025-07-17',
@@ -233,6 +239,7 @@ export const datas = [
         kimden: 'EMlak Ofisinden',
         takas: null,
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97943.85497698688!2d32.6466085!3d39.9023307!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9598836!2d32.7777356!5e0!3m2!1str!2str!4v1753260038988!5m2!1str!2str',
+        imageCount: 11
       },
       {
         id: '1259100407',
@@ -243,7 +250,7 @@ export const datas = [
         emlakci: 'Hasan Dugan',
         durum: 'Kiralık',
         konumLinki: 'https://www.google.com/maps/dir//39.9598964,32.7775857/@39.9020676,32.6466085,12z?entry=ttu&g_ep=EgoyMDI1MDcxNS4xIKXMDSoASAFQAw%3D%3D',
-        aciklama: "Yeni Rezidansınız Ağustos 2025'te Hazır! Hem Konforlu Yaşam Hem Profesyonel Çalışma Alanı\nŞehrin kalbinde yükselen bu modern rezidans, Ağustos 2025'te oturuma hazır hale gelecek. Hem konut hem de işyeri olarak kullanabileceğiniz geniş ve fonksiyonel yaşam alanlarıyla, iş ve yaşam konforunu bir arada sunuyor.\n55m² brüt 45m² net alana sahip dairemiz Batı cepheli olup öğleden sonra güneşi almakta ve günbatımı manzaralıdır. B2 - 78\n✔ Çift amaçlı kullanım: Daire veya ofis olarak kullanılabilir\n✔ 7/24 güvenlik ile huzurlu bir ortam\n✔ Her daireye özel kapalı otopark\n✔ Yerden ısıtma sistemi ile konforlu yaşam\n\n• Siemens 3'lü ankastre set (modern mutfak donanımı)\n• Çamaşır makinesi dolabı \n• Şık ve kullanışlı banyo ve WC tasarımı\n• Korkuluk, vestiyer ve çelik kapı (güvenlik ve estetik)\n• Laminat ve parke zemin (şık ve dayanıklı)\n• Winsa PVC pencereler (ısı ve ses yalıtımlı)\n•  3 adet asansör\n\n• Otobüs, minibüs durakları binanın hemen önünde\n• Metro (Hastane Durağı) sadece 1.4 km uzaklıkta\n\nÇEVREDEKİ ÖNEMLİ NOKTALAR\n\n✔ Nazım Hikmet Kültür Merkezi → 50 metre\n✔ Podium AVM → 750 metre\n✔ Onkoloji Hastanesi → 1.5 km\n✔ Yeni Adliye Sarayı (Eski MİT Yerleşkesi) → 2.1 km\n✔ ASELSAN Genel Müdürlüğü → 2.2 km\n✔ Acity AVM → 3 km\n✔ Cumhurbaşkanlığı Külliyesi → 4.8 km\n✔ Antares & Ankamall AVM → 4.8 - 5.5 km\n✔ Etlik & Bilkent Şehir Hastaneleri → 5.7 - 11 km",
+        aciklama: "Yeni Rezidansınız Ağustos 2025'te Hazır! Hem Konforlu Yaşam Hem Profesyonel Çalışma Alanı\nŞehrin kalbinde yükselen bu modern rezidans, Ağustos 2025'te oturuma hazır hale gelecek. Hem konut hem de işyeri olarak kullanabileceğiniz geniş ve fonksiyonel yaşam alanlarıyla, iş ve yaşam konforunu bir arada sunuyor.\n55m² brüt 45m² net alana sahip dairemiz Batı cepheli olup öğleden sonra güneşi almakta ve günbatımı manzaralıdır. B2 - 78\n✔ Çift amaçlı kullanım: Daire veya ofis olarak kullanılabilir\n✔ 7/24 güvenlik ile huzurlu bir ortam\n✔ Her daireye özel kapalı otopark\n✔ Yerden ısıtma sistemi ile konforlu yaşam\n\n• Siemens 3'lü ankastre set (modern mutfak donanımı)\n• Çamaşır makinesi dolabı \n• Şık ve kullanışlı banyo ve WC tasarımı\n• Korkuluk, vestiyer ve çelik kapı (güvenlik ve estetik)\n• Laminat ve parke zemin (şık ve dayanıklı)\n• Winsa PVC pencereler (ısı ve ses yalıtımlı)\n•  3 adet asansör\n\n• Otobüs, minibüs durakları binanın hemen önünde\n• Metro (Hastane Durağı) sadece 1.4 km uzaklıkta\n\nÇEVREDEKİ ÖNEMLİ NOKTALAR\n\n✔ Nazım Hikmet Kültür Merkezi → 50 metre\n✔ Podium AVM → 750 metre\n✔ Onkoloji Hastanesi → 1.5 km\n✔ Yeni Adliye Sarayı (Eski MİT Yerleşkesi) → 2.1 km\n✔ ASELSAN Genel Müdürlüğü → 2.2 km\n✔ Acity AVM → 3 km\n✔ Cumhurbaşkanlığı Külliyesi → 4.8 km\n✔ Antares & Ankamall AVM → 4.8 - 5.5 km\n✔ Etlik & Bilkent Şehir Hastaneleri → 5.7 - 11 km",
         m2: 55,
         odaSayisi: '1+1',
         ilanTarihi: '2025-07-19',
@@ -265,6 +272,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: null,
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97944.23106007962!2d32.6466085!3d39.9020676!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9598964!2d32.777585699999996!5e0!3m2!1str!2str!4v1753260065536!5m2!1str!2str',
+        imageCount: 22
       },
       {
         id: '1259717903',
@@ -297,6 +305,7 @@ export const datas = [
         kimden: 'Emlakçıdan',
         takas: null,
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d6123.0737782465485!2d32.812871929221615!3d39.88461028966911!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.888465599999996!2d32.8136283!5e0!3m2!1str!2str!4v1753260143030!5m2!1str!2str',
+        imageCount: 31
       },
     ],
   },
@@ -342,6 +351,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: null,
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d48933.56331433824!2d32.8171279!3d39.9559781!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.955985399999996!2d32.8583274!5e0!3m2!1str!2str!4v1753260172655!5m2!1str!2str',
+        imageCount: 34
       },
       {
         id: '1247956711',
@@ -374,6 +384,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d196068.89020765765!2d32.6453055!3d39.8389139!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.8898253!2d32.932629299999995!5e0!3m2!1str!2str!4v1753260191478!5m2!1str!2str',
+        imageCount: 34
       },
       {
         id: '1235105117',
@@ -406,6 +417,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d6377302.049761673!2d24.6875355!3d38.6967504!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d37.7697736!2d27.2635707!5e0!3m2!1str!2str!4v1753260222689!5m2!1str!2str',
+        imageCount: 7
       },
       {
         id: '1234670390',
@@ -438,6 +450,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: null,
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d195879.83497486456!2d32.6056394!3d39.9050852!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9559597!2d32.8587148!5e0!3m2!1str!2str!4v1753260253219!5m2!1str!2str',
+        imageCount: 18
       },
       {
         id: '1231813949',
@@ -470,6 +483,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97985.98272938137!2d32.6698799!3d39.87285!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.893530999999996!2d32.8263722!5e0!3m2!1str!2str!4v1753260294205!5m2!1str!2str',
+        imageCount: 30
       },
       {
         id: '1231798215',
@@ -502,6 +516,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97985.98272938137!2d32.6698522!3d39.87285!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.8936535!2d32.8263168!5e0!3m2!1str!2str!4v1753260325548!5m2!1str!2str',
+        imageCount: 32
       },
       {
         id: '1257519956',
@@ -512,7 +527,7 @@ export const datas = [
         emlakci: 'Şerife Çelik',
         durum: 'Satılık',
         konumLinki: 'https://www.google.com/maps/dir//39.8758797,32.877371/@39.8721982,32.6130105,11z?entry=ttu&g_ep=EgoyMDI1MDcxNS4xIKXMDSoASAFQAw%3D%3D',
-        aciklama: 'GENEL ÖZELLİKLERİ:\nDubleks Bakımlı Daire.\n4 Katlı Bina, 3. Ve 4. Kat.\n6+1 (Teras kapatılmış olup, mutfak ve barbekü eklenmiştir. Oda olarak da kullanılabilir).\n258 m2 Net Kullanım Alanı.\nÇift Mutfak.\nÖn Cephe.\nGörüntülü Diyafon.\nKombi (Doğalgaz).\nAçık Otopark.\nAnkastre Set (Fırın, Mikrodalga Fırın, Ocak, Davlumbaz).\nÇelik Kapı.\Daireye Ait Depo.\nDairemiz Temiz ve Yapılıdır.\nDairemiz Lokasyon olarak Otobüs ve Dolmuş Duraklarına, Doğukent Bulvarı, 365 AVM, Lozan Parkı\'na yürüme mesafesinde, Marketlere, Okullara Yürüme Mesafesinde Bulunmaktadır.\nDETAYLI BİLGİ İÇİN LÜTFEN ARAYINIZ...',
+        aciklama: 'GENEL ÖZELLİKLERİ:\nDubleks Bakımlı Daire.\n4 Katlı Bina, 3. Ve 4. Kat.\n6+1 (Teras kapatılmış olup, mutfak ve barbekü eklenmiştir. Oda olarak da kullanılabilir).\n258 m2 Net Kullanım Alanı.\nÇift Mutfak.\nÖn Cephe.\nGörüntülü Diyafon.\nKombi (Doğalgaz).\nAçık Otopark.\nAnkastre Set (Fırın, Mikrodalga Fırın, Ocak, Davlumbaz).\nÇelik Kapı.\nDaireye Ait Depo.\nDairemiz Temiz ve Yapılıdır.\nDairemiz Lokasyon olarak Otobüs ve Dolmuş Duraklarına, Doğukent Bulvarı, 365 AVM, Lozan Parkı\'na yürüme mesafesinde, Marketlere, Okullara Yürüme Mesafesinde Bulunmaktadır.\nDETAYLI BİLGİ İÇİN LÜTFEN ARAYINIZ...',
         m2: 300,
         odaSayisi: '7+1',
         ilanTarihi: '2025-07-09',
@@ -534,6 +549,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d195973.82770959035!2d32.6130105!3d39.8721982!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.8758797!2d32.877371!5e0!3m2!1str!2str!4v1753260389232!5m2!1str!2str',
+        imageCount: 31
       },
       {
         id: '1231787853',
@@ -566,6 +582,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d195891.5642259906!2d32.6031477!3d39.9009825!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9578322!2d32.857723299999996!5e0!3m2!1str!2str!4v1753260409821!5m2!1str!2str',
+        imageCount: 25
       },
       {
         id: '1238609645',
@@ -598,6 +615,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: null,
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d97932.9602499662!2d32.7108447!3d39.9099518!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.955825499999996!2d32.8586502!5e0!3m2!1str!2str!4v1753260432701!5m2!1str!2str',
+        imageCount: 32
       },
       {
         id: '1231950448',
@@ -630,6 +648,7 @@ export const datas = [
         kimden: 'Emlak Ofisinden',
         takas: 'Evet',
         haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d3118657.5066005797!2d28.3507636!3d40.240996!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d40.9399851!2d29.1568693!5e0!3m2!1str!2str!4v1753260460236!5m2!1str!2str',
+        imageCount: 19
       },
     ],
   },

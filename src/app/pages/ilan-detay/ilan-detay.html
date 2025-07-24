@@ -2,15 +2,34 @@
   <div class="ilan-detay-kartı">
     <div class="ilan-detay-ana-icerik">
       <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
-      <img [src]="ilan.imageURL" alt="{{ ilan.title }}" class="ilan-detay-image" />
-
+      
+      <div class="main-image-wrapper">
+        <img [src]="mainImageUrl" alt="İlan Ana Fotoğrafı" class="ilan-detay-image" />
+        
+        <button class="carousel-arrow main-image-arrow left-arrow" (click)="navigateThumbnails('left')" [disabled]="isLeftArrowDisabled">‹</button>
+        <button class="carousel-arrow main-image-arrow right-arrow" (click)="navigateThumbnails('right')" [disabled]="isRightArrowDisabled">›</button>
+      </div>
+      
+      <div class="thumbnail-carousel-container">
+        <div class="image-gallery">
+          <img 
+            *ngFor="let imgUrl of displayedThumbnails" 
+            [src]="imgUrl" 
+            alt="İlan Küçük Fotoğrafı" 
+            class="thumbnail-image" 
+            (click)="selectImage(imgUrl)" 
+            [class.active]="mainImageUrl === imgUrl"
+          />
+        </div>
+      </div>
+      
       <div class="ilan-detay-bilgiler">
         <div class="ilan-detay-fiyat">{{ ilan.price | number }} TL</div>
         <div class="ilan-detay-lokasyon-wrapper">
           <span class="ilan-detay-lokasyon">
             <b>Lokasyon:</b> {{ ilan.location }}
           </span>
-          <a *ngIf="ilan.konumLinki" [href]="ilan.konumLinki" target="_blank" class="ilan-detay-map-link"> Haritada Görüntüle </a>
+          <a *ngIf="ilan.konumLinki" [href]="getGuvenliUrl(ilan.konumLinki)" target="_blank" class="ilan-detay-map-link"> Haritada Görüntüle </a>
         </div>
         <div *ngIf="ilan.aciklama" class="ilan-detay-aciklama">
           <h2>Açıklama</h2>

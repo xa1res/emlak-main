@@ -26,12 +26,22 @@
   padding: 32px 28px;
 }
 
+/* Ana Görseli ve Okları saran div */
+.main-image-wrapper {
+  position: relative; /* İçindeki absolute konumlu oklar için referans noktası */
+  width: 100%;
+  height: 400px; /* Ana görselin yüksekliği kadar olacak, taşan resimler object-fit ile sığdırılacak */
+  margin-bottom: 20px; /* Küçük resim galerisi ile arasını açar */
+  overflow: hidden; /* Okların dışarı taşmasını engellemek için */
+  border-radius: 12px; /* Ana resmin border-radius'unu bu sarıcıya taşıdık */
+}
+
 .ilan-detay-image {
   width: 100%;
-  max-height: 600px;
+  height: 100%; /* Sarıcının yüksekliğini doldur */
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  border-radius: 0; /* Ana resimdeki border-radius kaldırıldı, sarıcıda var artık */
+  margin-bottom: 0; /* Artık sarıcının içinde olduğu için kaldırıldı */
 }
 
 .ilan-detay-bilgiler {
@@ -89,7 +99,6 @@
   border-radius: 0;
   padding: 0;
   margin-top: 20px;
-  /* line-height: 1.7; Bu artık liste elemanları için yönetilecek */
 }
 
 .ilan-detay-aciklama h2 {
@@ -100,15 +109,15 @@
 }
 
 .ilan-detay-aciklama ul {
-  list-style-type: disc; /* Varsa madde işaretlerini göster */
-  padding-left: 20px; /* Madde işaretleri için boşluk */
-  margin: 0; /* Varsayılan marginleri sıfırla */
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
 }
 
 .ilan-detay-aciklama li {
-  margin-bottom: 8px; /* Madde elemanları arasında boşluk */
-  line-height: 1.6; /* Madde metinlerinin satır aralığı */
-  white-space: pre-wrap; /* İçerikteki boşlukları ve yeni satırları korur */
+  margin-bottom: 8px;
+  line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 
@@ -239,6 +248,89 @@
   margin-top: 60px;
 }
 
+.thumbnail-carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.thumbnail-image {
+  flex-shrink: 0;
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.thumbnail-image.active {
+  border-color: var(--mat-sys-primary);
+}
+
+.thumbnail-image:hover {
+  border-color: var(--mat-sys-primary);
+  transform: scale(1.05);
+}
+
+.carousel-arrow {
+  background: var(--mat-sys-secondary-container);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--mat-sys-on-secondary-container);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.main-image-arrow {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.main-image-arrow.left-arrow {
+    left: 15px; 
+}
+
+.main-image-arrow.right-arrow {
+    right: 15px; 
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  background-color: var(--mat-sys-secondary);
+  color: var(--mat-sys-on-secondary);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (max-width: 900px) {
   .ilan-detay-kartı {
     grid-template-columns: 1fr;
@@ -249,13 +341,32 @@
   .ilan-detay-sayfa {
     padding: 20px;
   }
+  .main-image-wrapper {
+    height: 300px; 
+  }
   .ilan-detay-image {
-    max-height: 300px;
     border-radius: 18px 18px 0 0;
   }
   .ilan-detay-sidebar {
     border-left: none;
     border-top: 1px solid var(--mat-sys-outline-variant);
     padding-top: 25px;
+  }
+
+  .image-gallery {
+    justify-content: flex-start;
+    max-width: calc(5 * 80px + 4 * 10px);
+  }
+  .thumbnail-image {
+    width: 80px;
+    height: 60px;
+  }
+
+  .main-image-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      left: 10px; 
+      right: 10px;
   }
 }
