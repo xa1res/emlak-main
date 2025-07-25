@@ -1,9 +1,33 @@
 <div class="liste-sayfa">
   <div>
     <h1 class="baslik">
-      {{ ilanDurumu === 'satilik' ? 'Satılık İlanlar' : 'Kiralık İlanlar' }}
+      {{ selectedDurumFilter === 'satilik' ? 'Satılık İlanlar' : (selectedDurumFilter === 'kiralik' ? 'Kiralık İlanlar' : 'Tüm İlanlar') }}
     </h1>
   </div>
+
+  <div class="filter-bar">
+    <select [(ngModel)]="selectedDurumFilter" (change)="filterProperties()" class="filter-select">
+      <option *ngFor="let durum of durumFilterOptions" [value]="durum.toLowerCase()">{{ durum }}</option>
+    </select>
+
+    <input type="text" [(ngModel)]="searchText" (input)="filterProperties()" placeholder="Konum, başlık ara..." class="filter-input">
+    
+    <input type="number" [(ngModel)]="minPrice" (input)="filterProperties()" placeholder="Min Fiyat" class="filter-input">
+    <input type="number" [(ngModel)]="maxPrice" (input)="filterProperties()" placeholder="Max Fiyat" class="filter-input">
+    
+    <input type="number" [(ngModel)]="minM2" (input)="filterProperties()" placeholder="Min m²" class="filter-input">
+    <input type="number" [(ngModel)]="maxM2" (input)="filterProperties()" placeholder="Max m²" class="filter-input">
+
+    <select [(ngModel)]="selectedOdaSayisi" (change)="filterProperties()" class="filter-select">
+      <option *ngFor="let oda of odaSayisiOptions" [value]="oda">{{ oda }}</option>
+    </select>
+
+    <button (click)="clearFilters()" class="clear-filters-btn">Filtreleri Temizle</button>
+  </div>
+  
+  <p style="text-align: center; margin-top: 10px; font-size: 1.1em; color: var(--renk-metin-acik);">
+    Toplam {{ properties.length }} ilan bulundu.
+  </p>
 
   <div class="ilan-grid">
     <a
