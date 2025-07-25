@@ -2,8 +2,9 @@
   <div class="mainPhoto-section">
     <div class="ana-menu-comp">
       <div class="ana-menu-icerik">
-        <h1 class="main-title">PentaNest </h1>
-        <h2 class="sub-title">Ev Sahibi Olmanın En Kolay Yolu</h2>
+        <h1 class="main-title">PENTANEST </h1>
+        <h2 class="sub-title">Gayrimenkul ile ilgili bir karar aşamasında mısınız?</h2>
+        <h2 class="sub-title">Doğru yerdesiniz....</h2>
       </div>
     </div>
   </div>
@@ -33,9 +34,9 @@
   </div>
 
   <div class="one-cıkanlar-bolumu">
-    <h2 class="onecikanlar-text">Öne Çıkanlar</h2>
+    <h2 class="onecikanlar-text">Öne Çıkan İlanlarımız</h2>
       <div class="onecikanlar-listesi">
-        <button (click)="geri()" class="geri-buton">&#8592;</button>
+        <button (click)="geri()" class="geri-buton">←</button>
         <ng-container *ngFor="let ilan of aktifIlanlar">
           <a [routerLink]="['/ilan', ilan.id]" class="onecikanlar-link">
             <div class="slider-card" [ngClass]="kaymaYonu === 'left' ? 'slide-left' : kaymaYonu === 'right' ? 'slide-right' : ''">
@@ -47,7 +48,7 @@
             </div>
           </a>
         </ng-container>
-        <button (click)="ileri()" class="ileri-buton">&#8594;</button>
+        <button (click)="ileri()" class="ileri-buton">→</button>
       </div>
   </div>
 
@@ -70,4 +71,4 @@
 </a>>
 
   <app-footer></app-footer>
-</div> 
+</div>

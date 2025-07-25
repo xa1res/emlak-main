@@ -172,7 +172,7 @@ export const datas = [
         tapuDurumu: 'Kat Mülkiyetli',
         kimden: 'Emlak Ofisinden',
         takas: 'Hayır',
-        haritaUrl: '<https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d12239.672056791022!2d32.8376234!3d39.9208509!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9186982!2d32.8545981!5e0!3m2!1str!2str!4v1753259948890!5m2!1str!2str',
+        haritaUrl: 'https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d12239.672056791022!2d32.8376234!3d39.9208509!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d39.9186982!2d32.8545981!5e0!3m2!1str!2str!4v1753259948890!5m2!1str!2str',
         imageCount: 4
       },
       {

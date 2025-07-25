@@ -26,22 +26,22 @@
   padding: 32px 28px;
 }
 
-/* Ana Görseli ve Okları saran div */
 .main-image-wrapper {
-  position: relative; /* İçindeki absolute konumlu oklar için referans noktası */
+  position: relative;
   width: 100%;
-  height: 400px; /* Ana görselin yüksekliği kadar olacak, taşan resimler object-fit ile sığdırılacak */
-  margin-bottom: 20px; /* Küçük resim galerisi ile arasını açar */
-  overflow: hidden; /* Okların dışarı taşmasını engellemek için */
-  border-radius: 12px; /* Ana resmin border-radius'unu bu sarıcıya taşıdık */
+  height: 400px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .ilan-detay-image {
   width: 100%;
-  height: 100%; /* Sarıcının yüksekliğini doldur */
+  height: 100%;
   object-fit: cover;
-  border-radius: 0; /* Ana resimdeki border-radius kaldırıldı, sarıcıda var artık */
-  margin-bottom: 0; /* Artık sarıcının içinde olduğu için kaldırıldı */
+  border-radius: 0;
+  margin-bottom: 0;
 }
 
 .ilan-detay-bilgiler {
@@ -57,6 +57,7 @@
   margin: 0;
   color: var(--mat-sys-on-surface);
   margin-bottom: 20px;
+  word-break: break-word;
 }
 
 .ilan-detay-fiyat {
@@ -72,6 +73,7 @@
   align-items: center;
   margin-bottom: 10px;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .ilan-detay-lokasyon {
@@ -120,6 +122,16 @@
   white-space: pre-wrap;
 }
 
+.ilan-detay-harita {
+  margin-top: 20px;
+}
+
+.ilan-detay-harita h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--mat-sys-on-surface);
+}
 
 .ilan-detay-sidebar {
   padding: 32px 28px;
@@ -259,10 +271,17 @@
 .image-gallery {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: hidden;
+  overflow-x: auto; /* Yatay kaydırma için */
   gap: 10px;
   flex-grow: 1;
-  justify-content: center;
+  justify-content: flex-start; /* Başlangıçtan hizala */
+  padding-bottom: 10px; /* Kaydırma çubuğu için boşluk */
+  -webkit-overflow-scrolling: touch; /* iOS'ta daha yumuşak kaydırma */
+  scrollbar-width: none; /* Firefox için kaydırma çubuğunu gizle */
+}
+
+.image-gallery::-webkit-scrollbar {
+  display: none; /* Webkit tabanlı tarayıcılar için kaydırma çubuğunu gizle */
 }
 
 .thumbnail-image {
@@ -331,21 +350,96 @@
   cursor: not-allowed;
 }
 
+.fullscreen-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fullscreen-modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.fullscreen-close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.fullscreen-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  z-index: 1001;
+}
+
+.fullscreen-arrow.left-arrow {
+  left: 20px;
+}
+
+.fullscreen-arrow.right-arrow {
+  right: 20px;
+}
+
+@media (max-width: 1200px) {
+  .ilan-detay-kartı {
+    max-width: 90vw;
+  }
+}
+
 @media (max-width: 900px) {
   .ilan-detay-kartı {
     grid-template-columns: 1fr;
     min-width: unset;
     max-width: 98vw;
     flex-direction: column;
+    gap: 0; /* Mobil görünümde kartın içindeki ana içerik ve sidebar arasındaki boşluğu kaldır */
   }
   .ilan-detay-sayfa {
     padding: 20px;
   }
   .main-image-wrapper {
     height: 300px; 
+    border-radius: 12px 12px 0 0; /* Üst köşeleri yuvarlak tut */
   }
   .ilan-detay-image {
-    border-radius: 18px 18px 0 0;
+    border-radius: 0;
   }
   .ilan-detay-sidebar {
     border-left: none;
@@ -355,7 +449,7 @@
 
   .image-gallery {
     justify-content: flex-start;
-    max-width: calc(5 * 80px + 4 * 10px);
+    padding: 0 10px; /* Oklar için boşluk bırak */
   }
   .thumbnail-image {
     width: 80px;
@@ -368,5 +462,142 @@
       font-size: 20px;
       left: 10px; 
       right: 10px;
+  }
+
+  .ilan-detay-ana-icerik {
+    padding: 20px;
+  }
+
+  .ilan-detay-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .ilan-detay-fiyat {
+    font-size: 30px;
+    margin-top: 15px;
+  }
+
+  .ilan-detay-lokasyon-wrapper {
+    flex-direction: column; /* Dikey sıralama */
+    align-items: flex-start;
+  }
+
+  .ilan-detay-map-link {
+    font-size: 16px;
+  }
+
+  .ozet-tablo, .ilan-detay-danisman, .ilan-detay-guvenlik-ipuclari {
+    padding: 15px;
+  }
+  
+  .ilan-detay-sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ilan-detay-sayfa {
+    padding: 10px;
+  }
+  .ilan-detay-kartı {
+    border-radius: 10px;
+  }
+  .main-image-wrapper {
+    height: 250px;
+    border-radius: 10px 10px 0 0;
+  }
+  .ilan-detay-title {
+    font-size: 1.5rem;
+  }
+  .ilan-detay-fiyat {
+    font-size: 24px;
+  }
+  .ilan-detay-lokasyon,
+  .ilan-detay-map-link {
+    font-size: 15px;
+  }
+  .ilan-detay-aciklama h2,
+  .ilan-detay-harita h2 {
+    font-size: 1.3rem;
+  }
+  .ilan-detay-aciklama li {
+    font-size: 15px;
+  }
+  .thumbnail-image {
+    width: 70px;
+    height: 50px;
+  }
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+  .main-image-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    left: 5px;
+    right: 5px;
+  }
+
+  .fullscreen-close-button {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .fullscreen-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    left: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ilan-detay-sayfa {
+    padding: 5px;
+  }
+  .ilan-detay-ana-icerik {
+    padding: 15px;
+  }
+  .ilan-detay-title {
+    font-size: 1.3rem;
+  }
+  .ilan-detay-fiyat {
+    font-size: 20px;
+  }
+  .ilan-detay-lokasyon,
+  .ilan-detay-map-link {
+    font-size: 14px;
+  }
+  .thumbnail-image {
+    width: 60px;
+    height: 45px;
+  }
+  .main-image-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .fullscreen-close-button {
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+  .fullscreen-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    left: 5px;
+    right: 5px;
   }
 }

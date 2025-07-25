@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule, Router } from '@angular/router'; // Router eklendi
-import { FormsModule } from '@angular/forms'; // FormsModule eklendi
+import { RouterModule, Router } from '@angular/router'; 
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [CommonModule, MatIconModule, RouterModule, FormsModule], // imports'a eklendi
+  imports: [CommonModule, MatIconModule, RouterModule, FormsModule], 
   templateUrl: './menu-bar.html',
   styleUrls: ['./menu-bar.css']
 })

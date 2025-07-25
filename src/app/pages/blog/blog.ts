@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Footer],
   templateUrl: './blog.html',
   styleUrl: './blog.css'
 })

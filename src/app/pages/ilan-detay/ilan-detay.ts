@@ -72,6 +72,7 @@ export class IlanDetayComponent implements OnInit {
   selectedIndex: number = 0;
   readonly MAX_VISIBLE_THUMBNAILS: number = 7;
   readonly THUMBNAIL_BUFFER_SIZE: number = 3; // Yeni: İlk ve son 3 resmi sabit tutma eşiği
+  showFullscreenModal: boolean = false; // Tam ekran modalı görünürlüğünü kontrol eder
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
@@ -146,7 +147,10 @@ export class IlanDetayComponent implements OnInit {
     this.displayedThumbnails = this.imageGalleryUrls.slice(startIndex, endIndex);
   }
 
-  navigateThumbnails(direction: 'left' | 'right'): void {
+  navigateThumbnails(direction: 'left' | 'right', event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation(); // Event'in parent elementlere yayılmasını durdur
+    }
     const newIndex = direction === 'left' ? this.selectedIndex - 1 : this.selectedIndex + 1;
 
     if (newIndex >= 0 && newIndex < this.imageGalleryUrls.length) {
@@ -154,6 +158,14 @@ export class IlanDetayComponent implements OnInit {
       this.mainImageUrl = this.imageGalleryUrls[this.selectedIndex];
       this.updateDisplayedThumbnails();
     }
+  }
+
+  openFullscreen(): void {
+    this.showFullscreenModal = true;
+  }
+
+  closeFullscreen(): void {
+    this.showFullscreenModal = false;
   }
 
   get aciklamaSatirlari(): string[] {

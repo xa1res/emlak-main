@@ -1,0 +1,9 @@
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .main-layout .content {
+    flex-grow: 1; 
+  }

@@ -52,30 +52,38 @@
 .sub-title {
   font-size: 160%;
   align-self: center;
-  margin-top: 0;
+  margin-top: 10px;
   animation: sub-title-anim 1000ms;
 }
 
 @keyframes sub-title-anim {
   0% {
-    margin-left: -2000px;
+    margin-left: -2300px;
   }
   50% {
-    margin-left: -2000px;
+    margin-left: -2300px;
   }
 }
 
 .danısmanlar-blok {
   margin-top: 52px;
+  width: 100%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .danısman-section {
   display: flex;
+  flex-wrap: wrap; 
   gap: 32px;
   justify-content: center;
   align-items: flex-start;
   margin-top: 52px;
   margin-bottom: 2px;
+  width: 100%; 
+  padding: 0 20px; 
+  box-sizing: border-box; 
 }
 
 .danısman-hasandugan,
@@ -88,10 +96,11 @@
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   padding: 24px 16px;
-  min-width: 21vh;
-  max-width: 42vh;
-  margin: 0 8px;
+  width: calc(50% - 16px); 
+  max-width: 400px; 
+  margin: 0; 
   transition: box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
 .danısman-hasandugan:hover,
@@ -101,12 +110,13 @@
 
 .Hasanpfp-Foto,
 .Serifepfp-Foto {
-  width: 40vh;
-  height: 40vh;
+  width: 100%; 
+  max-width: 350px; 
+  height: 350px; 
   object-fit: cover;
   border-radius: 5%;
   margin-bottom: 8px;
-  background: #eee; /* Fotoğraf yüklenmezse arka plan */
+  background: #eee;
   border-style: solid;
   border-color: #d3d3d3;
   border-width: 2px;
@@ -120,13 +130,6 @@
   text-align: center;
 }
 
-.danısmanlar-blok {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .danısman-baslık {
   text-align: center;
   font-size: 45px;
@@ -136,6 +139,9 @@
   letter-spacing: 1px;
   color: #333;
   animation: danisman-text-anim 2400ms;
+  word-break: break-word; 
+  padding: 0 10px; 
+  box-sizing: border-box; 
 }
 
 @keyframes danisman-text-anim {
@@ -330,15 +336,6 @@
   transform: scale(1.03);
 }
 
-@media (max-width: 768px) {
-  .konum-goster-yazisi {
-    font-size: 0.8rem;
-    padding: 6px 12px;
-    bottom: 15px;
-    right: 15px;
-  }
-}
-
 @keyframes slideLeftAnim {
   0% {
     transform: translateX(30px) scale(0.95) rotate(0deg);
@@ -367,4 +364,42 @@
 
 .slider-card.slide-right {
   animation: slideRightAnim 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1200px) {
+  .danısman-hasandugan,
+  .danısman-serifecelik {
+    width: calc(50% - 16px);
+    max-width: 380px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .danısman-section {
+    flex-direction: column;
+    gap: 20px; 
+    padding: 0 15px; 
+  }
+
+  .danısman-hasandugan,
+  .danısman-serifecelik {
+    width: 100%; 
+    max-width: 350px; 
+    margin: 0 auto; 
+    padding: 15px;
+  }
+
+  .Hasanpfp-Foto,
+  .Serifepfp-Foto {
+    width: 100%; 
+    max-width: 200px;
+    height: 200px; 
+    margin-bottom: 10px;
+  }
+
+  .danısman-baslık {
+    font-size: 30px; 
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
 }

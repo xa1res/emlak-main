@@ -3,11 +3,11 @@
     <div class="ilan-detay-ana-icerik">
       <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
       
-      <div class="main-image-wrapper">
+      <div class="main-image-wrapper" (click)="openFullscreen()">
         <img [src]="mainImageUrl" alt="İlan Ana Fotoğrafı" class="ilan-detay-image" />
         
-        <button class="carousel-arrow main-image-arrow left-arrow" (click)="navigateThumbnails('left')" [disabled]="isLeftArrowDisabled">‹</button>
-        <button class="carousel-arrow main-image-arrow right-arrow" (click)="navigateThumbnails('right')" [disabled]="isRightArrowDisabled">›</button>
+        <button class="carousel-arrow main-image-arrow left-arrow" (click)="navigateThumbnails('left', $event)" [disabled]="isLeftArrowDisabled">‹</button>
+        <button class="carousel-arrow main-image-arrow right-arrow" (click)="navigateThumbnails('right', $event)" [disabled]="isRightArrowDisabled">›</button>
       </div>
       
       <div class="thumbnail-carousel-container">
@@ -17,7 +17,7 @@
             [src]="imgUrl" 
             alt="İlan Küçük Fotoğrafı" 
             class="thumbnail-image" 
-            (click)="selectImage(imgUrl)" 
+            (click)="selectImage(imgUrl); $event.stopPropagation();" 
             [class.active]="mainImageUrl === imgUrl"
           />
         </div>
@@ -162,11 +162,7 @@
         </div>
       </div>
 
-      <div class="ilan-detay-guvenlik-ipuclari">
-        <h2>Güvenlik İpuçları</h2>
-        <p>Satın alacağınız gayrimenkulü görmeden kapora ödemeyin, para göndermeyin.</p>
-        <p>Detaylı bilgi için <a href="#" class="guvenlik-link">tıklayın.</a></p>
-      </div>
+      
     </div>
   </div>
 </div>
@@ -174,3 +170,12 @@
 <ng-template #notFound>
   <div class="ilan-detay-notfound">İlan bulunamadı.</div>
 </ng-template>
+
+<div class="fullscreen-modal-overlay" *ngIf="showFullscreenModal" (click)="closeFullscreen()">
+  <div class="fullscreen-modal-content" (click)="$event.stopPropagation()">
+    <img [src]="mainImageUrl" alt="Tam Ekran Görüntü" class="fullscreen-image" />
+    <button class="fullscreen-close-button" (click)="closeFullscreen()">✖</button>
+    <button class="carousel-arrow fullscreen-arrow left-arrow" (click)="navigateThumbnails('left', $event)" [disabled]="isLeftArrowDisabled">‹</button>
+    <button class="carousel-arrow fullscreen-arrow right-arrow" (click)="navigateThumbnails('right', $event)" [disabled]="isRightArrowDisabled">›</button>
+  </div>
+</div>
