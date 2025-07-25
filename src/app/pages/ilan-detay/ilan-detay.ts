@@ -71,8 +71,8 @@ export class IlanDetayComponent implements OnInit {
   displayedThumbnails: string[] = [];
   selectedIndex: number = 0;
   readonly MAX_VISIBLE_THUMBNAILS: number = 7;
-  readonly THUMBNAIL_BUFFER_SIZE: number = 3; // Yeni: İlk ve son 3 resmi sabit tutma eşiği
-  showFullscreenModal: boolean = false; // Tam ekran modalı görünürlüğünü kontrol eder
+  readonly THUMBNAIL_BUFFER_SIZE: number = 3; 
+  showFullscreenModal: boolean = false; 
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
@@ -128,19 +128,15 @@ export class IlanDetayComponent implements OnInit {
     let endIndex: number;
 
     if (totalImages <= numVisible) {
-      // Toplam resim sayısı görünür limitten azsa veya eşitse, hepsini göster
       startIndex = 0;
       endIndex = totalImages;
     } else if (this.selectedIndex < buffer) {
-      // Başlangıç buffer'ı içinde ise, ilk resimden başla
       startIndex = 0;
       endIndex = numVisible;
     } else if (this.selectedIndex >= totalImages - buffer) {
-      // Bitiş buffer'ı içinde ise, son resimden geriye doğru başla
       startIndex = totalImages - numVisible;
       endIndex = totalImages;
     } else {
-      // Orta kısımda ise, seçilen resmi ortalamaya çalış
       startIndex = this.selectedIndex - halfVisible;
       endIndex = startIndex + numVisible;
     }
@@ -149,7 +145,7 @@ export class IlanDetayComponent implements OnInit {
 
   navigateThumbnails(direction: 'left' | 'right', event?: MouseEvent): void {
     if (event) {
-      event.stopPropagation(); // Event'in parent elementlere yayılmasını durdur
+      event.stopPropagation();
     }
     const newIndex = direction === 'left' ? this.selectedIndex - 1 : this.selectedIndex + 1;
 

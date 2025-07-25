@@ -271,17 +271,17 @@
 .image-gallery {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto; /* Yatay kaydırma için */
+  overflow-x: auto;
   gap: 10px;
   flex-grow: 1;
-  justify-content: flex-start; /* Başlangıçtan hizala */
-  padding-bottom: 10px; /* Kaydırma çubuğu için boşluk */
-  -webkit-overflow-scrolling: touch; /* iOS'ta daha yumuşak kaydırma */
-  scrollbar-width: none; /* Firefox için kaydırma çubuğunu gizle */
+  justify-content: flex-start; 
+  padding-bottom: 10px; 
+  -webkit-overflow-scrolling: touch; 
+  scrollbar-width: none;
 }
 
 .image-gallery::-webkit-scrollbar {
-  display: none; /* Webkit tabanlı tarayıcılar için kaydırma çubuğunu gizle */
+  display: none; 
 }
 
 .thumbnail-image {
@@ -429,14 +429,14 @@
     min-width: unset;
     max-width: 98vw;
     flex-direction: column;
-    gap: 0; /* Mobil görünümde kartın içindeki ana içerik ve sidebar arasındaki boşluğu kaldır */
+    gap: 0; 
   }
   .ilan-detay-sayfa {
     padding: 20px;
   }
   .main-image-wrapper {
     height: 300px; 
-    border-radius: 12px 12px 0 0; /* Üst köşeleri yuvarlak tut */
+    border-radius: 12px 12px 0 0; 
   }
   .ilan-detay-image {
     border-radius: 0;
@@ -449,7 +449,7 @@
 
   .image-gallery {
     justify-content: flex-start;
-    padding: 0 10px; /* Oklar için boşluk bırak */
+    padding: 0 10px;
   }
   .thumbnail-image {
     width: 80px;
@@ -479,7 +479,7 @@
   }
 
   .ilan-detay-lokasyon-wrapper {
-    flex-direction: column; /* Dikey sıralama */
+    flex-direction: column; 
     align-items: flex-start;
   }
 

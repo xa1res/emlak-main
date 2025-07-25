@@ -17,7 +17,7 @@ export class MenuBar implements OnInit {
   constructor(private router: Router) { } 
 
   ngOnInit(): void {
-    //
+    
   }
 
   performSearch(): void {
