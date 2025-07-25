@@ -1,12 +1,31 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule, Router } from '@angular/router'; // Router eklendi
+import { FormsModule } from '@angular/forms'; // FormsModule eklendi
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [RouterModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, RouterModule, FormsModule], // imports'a eklendi
   templateUrl: './menu-bar.html',
   styleUrls: ['./menu-bar.css']
 })
-export class MenuBar {}
+export class MenuBar implements OnInit {
+  searchText: string = '';
+
+  constructor(private router: Router) { } 
+
+  ngOnInit(): void {
+    //
+  }
+
+  performSearch(): void {
+    if (this.searchText.trim()) { 
+      this.router.navigate(['/ilan-listesi/all'], { queryParams: { search: this.searchText.trim() } });
+    } else { 
+      this.router.navigate(['/ilan-listesi/all']);
+    }
+    this.searchText = ''; 
+  }
+}

@@ -43,6 +43,15 @@ export class IlanListesi implements OnInit {
   durumFilterOptions: string[] = ['Tümü', 'Satılık', 'Kiralık'];
   odaSayisiOptions: string[] = ['Tümü', 'Stüdyo', '1+0', '1+1', '2+1', '3+1', '3+2', '4+1', '4+2', '5+1', '5+2', '6+1', '6+2 ve üzeri'];
 
+  selectedSortOption: string = 'default';
+  sortOptions: { value: string, label: string }[] = [
+    { value: 'default', label: 'Sıralama Seçin' },
+    { value: 'priceAsc', label: 'Fiyata Göre Artan' },
+    { value: 'priceDesc', label: 'Fiyata Göre Azalan' },
+    { value: 'm2Asc', label: 'M²\'ye Göre Artan' },
+    { value: 'm2Desc', label: 'M²\'ye Göre Azalan' },
+  ];
+
 
   constructor(private route: ActivatedRoute) { }
 
@@ -61,6 +70,15 @@ export class IlanListesi implements OnInit {
         this.selectedDurumFilter = 'kiralik';
       } else {
         this.selectedDurumFilter = 'all';
+      }
+    });
+
+    this.route.queryParamMap.subscribe(queryParams => {
+      const searchParam = queryParams.get('search');
+      if (searchParam) {
+        this.searchText = searchParam;
+      } else {
+        this.searchText = '';
       }
       this.applyCurrentFilters();
     });
@@ -99,6 +117,21 @@ export class IlanListesi implements OnInit {
       );
     }
 
+    switch (this.selectedSortOption) {
+      case 'priceAsc':
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case 'priceDesc':
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case 'm2Asc':
+        filtered.sort((a, b) => a.m2 - b.m2);
+        break;
+      case 'm2Desc':
+        filtered.sort((a, b) => b.m2 - a.m2);
+        break;
+    }
+
     this.properties = filtered;
   }
 
@@ -114,6 +147,7 @@ export class IlanListesi implements OnInit {
     this.maxM2 = null;
     this.selectedOdaSayisi = 'Tümü';
     this.searchText = '';
+    this.selectedSortOption = 'default';
     this.applyCurrentFilters();
   }
 }

@@ -7,7 +7,7 @@
 
   <div class="filter-bar">
     <select [(ngModel)]="selectedDurumFilter" (change)="filterProperties()" class="filter-select">
-      <option *ngFor="let durum of durumFilterOptions" [value]="durum.toLowerCase()">{{ durum }}</option>
+      <option *ngFor="let durum of durumFilterOptions" [value]="durum === 'Tümü' ? 'all' : durum.toLowerCase()">{{ durum }}</option>
     </select>
 
     <input type="text" [(ngModel)]="searchText" (input)="filterProperties()" placeholder="Konum, başlık ara..." class="filter-input">
@@ -20,6 +20,10 @@
 
     <select [(ngModel)]="selectedOdaSayisi" (change)="filterProperties()" class="filter-select">
       <option *ngFor="let oda of odaSayisiOptions" [value]="oda">{{ oda }}</option>
+    </select>
+
+    <select [(ngModel)]="selectedSortOption" (change)="filterProperties()" class="filter-select">
+      <option *ngFor="let sort of sortOptions" [value]="sort.value">{{ sort.label }}</option>
     </select>
 
     <button (click)="clearFilters()" class="clear-filters-btn">Filtreleri Temizle</button>

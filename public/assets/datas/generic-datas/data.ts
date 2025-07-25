@@ -456,7 +456,7 @@ export const datas = [
         id: '1231813949',
         imageURL: 'https://i0.shbdn.com/photos/81/39/49/x5_1231813949hbn.jpg',
         title: 'ÇANKAYA ÖVEÇLER MAHALLESİ SATILIK 2 KATLI 230 M2 DÜKKAN',
-        price: 69000000,
+        price: 6900000,
         location: 'Ankara Çankaya',
         emlakci: 'Şerife Çelik',
         durum: 'Satılık',

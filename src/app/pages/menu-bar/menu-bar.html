@@ -18,6 +18,9 @@
   </div>
 
   <div class="menu-bar-right">
-    <mat-icon class="search-icon">search</mat-icon>
+    <input type="text" [(ngModel)]="searchText" placeholder="Başlık, konum ara..." class="search-input">
+    <button (click)="performSearch()" class="search-button">
+      <mat-icon>search</mat-icon>
+    </button>
   </div>
 </div>
