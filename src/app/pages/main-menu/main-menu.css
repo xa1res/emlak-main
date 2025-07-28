@@ -2,16 +2,30 @@
   background-color: #dadada;
 }
 
-.mainPhoto-section {
+.mainVideo-section {
   width: 100%;
   height: 80vh;
-  background-image: url("/assets/buying-a-home.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; 
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0; 
+  transform: translate(-50%, -50%);
+  filter: brightness(80%); 
+  object-fit: cover; 
 }
 
 .ana-menu-comp {
@@ -23,8 +37,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: left;
+  text-align: left;
   color: white;
 }
 
@@ -37,7 +51,8 @@
 
 .main-title {
   font-size: 600%;
-  align-self: center;
+  align-self: left;
+  margin-left: 100px;
   margin-top: 0;
   margin-bottom: 50px;
   animation: main-title-anim 700ms;
@@ -54,20 +69,86 @@
   align-self: center;
   margin-top: 10px;
   animation: sub-title-anim 1000ms;
+  margin-left: 180px;
 }
 
 @keyframes sub-title-anim {
   0% {
-    margin-left: -2300px;
+    margin-left: -2800px;
   }
   50% {
-    margin-left: -2300px;
+    margin-left: -2800px;
   }
 }
 
+.main-tikla{
+  margin-top: 20px; 
+  margin-left: 220px; 
+  animation: main-tikla-anim 1400ms;
+}
+
+.main-tikla a {
+  display: inline-block; 
+  padding: 12px 25px;
+  background-color: #007bff; 
+  color: white; 
+  text-decoration: none;
+  border-radius: 8px; 
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.main-tikla a:hover {
+  background-color: #0056b3; 
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.main-tikla a:active{
+  background-color: #ffffff; 
+}
+
+@keyframes main-tikla-anim {
+  0% {
+    margin-left: -2800px;
+  }
+  50% {
+    margin-left: -2800px;
+  }
+}
+
+.hemen-ara{
+  position: absolute;
+  margin-top: 65vh;
+  margin-left: 5vh;
+}
+
+.hemen-ara a {
+  padding: 12px 25px;
+  background-color: #ffffff; 
+  color: rgb(0, 0, 0); 
+  text-decoration: none;
+  border-radius: 8px; 
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.hemen-ara a:hover {
+  transform: translateY(-2px); 
+  color: #b30000;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hemen-ara a:active{
+  background-color: #ffffff; 
+}
+
+
 .danısmanlar-blok {
   margin-top: 52px;
-  width: 100%; 
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,15 +156,15 @@
 
 .danısman-section {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 32px;
   justify-content: center;
   align-items: flex-start;
   margin-top: 52px;
   margin-bottom: 2px;
-  width: 100%; 
-  padding: 0 20px; 
-  box-sizing: border-box; 
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .danısman-hasandugan,
@@ -96,9 +177,9 @@
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   padding: 24px 16px;
-  width: calc(50% - 16px); 
-  max-width: 400px; 
-  margin: 0; 
+  width: calc(50% - 16px);
+  max-width: 400px;
+  margin: 0;
   transition: box-shadow 0.2s;
   box-sizing: border-box;
 }
@@ -110,9 +191,9 @@
 
 .Hasanpfp-Foto,
 .Serifepfp-Foto {
-  width: 100%; 
-  max-width: 350px; 
-  height: 350px; 
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
   object-fit: cover;
   border-radius: 5%;
   margin-bottom: 8px;
@@ -139,9 +220,9 @@
   letter-spacing: 1px;
   color: #333;
   animation: danisman-text-anim 2400ms;
-  word-break: break-word; 
-  padding: 0 10px; 
-  box-sizing: border-box; 
+  word-break: break-word;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 @keyframes danisman-text-anim {
@@ -308,7 +389,7 @@
   }
   .ofis-yazi-katmani h2 {
     font-size: 2.2rem;
-    
+
   }
   .ofis-yazi-katmani p {
     font-size: 1.1rem;
@@ -370,35 +451,35 @@
   .danısman-hasandugan,
   .danısman-serifecelik {
     width: calc(50% - 16px);
-    max-width: 380px; 
+    max-width: 380px;
   }
 }
 
 @media (max-width: 768px) {
   .danısman-section {
     flex-direction: column;
-    gap: 20px; 
-    padding: 0 15px; 
+    gap: 20px;
+    padding: 0 15px;
   }
 
   .danısman-hasandugan,
   .danısman-serifecelik {
-    width: 100%; 
-    max-width: 350px; 
-    margin: 0 auto; 
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
     padding: 15px;
   }
 
   .Hasanpfp-Foto,
   .Serifepfp-Foto {
-    width: 100%; 
+    width: 100%;
     max-width: 200px;
-    height: 200px; 
+    height: 200px;
     margin-bottom: 10px;
   }
 
   .danısman-baslık {
-    font-size: 30px; 
+    font-size: 30px;
     margin-top: 20px;
     margin-bottom: 15px;
   }

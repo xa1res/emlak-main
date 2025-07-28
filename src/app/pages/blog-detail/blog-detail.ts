@@ -182,8 +182,8 @@ export class BlogDetailComponent implements OnInit {
             <li><strong>Gerekli Belgeler:</strong> Tapu, iskan, enerji kimlik belgesi gibi satış için gerekli tüm belgeleri hazır bulundurun.</li>
             <li><strong>Profesyonel Destek:</strong> Emlak danışmanları, süreci hızlandırma, doğru alıcı bulma ve hukuki prosedürlerde size yardımcı olabilir.</li>
           </ul>
-          <h2>Alım Satımda PentaNest Farkı:</h2>
-          <p>PentaNest olarak, gayrimenkul alım satım sürecinizi baştan sona profesyonelce yönetiyor, doğru kararlar almanız için size danışmanlık hizmeti sunuyoruz. Güvenilir ve şeffaf bir süreç için bize ulaşın.</p>
+          <h2>Alım Satımda Penta Nest Farkı:</h2>
+          <p>Penta Nest olarak, gayrimenkul alım satım sürecinizi baştan sona profesyonelce yönetiyor, doğru kararlar almanız için size danışmanlık hizmeti sunuyoruz. Güvenilir ve şeffaf bir süreç için bize ulaşın.</p>
         `
       },
       {
@@ -205,7 +205,7 @@ export class BlogDetailComponent implements OnInit {
           </ul>
           <h2>Ankara'da Güvenilir Emlakçı Ararken:</h2>
           <p>Ankara'nın geniş ve dinamik emlak piyasasında doğru emlakçıyı bulmak zaman alabilir. Yerel bilgiye sahip, müşteri odaklı çalışan ve olumlu referansları olan emlakçılarla görüşmek önemlidir.</p>
-          <p>PentaNest olarak, Ankara'da gayrimenkul alım, satım ve kiralama süreçlerinizde güvenilir, şeffaf ve profesyonel bir hizmet sunarak yanınızdayız. Uzman ekibimizle tanışmak ve ihtiyaçlarınıza özel çözümlerimiz hakkında bilgi almak için bize ulaşın.</p>
+          <p>Penta Nest olarak, Ankara'da gayrimenkul alım, satım ve kiralama süreçlerinizde güvenilir, şeffaf ve profesyonel bir hizmet sunarak yanınızdayız. Uzman ekibimizle tanışmak ve ihtiyaçlarınıza özel çözümlerimiz hakkında bilgi almak için bize ulaşın.</p>
         `
       },
       {
@@ -226,8 +226,8 @@ export class BlogDetailComponent implements OnInit {
             <li><strong>Müşteri Memnuniyeti Odaklı:</strong> Müşteri geri bildirimleri olumlu olmalı ve sizin hedeflerinize ulaşmanızı önceliklendirmelidir.</li>
             <li><strong>Hukuki Bilgi ve Destek:</strong> Alım-satım süreçlerindeki yasal prosedürlere hakim olmalı ve gerektiğinde hukuki destek sağlayabilmelidir.</li>
           </ul>
-          <h2>Neden PentaNest?</h2>
-          <p>PentaNest olarak, Ankara'da gayrimenkul sektöründe yılların verdiği tecrübe ve geniş uzman kadromuzla "en iyi" hizmeti sunmayı hedefliyoruz. Müşteri odaklı yaklaşımımız, detaylı piyasa analizlerimiz ve şeffaf süreçlerimizle, gayrimenkul işlemlerinizde size maksimum faydayı sağlamak için çalışıyoruz. İhtiyaçlarınıza özel çözümler ve profesyonel danışmanlık için bize ulaşın.</p>
+          <h2>Neden Penta Nest?</h2>
+          <p>Penta Nest olarak, Ankara'da gayrimenkul sektöründe yılların verdiği tecrübe ve geniş uzman kadromuzla "en iyi" hizmeti sunmayı hedefliyoruz. Müşteri odaklı yaklaşımımız, detaylı piyasa analizlerimiz ve şeffaf süreçlerimizle, gayrimenkul işlemlerinizde size maksimum faydayı sağlamak için çalışıyoruz. İhtiyaçlarınıza özel çözümler ve profesyonel danışmanlık için bize ulaşın.</p>
         `
       },
       {
@@ -247,8 +247,8 @@ export class BlogDetailComponent implements OnInit {
             <li><strong>Müşteri İlişkileri:</strong> Daha önceki Çankaya müşterilerinden olumlu geri bildirimler almalıdır.</li>
             <li><strong>Hukuki Destek:</strong> Özellikle Çankaya'daki imar, tapu ve kentsel dönüşüm süreçleri hakkında bilgi sahibi olmalıdır.</li>
           </ul>
-          <h2>PentaNest ile Çankaya'da Güvenilir Emlak Deneyimi:</h2>
-          <p>PentaNest olarak, Çankaya'nın her noktasındaki gayrimenkul ihtiyaçlarınıza yönelik kapsamlı ve profesyonel çözümler sunuyoruz. Uzman ekibimizle, Çankaya'daki ev arayışınızda veya mülkünüzü satma/kiralamada size en doğru rehberliği sağlamaktan gurur duyarız. Çankaya'daki emlak işlemleriniz için bize güvenebilirsiniz.</p>
+          <h2>Penta Nest ile Çankaya'da Güvenilir Emlak Deneyimi:</h2>
+          <p>Penta Nest olarak, Çankaya'nın her noktasındaki gayrimenkul ihtiyaçlarınıza yönelik kapsamlı ve profesyonel çözümler sunuyoruz. Uzman ekibimizle, Çankaya'daki ev arayışınızda veya mülkünüzü satma/kiralamada size en doğru rehberliği sağlamaktan gurur duyarız. Çankaya'daki emlak işlemleriniz için bize güvenebilirsiniz.</p>
         `
       },
       {
@@ -268,8 +268,8 @@ export class BlogDetailComponent implements OnInit {
             <li><strong>Güçlü Network:</strong> Sektördeki diğer paydaşlar (bankalar, inşaat firmaları, hukuki danışmanlar) ile güçlü ilişkilere sahip olmalıdır.</li>
             <li><strong>Müşteri Odaklılık:</strong> Müşteri memnuniyetini ön planda tutan, şeffaf ve etik çalışma prensiplerine sahip olmalıdır.</li>
           </ul>
-          <h2>PentaNest: Ankara’nın Güvenilir Gayrimenkul Çözüm Ortağı</h2>
-          <p>PentaNest olarak, Ankara’nın tüm bölgelerinde, geniş portföyümüz ve uzman ekibimizle size özel gayrimenkul çözümleri sunuyoruz. Sektördeki yenilikleri takip eden, teknoloji destekli hizmet anlayışımız ve müşteri odaklı yaklaşımımızla, gayrimenkul süreçlerinizi en verimli şekilde yönetiyoruz. Ankara’daki gayrimenkul ihtiyaçlarınız için güvenilir bir partner arıyorsanız, PentaNest sizin için doğru adres.</p>
+          <h2>Penta Nest: Ankara’nın Güvenilir Gayrimenkul Çözüm Ortağı</h2>
+          <p>Penta Nest olarak, Ankara’nın tüm bölgelerinde, geniş portföyümüz ve uzman ekibimizle size özel gayrimenkul çözümleri sunuyoruz. Sektördeki yenilikleri takip eden, teknoloji destekli hizmet anlayışımız ve müşteri odaklı yaklaşımımızla, gayrimenkul süreçlerinizi en verimli şekilde yönetiyoruz. Ankara’daki gayrimenkul ihtiyaçlarınız için güvenilir bir partner arıyorsanız,  Nest sizin için doğru adres.</p>
         `
       }
   ];

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'; // OnInit eklendi
-import { RouterModule, Router, NavigationEnd } from '@angular/router'; // Router ve NavigationEnd eklendi
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { MenuBar } from './pages/menu-bar/menu-bar';
-import { filter } from 'rxjs/operators'; // filter operatörü eklendi
+import { filter } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,21 @@ import { filter } from 'rxjs/operators'; // filter operatörü eklendi
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class App implements OnInit { // OnInit uygulandı
+export class App implements OnInit {
   protected title = 'proje2';
 
-  constructor(private router: Router) {} // Router inject edildi
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
-    // Her navigasyon tamamlandığında sayfanın en üstüne kaydır
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      window.scrollTo(0, 0); // Sayfayı en üste kaydır
+      if (isPlatformBrowser(this.platformId)) {
+        window.scrollTo(0, 0);
+      }
     });
   }
 }
