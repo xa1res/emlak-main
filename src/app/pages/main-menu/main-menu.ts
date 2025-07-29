@@ -32,6 +32,7 @@ export class MainMenu implements AfterViewInit, OnDestroy {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.startTimer();
+      console.log(1)
     }
   }
 
@@ -44,6 +45,7 @@ export class MainMenu implements AfterViewInit, OnDestroy {
   startTimer(): void {
     this.slideInterval = setInterval(() => {
       this.ileri();
+      console.log(2)
     }, 4000); 
   }
 
@@ -73,6 +75,8 @@ export class MainMenu implements AfterViewInit, OnDestroy {
     this.aktifIndex = (this.aktifIndex + 1) % this.oneCikanlar.length;
     
     this.kaymaYonu = 'left';
+
+    console.log(this.aktifIndex,"sdasd")
     
     setTimeout(() => {
       this.kaymaYonu = 'none';

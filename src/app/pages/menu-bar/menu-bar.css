@@ -16,6 +16,7 @@
 .menu-bar-left {
   display: flex;
   align-items: center;
+  padding-left: 5%;
 }
 
 .PentaNestLogo-Menu-Foto {
@@ -60,6 +61,7 @@
 .menu-bar-right {
   display: flex;
   align-items: center;
+  padding-right: 5%;
 }
 
 .search-input {

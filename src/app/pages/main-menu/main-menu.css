@@ -52,7 +52,7 @@
 .main-title {
   font-size: 600%;
   align-self: left;
-  margin-left: 100px;
+  margin-left: 30px;
   margin-top: 0;
   margin-bottom: 50px;
   animation: main-title-anim 700ms;
@@ -83,13 +83,13 @@
 
 .main-tikla {
   margin-top: 20px;
-  margin-left: 220px;
+  margin-left: 280px;
   animation: main-tikla-anim 1400ms;
 }
 
 .main-tikla a {
   display: inline-block;
-  padding: 12px 25px;
+  padding: 20px 35px;
   background-color: #007bff;
   color: white;
   text-decoration: none;
@@ -97,6 +97,7 @@
   font-weight: 500;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 25px;
 }
 
 .main-tikla a:hover {
@@ -121,7 +122,7 @@
 .hemen-ara {
   position: absolute;
   margin-top: 65vh;
-  margin-left: 5vh;
+  padding-left: 82%;
   animation: hemen-ara-anim 1700ms;
 }
 
@@ -142,8 +143,8 @@
 
 .hemen-ara a:hover {
   transform: translateY(-2px);
-  color: #b30000;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  color: #007bff;
+   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hemen-ara a:active {
@@ -286,7 +287,8 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  width: 320px;
+  width: 512px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -335,8 +337,7 @@
 .ofis-bolumu {
   position: relative;
   margin: 100px auto;
-  width: 95%;
-  max-width: 1400px;
+  width: 87.7%;
   height: 500px;
   border-radius: var(--kenar-yuvarlakligi, 16px);
   overflow: hidden;
@@ -381,32 +382,23 @@
 }
 
 .ofis-yazi-katmani h2 {
-  font-size: 3.2rem;
+  font-size: 42px;
   font-weight: 700;
   margin: 0 0 25px 0;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  margin-bottom: 45px;
+  width: 100%;
 }
 
 .ofis-yazi-katmani p {
-  font-size: 1.4rem;
+  font-size: 24px;
   max-width: 700px;
   line-height: 1.5;
   margin: 0;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-@media (max-width: 768px) {
-  .ofis-bolumu {
-    height: 350px;
-    margin: 50px auto;
-  }
-  .ofis-yazi-katmani h2 {
-    font-size: 2.2rem;
-  }
-  .ofis-yazi-katmani p {
-    font-size: 1.1rem;
-  }
-}
+
 
 .konum-goster-yazisi {
   position: absolute;
@@ -490,6 +482,19 @@
     width: calc(50% - 16px);
     max-width: 380px;
   }
+
+  .ofis-bolumu {
+    height: 350px;
+    margin: 50px auto;
+  }
+  .ofis-yazi-katmani h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+  }
+  .ofis-yazi-katmani p {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -572,6 +577,9 @@
     width: 300px;
     height: 300px;
   }
+  .ofis-yazi-katmani{
+    font-size: 1px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -606,4 +614,5 @@
     width: 200px;
     height: 200px;
   }
+  
 }
