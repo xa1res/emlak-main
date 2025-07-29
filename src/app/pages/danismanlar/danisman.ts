@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { datas } from '../../../../public/assets/datas/generic-datas/data';
 import { Footer } from '../footer/footer';
+
+import { ConsultantOverviewComponent } from '../../components/danismanlar/danisman-genel/danisman-genel';
+import { ConsultantPropertiesGridComponent } from '../../components/danismanlar/danisman-ilan/danisman-ilan';
 
 interface Property {
   id: string;
@@ -29,17 +32,25 @@ interface Bilgi {
   whatsapp: string;
   endeksa: string;
   properties: Property[];
+  url: string;
 }
 
 @Component({
   selector: 'app-danisman',
   standalone: true,
-  imports: [CommonModule, MatIconModule, Footer, RouterModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    Footer,
+    RouterModule,
+    ConsultantOverviewComponent,
+    ConsultantPropertiesGridComponent
+  ],
   templateUrl: './danisman.html',
   styleUrls: ['./danisman.css']
 })
 export class Danisman implements OnInit {
-  consultantData: Bilgi[] = [];
+  consultantData: Bilgi | undefined; 
 
   constructor(private route: ActivatedRoute) { }
 
@@ -47,21 +58,9 @@ export class Danisman implements OnInit {
     this.route.paramMap.subscribe(params => {
       const consultantUrl = params.get('url');
       if (consultantUrl) {
-        this.consultantData = datas.filter(data => 
-          data.url.toString() === consultantUrl
-        );
+        // datas'ı Bilgi[] olarak varsayarak, doğrudan find kullanıyoruz
+        this.consultantData = datas.find((data: Bilgi) => data.url.toString() === consultantUrl);
       }
     });
-  }
-
-  getShortenedHakkimda(text: string | undefined): string {
-    if (!text) {
-      return '';
-    }
-    const maxLength = 500; 
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + '...';
-    }
-    return text;
   }
 }

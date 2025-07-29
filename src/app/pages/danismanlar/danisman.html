@@ -1,65 +1,9 @@
-<div *ngFor="let consultant of consultantData">
-  <div class="danisman-sayfa">
-    <h1 class="page-main-title">Danışman Detayları</h1>
+<div *ngIf="consultantData" class="danisman-sayfa">
+  <h1 class="page-main-title">Danışman Detayları</h1>
 
-    <div class="consultant-overview-section">
-      <div class="consultant-photo-card">
-        <img [src]="consultant.foto" alt="{{ consultant.isim }}" class="consultant-detail-photo" />
-        <h2 class="consultant-name">{{ consultant.isim }}</h2>
-      </div>
+  <app-danisman-overview [consultant]="consultantData"></app-danisman-overview>
 
-      <div class="consultant-text-details">
-        <div class="hakkimda-danisman">
-          <h2 class="hakkimda-title">Hakkımda</h2>
-          <p class="hakkimda-yazi">{{ getShortenedHakkimda(consultant.hakkimda) }}</p>
-        </div>
-
-        <div class="iletisim-bolumu">
-          <h2 class="iletisim-baslik">İletişim</h2>
-          <div class="iletisim-linkleri">
-            <a [href]="'tel:' + consultant.telefon"><mat-icon>phone</mat-icon> {{ consultant.telefon }}</a>
-            <a [href]="'mailto:' + consultant.mail"><mat-icon>email</mat-icon> {{ consultant.mail }}</a>
-            <a *ngIf="consultant.instagram" [href]="consultant.instagram" target="_blank"><mat-icon>camera_alt</mat-icon> Instagram</a>
-            <a *ngIf="consultant.whatsapp" [href]="consultant.whatsapp" target="_blank"><mat-icon>chat</mat-icon> WhatsApp</a>
-            <a *ngIf="consultant.endeksa" [href]="consultant.endeksa" target="_blank"><mat-icon>assessment</mat-icon> Endeksa</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <h2 class="subtitle-portfoy">Portföyüm</h2>
-    </div>
-
-    <div class="ilan-grid">
-      <a
-        *ngFor="let property of consultant.properties"
-        class="ilan-kutu"
-        [routerLink]="['/ilan', property.id]"
-      >
-        <img
-          [src]="'/assets/datas/generic-datas/ilan-foto/' + property.id + '-1.png'" [alt]="property.title"
-          width="300"
-          height="200"
-          class="ilan-kutu-photo"
-          onerror="this.onerror=null;this.src='/assets/pentanestlogo.png';"
-        />
-        <p class="ilan-fiyat">Fiyat: {{ property.price | number }} TL</p>
-        <p class="ilan-m2">
-          <mat-icon> border_all</mat-icon> m²: {{ property.m2 }}
-        </p>
-        <p class="ilan-oda">
-          <mat-icon>home</mat-icon> {{ property.odaSayisi }}
-        </p>
-        <h3 class="ilan-baslik">{{ property.title }}</h3>
-        <p class="ilan-lokasyon">
-          <mat-icon>location_on</mat-icon> {{ property.location }}
-        </p>
-        <p class="ilan-danisman">Danışman: {{ property.emlakci }}</p>
-        <p class="ilan-durum">{{ property.durum }}</p>
-      </a>
-    </div>
-  </div>
+  <app-danisman-properties-grid [properties]="consultantData.properties"></app-danisman-properties-grid>
 </div>
 
 <app-footer></app-footer>

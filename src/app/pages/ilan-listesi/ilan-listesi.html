@@ -5,62 +5,27 @@
     </h1>
   </div>
 
-  <div class="filter-bar">
-    <select [(ngModel)]="selectedDurumFilter" (change)="filterProperties()" class="filter-select">
-      <option *ngFor="let durum of durumFilterOptions" [value]="durum === 'Tümü' ? 'all' : durum.toLowerCase()">{{ durum }}</option>
-    </select>
-
-    <input type="text" [(ngModel)]="searchText" (input)="filterProperties()" placeholder="Konum, başlık ara..." class="filter-input">
-    
-    <input type="number" [(ngModel)]="minPrice" (input)="filterProperties()" placeholder="Min Fiyat" class="filter-input">
-    <input type="number" [(ngModel)]="maxPrice" (input)="filterProperties()" placeholder="Max Fiyat" class="filter-input">
-    
-    <input type="number" [(ngModel)]="minM2" (input)="filterProperties()" placeholder="Min m²" class="filter-input">
-    <input type="number" [(ngModel)]="maxM2" (input)="filterProperties()" placeholder="Max m²" class="filter-input">
-
-    <select [(ngModel)]="selectedOdaSayisi" (change)="filterProperties()" class="filter-select">
-      <option *ngFor="let oda of odaSayisiOptions" [value]="oda">{{ oda }}</option>
-    </select>
-
-    <select [(ngModel)]="selectedSortOption" (change)="filterProperties()" class="filter-select">
-      <option *ngFor="let sort of sortOptions" [value]="sort.value">{{ sort.label }}</option>
-    </select>
-
-    <button (click)="clearFilters()" class="clear-filters-btn">Filtreleri Temizle</button>
-  </div>
+  <app-ilan-listesi-filter-bar
+    [selectedDurumFilter]="selectedDurumFilter"
+    [searchText]="searchText"
+    [minPrice]="minPrice"
+    [maxPrice]="maxPrice"
+    [minM2]="minM2"
+    [maxM2]="maxM2"
+    [selectedOdaSayisi]="selectedOdaSayisi"
+    [selectedSortOption]="selectedSortOption"
+    [durumFilterOptions]="durumFilterOptions"
+    [odaSayisiOptions]="odaSayisiOptions"
+    [sortOptions]="sortOptions"
+    (filtersChanged)="onFiltersChanged($event)"
+    (filtersCleared)="onFiltersCleared()"
+  ></app-ilan-listesi-filter-bar>
   
   <p style="text-align: center; margin-top: 10px; font-size: 1.1em; color: var(--renk-metin-acik);">
     Toplam {{ properties.length }} ilan bulundu.
   </p>
 
-  <div class="ilan-grid">
-    <a
-      *ngFor="let property of properties"
-      class="ilan-kutu"
-      [routerLink]="['/ilan', property.id]"
-    >
-      <img
-        [src]="'/assets/datas/generic-datas/ilan-foto/' + property.id + '-1.png'" [alt]="property.title"
-        width="300"
-        height="200"
-        class="ilan-kutu-photo"
-        onerror="this.onerror=null;this.src='/assets/pentanestlogo.png';"
-      />
-      <p class="ilan-fiyat">Fiyat: {{ property.price | number }} TL</p>
-      <p class="ilan-m2">
-        <mat-icon> border_all</mat-icon> m²: {{ property.m2 }}
-      </p>
-      <p class="ilan-oda">
-        <mat-icon>home</mat-icon> {{ property.odaSayisi }}
-      </p>
-      <h3 class="ilan-baslik">{{ property.title }}</h3>
-      <p class="ilan-lokasyon">
-        <mat-icon>location_on</mat-icon> {{ property.location }}
-      </p>
-      <p class="ilan-danisman">Danışman: {{ property.emlakci }}</p>
-      <p class="ilan-durum">{{ property.durum }}</p>
-    </a>
-  </div>
+  <app-ilan-listesi-grid [properties]="properties"></app-ilan-listesi-grid>
 </div>
 
 <app-footer></app-footer>

@@ -1,0 +1,225 @@
+:root {
+    --renk-ana: #00499c;
+    --renk-vurgu: #be0000;
+    --renk-metin: #333;
+    --renk-metin-acik: #666;
+    --renk-arka-plan: #f0f2f5;
+    --renk-kutu-arka-plan: #ffffff;
+    --renk-kenarlik: #e0e0e0;
+  
+    --golge-hafif: 0 4px 8px rgba(0, 0, 0, 0.06);
+    --golge-vurgulu: 0 8px 24px rgba(0, 0, 0, 0.12);
+    
+    --kenar-yuvarlakligi: 16px;
+    --kenar-yuvarlakligi-kucuk: 8px;
+  }
+  
+  .consultant-overview-section {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    background-color: var(--renk-kutu-arka-plan);
+    border: 1px solid var(--renk-kenarlik);
+    border-radius: var(--kenar-yuvarlakligi);
+    box-shadow: var(--golge-hafif);
+    padding: 30px;
+    width: 99%;
+    align-items: flex-start;
+  }
+  
+  .consultant-photo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto; 
+    min-width: 250px; 
+    margin-right: 20px; 
+    margin-left: -18px;
+  }
+  
+  .consultant-detail-photo {
+    border-radius: 15%; 
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover;
+    border: 4px solid var(--renk-ana); 
+    margin-bottom: 15px;
+  }
+  
+  .consultant-name {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--renk-metin);
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  .consultant-text-details {
+    flex: 1; 
+    min-width: 300px; 
+  }
+  
+  .hakkimda-danisman, .iletisim-bolumu {
+    background: var(--renk-kutu-arka-plan);
+    border: 1px solid var(--renk-kenarlik);
+    border-radius: var(--kenar-yuvarlakligi);
+    box-shadow: var(--golge-hafif);
+    padding: 25px;
+    margin-bottom: 20px; 
+    box-sizing: border-box;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    margin-right: 3.5%;
+  }
+  .iletisim-bolumu {
+      margin-top: 20px; 
+  }
+  
+  .hakkimda-title, .iletisim-baslik {
+    font-size: 1.7rem; 
+    color: #007bff;
+    margin-bottom: 18px; 
+    padding-left: 12px; 
+    border-left: 4px solid var(--renk-ana);
+    font-weight: 600;
+  }
+  
+  .hakkimda-yazi {
+    line-height: 1.6; 
+    font-size: 1rem; 
+    color: var(--renk-metin-acik);
+  }
+  
+  .iletisim-linkleri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; 
+    align-items: center;
+    justify-content: center; 
+  }
+  
+  .iletisim-linkleri a {
+    text-decoration: none;
+    color: var(--renk-ana);
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+    padding: 8px 12px; 
+    border-radius: var(--kenar-yuvarlakligi-kucuk);
+    background-color: #f8f9fa;
+    border: 1px solid var(--renk-kenarlik);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 12px;
+  }
+  
+  .iletisim-linkleri a:hover {
+    color: var(--renk-kutu-arka-plan);
+    background-color: var(--renk-ana);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 73, 156, 0.2);
+  }
+  
+  @media (max-width: 900px) {
+    .consultant-overview-section {
+      flex-direction: column; 
+      align-items: center; 
+      max-width: 95%; 
+    }
+  
+    .consultant-photo-card {
+      margin-right: 0; 
+      margin-bottom: 20px; 
+    }
+  
+    .consultant-detail-photo {
+      width: 180px;
+      height: 180px;
+    }
+  
+    .consultant-name {
+      font-size: 1.6rem;
+    }
+  
+    .consultant-text-details {
+      min-width: unset; 
+      width: 100%; 
+    }
+  
+    .hakkimda-danisman, .iletisim-bolumu {
+      padding: 20px;
+    }
+  
+    .hakkimda-title, .iletisim-baslik {
+      font-size: 1.5rem;
+    }
+  
+    .hakkimda-yazi {
+      font-size: 0.95rem;
+    }
+  
+    .iletisim-linkleri a {
+      font-size: 0.9em;
+      padding: 7px 10px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .consultant-overview-section {
+      padding: 20px;
+    }
+    
+    .consultant-detail-photo {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .consultant-name {
+      font-size: 1.4rem;
+    }
+  
+    .hakkimda-title, .iletisim-baslik {
+      font-size: 1.3rem;
+    }
+  
+    .hakkimda-yazi {
+      font-size: 0.9rem;
+    }
+  
+    .iletisim-linkleri {
+      justify-content: space-around;
+    }
+  
+    .iletisim-linkleri a {
+      flex: 1 1 auto; 
+      max-width: 48%; 
+      text-align: center;
+      justify-content: center;
+      padding: 10px; 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .consultant-overview-section {
+      padding: 15px;
+      gap: 20px;
+    }
+    
+    .hakkimda-danisman, .iletisim-bolumu {
+      padding: 15px;
+    }
+  
+    .hakkimda-title, .iletisim-baslik {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+  
+    .iletisim-linkleri a {
+      font-size: 0.85em;
+      gap: 4px;
+      padding: 8px;
+    }
+  }
+  

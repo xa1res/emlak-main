@@ -1,0 +1,28 @@
+<div class="ilan-grid">
+    <a
+      *ngFor="let property of properties"
+      class="ilan-kutu"
+      [routerLink]="['/ilan', property.id]"
+    >
+      <img
+        [src]="'/assets/datas/generic-datas/ilan-foto/' + property.id + '-1.png'" [alt]="property.title"
+        width="300"
+        height="200"
+        class="ilan-kutu-photo"
+        onerror="this.onerror=null;this.src='/assets/pentanestlogo.png';"
+      />
+      <p class="ilan-fiyat">Fiyat: {{ property.price | number }} TL</p>
+      <p class="ilan-m2">
+        <mat-icon> border_all</mat-icon> m²: {{ property.m2 }}
+      </p>
+      <p class="ilan-oda">
+        <mat-icon>home</mat-icon> {{ property.odaSayisi }}
+      </p>
+      <h3 class="ilan-baslik">{{ property.title }}</h3>
+      <p class="ilan-lokasyon">
+        <mat-icon>location_on</mat-icon> {{ property.location }}
+      </p>
+      <p class="ilan-danisman">Danışman: {{ property.emlakci }}</p>
+      <p class="ilan-durum">{{ property.durum }}</p>
+    </a>
+  </div>

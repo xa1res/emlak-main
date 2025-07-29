@@ -6,6 +6,9 @@ import { datas } from '../../../../public/assets/datas/generic-datas/data';
 import { Footer } from '../footer/footer';
 import { FormsModule } from '@angular/forms';
 
+import { IlanListesiFilterBarComponent } from '../../components/ilan-listesi/ilan-listesi-filter-bar-component/ilan-listesi-filter-bar-component';
+import { IlanListesiGridComponent } from '../../components/ilan-listesi/ilan-listesi-grid-component/ilan-listesi-grid-component';
+
 interface Property {
   id: string;
   imageURL: string;
@@ -23,7 +26,15 @@ interface Property {
 @Component({
   selector: 'app-ilan-listesi',
   standalone: true,
-  imports: [CommonModule, MatIconModule, Footer, RouterModule, FormsModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    Footer,
+    RouterModule,
+    FormsModule,
+    IlanListesiFilterBarComponent,
+    IlanListesiGridComponent
+  ],
   templateUrl: './ilan-listesi.html',
   styleUrls: ['./ilan-listesi.css']
 })
@@ -33,17 +44,16 @@ export class IlanListesi implements OnInit {
   ilanDurumu: string | null = '';
 
   selectedDurumFilter: string = 'all';
+  searchText: string = '';
   minPrice: number | null = null;
   maxPrice: number | null = null;
   minM2: number | null = null;
   maxM2: number | null = null;
   selectedOdaSayisi: string = 'Tümü';
-  searchText: string = '';
+  selectedSortOption: string = 'default';
 
   durumFilterOptions: string[] = ['Tümü', 'Satılık', 'Kiralık'];
   odaSayisiOptions: string[] = ['Tümü', 'Stüdyo', '1+0', '1+1', '2+1', '3+1', '3+2', '4+1', '4+2', '5+1', '5+2', '6+1', '6+2 ve üzeri'];
-
-  selectedSortOption: string = 'default';
   sortOptions: { value: string, label: string }[] = [
     { value: 'default', label: 'Sıralama Seçin' },
     { value: 'priceAsc', label: 'Fiyata Göre Artan' },
@@ -51,7 +61,6 @@ export class IlanListesi implements OnInit {
     { value: 'm2Asc', label: 'M²\'ye Göre Artan' },
     { value: 'm2Desc', label: 'M²\'ye Göre Azalan' },
   ];
-
 
   constructor(private route: ActivatedRoute) { }
 
@@ -82,6 +91,21 @@ export class IlanListesi implements OnInit {
       }
       this.applyCurrentFilters();
     });
+  }
+
+  onFiltersChanged(filters: any): void {
+    this.selectedDurumFilter = filters.selectedDurumFilter;
+    this.searchText = filters.searchText;
+    this.minPrice = filters.minPrice;
+    this.maxPrice = filters.maxPrice;
+    this.minM2 = filters.minM2;
+    this.maxM2 = filters.maxM2;
+    this.selectedOdaSayisi = filters.selectedOdaSayisi;
+    this.selectedSortOption = filters.selectedSortOption;
+    this.applyCurrentFilters();
+  }
+
+  onFiltersCleared(): void {
   }
 
   applyCurrentFilters(): void {
@@ -133,21 +157,5 @@ export class IlanListesi implements OnInit {
     }
 
     this.properties = filtered;
-  }
-
-  filterProperties(): void {
-    this.applyCurrentFilters();
-  }
-
-  clearFilters(): void {
-    this.selectedDurumFilter = 'all';
-    this.minPrice = null;
-    this.maxPrice = null;
-    this.minM2 = null;
-    this.maxM2 = null;
-    this.selectedOdaSayisi = 'Tümü';
-    this.searchText = '';
-    this.selectedSortOption = 'default';
-    this.applyCurrentFilters();
   }
 }
