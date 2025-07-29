@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsultantPropertiesGridComponent } from './danisman-ilan';
+import { ConsultantPropertiesGridComponent } from './danisman-ilan-component';
 
 describe('ConsultantPropertiesGridComponent', () => {
   let component: ConsultantPropertiesGridComponent;

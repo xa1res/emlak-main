@@ -18,8 +18,8 @@ interface Danisman {
   selector: 'app-danisman-overview',
   standalone: true,
   imports: [CommonModule, NgIf, MatIconModule],
-  templateUrl: './danisman-genel.html',
-  styleUrls: ['./danisman-genel.css']
+  templateUrl: './danisman-genel-component.html',
+  styleUrls: ['./danisman-genel-component.css']
 })
 export class ConsultantOverviewComponent {
   @Input() consultant: Danisman | undefined;

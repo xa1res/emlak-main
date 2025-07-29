@@ -21,8 +21,8 @@ interface Property {
   selector: 'app-danisman-properties-grid',
   standalone: true,
   imports: [CommonModule, NgFor, DecimalPipe, MatIconModule, RouterModule],
-  templateUrl: './danisman-ilan.html',
-  styleUrls: ['./danisman-ilan.css']
+  templateUrl: './danisman-ilan-component.html',
+  styleUrls: ['./danisman-ilan-component.css']
 })
 export class ConsultantPropertiesGridComponent {
   @Input() properties: Property[] = [];

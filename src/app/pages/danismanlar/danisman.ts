@@ -5,8 +5,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { datas } from '../../../../public/assets/datas/generic-datas/data';
 import { Footer } from '../footer/footer';
 
-import { ConsultantOverviewComponent } from '../../components/danismanlar/danisman-genel/danisman-genel';
-import { ConsultantPropertiesGridComponent } from '../../components/danismanlar/danisman-ilan/danisman-ilan';
+import { ConsultantOverviewComponent } from '../../components/danismanlar/danisman-genel-component/danisman-genel-component';
+import { ConsultantPropertiesGridComponent } from '../../components/danismanlar/danisman-ilan-component/danisman-ilan-component';
 
 interface Property {
   id: string;
@@ -58,7 +58,6 @@ export class Danisman implements OnInit {
     this.route.paramMap.subscribe(params => {
       const consultantUrl = params.get('url');
       if (consultantUrl) {
-        // datas'ı Bilgi[] olarak varsayarak, doğrudan find kullanıyoruz
         this.consultantData = datas.find((data: Bilgi) => data.url.toString() === consultantUrl);
       }
     });
