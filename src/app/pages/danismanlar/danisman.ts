@@ -54,4 +54,14 @@ export class Danisman implements OnInit {
     });
   }
 
+  getShortenedHakkimda(text: string | undefined): string {
+    if (!text) {
+      return '';
+    }
+    const maxLength = 500; 
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
+  }
 }

@@ -1,28 +1,48 @@
 <div *ngFor="let consultant of consultantData">
   <div class="danisman-sayfa">
-    <div>
-      <h1 class="baslik">
-        {{ consultant.isim }}
-        <img [src]="consultant.foto" alt="{{ consultant.isim }}" />
-      </h1>
+    <h1 class="page-main-title">Danışman Detayları</h1>
+
+    <div class="consultant-overview-section">
+      <div class="consultant-photo-card">
+        <img [src]="consultant.foto" alt="{{ consultant.isim }}" class="consultant-detail-photo" />
+        <h2 class="consultant-name">{{ consultant.isim }}</h2>
+      </div>
+
+      <div class="consultant-text-details">
+        <div class="hakkimda-danisman">
+          <h2 class="hakkimda-title">Hakkımda</h2>
+          <p class="hakkimda-yazi">{{ getShortenedHakkimda(consultant.hakkimda) }}</p>
+        </div>
+
+        <div class="iletisim-bolumu">
+          <h2 class="iletisim-baslik">İletişim</h2>
+          <div class="iletisim-linkleri">
+            <a [href]="'tel:' + consultant.telefon"><mat-icon>phone</mat-icon> {{ consultant.telefon }}</a>
+            <a [href]="'mailto:' + consultant.mail"><mat-icon>email</mat-icon> {{ consultant.mail }}</a>
+            <a *ngIf="consultant.instagram" [href]="consultant.instagram" target="_blank"><mat-icon>camera_alt</mat-icon> Instagram</a>
+            <a *ngIf="consultant.whatsapp" [href]="consultant.whatsapp" target="_blank"><mat-icon>chat</mat-icon> WhatsApp</a>
+            <a *ngIf="consultant.endeksa" [href]="consultant.endeksa" target="_blank"><mat-icon>assessment</mat-icon> Endeksa</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div>
       <h2 class="subtitle-portfoy">Portföyüm</h2>
     </div>
 
-    <div class="danisman-ilanlar">
+    <div class="ilan-grid">
       <a
         *ngFor="let property of consultant.properties"
         class="ilan-kutu"
         [routerLink]="['/ilan', property.id]"
       >
         <img
-          [src]="property.imageURL"
-          alt="{{ property.title }}"
+          [src]="'/assets/datas/generic-datas/ilan-foto/' + property.id + '-1.png'" [alt]="property.title"
           width="300"
           height="200"
-          class="danisman-Photo"
+          class="ilan-kutu-photo"
+          onerror="this.onerror=null;this.src='/assets/pentanestlogo.png';"
         />
         <p class="ilan-fiyat">Fiyat: {{ property.price | number }} TL</p>
         <p class="ilan-m2">
@@ -39,22 +59,7 @@
         <p class="ilan-durum">{{ property.durum }}</p>
       </a>
     </div>
-
-    <div class="hakkimda-danisman">
-      <h1 class="hakkimda-title">Hakkımda</h1>
-      <h2 class="hakkimda-yazi">{{ consultant.hakkimda }}</h2>
-    </div>
-
-    <div class="iletisim-bolumu">
-      <h2 class="iletisim-baslik">İletişim</h2>
-      <div class="iletisim-linkleri">
-        <a [href]="'tel:' + consultant.telefon">📞 {{ consultant.telefon }}</a>
-        <a [href]="'mailto:' + consultant.mail">✉️ {{ consultant.mail }}</a>
-        <a [href]="consultant.instagram" target="_blank">📸 Instagram</a>
-        <a [href]="consultant.whatsapp" target="_blank">💬 WhatsApp</a>
-        <a [href]="consultant.endeksa" target="_blank">📊 Endeksa</a>
-      </div>
-    </div>
-      <app-footer></app-footer>
   </div>
 </div>
+
+<app-footer></app-footer>
