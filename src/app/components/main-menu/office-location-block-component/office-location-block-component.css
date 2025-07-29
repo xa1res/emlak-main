@@ -1,0 +1,105 @@
+.ofis-bolumu {
+    position: relative;
+    margin: 100px auto;
+    width: 87.7%;
+    height: 500px;
+    border-radius: var(--kenar-yuvarlakligi, 16px);
+    overflow: hidden;
+    box-shadow: var(--golge-vurgulu, 0 8px 24px rgba(0, 0, 0, 0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .ofis-arkaplan {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.4s ease;
+  }
+  
+  .ofis-bolumu:hover .ofis-arkaplan {
+    transform: scale(1.05);
+  }
+  
+  .ofis-link-wrapper {
+    text-decoration: none;
+  }
+  
+  .ofis-yazi-katmani {
+    position: relative;
+    z-index: 2;
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .ofis-yazi-katmani h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 25px 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin-bottom: 45px;
+    width: 100%;
+  }
+  
+  .ofis-yazi-katmani p {
+    font-size: 24px;
+    max-width: 700px;
+    line-height: 1.5;
+    margin: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .konum-goster-yazisi {
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: var(--kenar-yuvarlakligi-kucuk, 8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+  }
+  
+  .ofis-link-wrapper:hover .konum-goster-yazisi {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    transform: scale(1.03);
+  }
+  
+  @media (max-width: 768px) {
+    .ofis-bolumu {
+      height: 350px;
+      margin: 50px auto;
+    }
+    .ofis-yazi-katmani h2 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+    .ofis-yazi-katmani p {
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: 490px) {
+    .ofis-yazi-katmani{
+      font-size: 1px;
+    }
+  }

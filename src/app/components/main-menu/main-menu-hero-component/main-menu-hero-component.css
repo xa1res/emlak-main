@@ -1,0 +1,245 @@
+.mainVideo-section {
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    filter: brightness(80%);
+    object-fit: cover;
+  }
+  
+  .ana-menu-comp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    color: white;
+  }
+  
+  .ana-menu-icerik {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-title {
+    font-size: 600%;
+    align-self: left;
+    margin-left: 30px;
+    margin-top: 0;
+    margin-bottom: 50px;
+    animation: main-title-anim 700ms;
+  }
+  
+  @keyframes main-title-anim {
+    0% {
+      margin-top: -1300px;
+    }
+  }
+  
+  .sub-title {
+    font-size: 160%;
+    align-self: center;
+    margin-top: 10px;
+    animation: sub-title-anim 1000ms;
+    margin-left: 180px;
+  }
+  
+  @keyframes sub-title-anim {
+    0% {
+      margin-left: -2800px;
+    }
+    50% {
+      margin-left: -2800px;
+    }
+  }
+  
+  .main-tikla {
+    margin-top: 20px;
+    margin-left: 280px;
+    animation: main-tikla-anim 1400ms;
+  }
+  
+  .main-tikla a {
+    display: inline-block;
+    padding: 20px 35px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 25px;
+  }
+  
+  .main-tikla a:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .main-tikla a:active {
+    background-color: #ffffff;
+  }
+  
+  @keyframes main-tikla-anim {
+    0% {
+      margin-left: -2800px;
+    }
+    50% {
+      margin-left: -2800px;
+    }
+  }
+  
+  .hemen-ara {
+    position: absolute;
+    margin-top: 65vh;
+    padding-left: 82%;
+    animation: hemen-ara-anim 1700ms;
+  }
+  
+  .hemen-ara a {
+    padding: 12px 25px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .phone-number {
+    padding-left: 5px;
+  }
+  
+  .hemen-ara a:hover {
+    transform: translateY(-2px);
+    color: #007bff;
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hemen-ara a:active {
+    background-color: #ffffff;
+  }
+  
+  @keyframes hemen-ara-anim {
+    0% {
+      margin-left: -2800px;
+    }
+    50% {
+      margin-left: -2800px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .ana-menu-icerik {
+      margin-left: -125px;
+      margin-top: 200px;
+      width: 100%;
+    }
+  
+    .main-title {
+      font-size: 60px;
+      width: 400px;
+    }
+  
+    .sub-title {
+      width: 300px;
+      font-size: 25px;
+      line-height: 1.3;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .ana-menu-icerik {
+      margin-left: -75px;
+      margin-top: 200px;
+      width: 100%;
+    }
+  
+    .main-title {
+      font-size: 60px;
+      width: 400px;
+    }
+  
+    .sub-title {
+      width: 300px;
+      font-size: 25px;
+      line-height: 1.3;
+    }
+  
+    .main-tikla {
+      margin-bottom: 100px;
+    }
+  }
+  
+  @media (max-width: 490px) {
+    .ana-menu-icerik {
+      width: 100%;
+    }
+  
+    .main-title {
+      font-size: 45px;
+      width: 400px;
+      margin-left: 250px;
+    }
+  
+    .sub-title {
+      width: 300px;
+      font-size: 17px;
+      line-height: 1.3;
+      margin-left: 250px;
+    }
+  
+    .main-tikla {
+      margin-bottom: 100px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .ana-menu-icerik {
+      width: 100%;
+    }
+  
+    .main-title {
+      font-size: 40px;
+      width: 400px;
+      margin-left: 250px;
+    }
+  
+    .sub-title {
+      width: 300px;
+      font-size: 15px;
+      margin-left: 200px;
+    }
+  
+    .main-tikla {
+      margin-bottom: 100px;
+    }
+  }
+  

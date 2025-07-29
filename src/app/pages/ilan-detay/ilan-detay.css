@@ -25,30 +25,6 @@
   padding: 32px 28px;
 }
 
-.main-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.ilan-detay-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  margin-bottom: 0;
-}
-
-.ilan-detay-bilgiler {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .ilan-detay-title {
   font-size: 2.1rem;
   font-weight: 700;
@@ -57,79 +33,6 @@
   color: var(--mat-sys-on-surface);
   margin-bottom: 20px;
   word-break: break-word;
-}
-
-.ilan-detay-fiyat {
-  font-size: 40px;
-  color: rgb(120, 0, 0);
-  font-weight: 900;
-  margin-bottom: 15px;
-  margin-top: 25px;
-}
-
-.ilan-detay-lokasyon-wrapper {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.ilan-detay-lokasyon {
-  font-size: 18px;
-  color: var(--mat-sys-on-surface-variant);
-  margin-top: 0;
-}
-
-.ilan-detay-map-link {
-  color: var(--mat-sys-primary);
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.ilan-detay-map-link:hover {
-  text-decoration: underline;
-}
-
-.ilan-detay-aciklama {
-  font-size: 16px;
-  color: var(--mat-sys-on-surface);
-  background: none;
-  border-radius: 0;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.ilan-detay-aciklama h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--mat-sys-on-surface);
-}
-
-.ilan-detay-aciklama ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 0;
-}
-
-.ilan-detay-aciklama li {
-  margin-bottom: 8px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-}
-
-.ilan-detay-harita {
-  margin-top: 20px;
-}
-
-.ilan-detay-harita h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--mat-sys-on-surface);
 }
 
 .ilan-detay-sidebar {
@@ -147,10 +50,18 @@
   color: var(--mat-sys-on-surface);
 }
 
-.ozet-tablo {
+/* Özet tablo stilleri buraya taşındı */
+.ilan-detay-ozet-tablo {
   background: var(--mat-sys-surface-container-high);
   border-radius: 12px;
   padding: 20px;
+}
+
+.ilan-detay-ozet-tablo h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--mat-sys-on-surface);
 }
 
 .ozet-satir {
@@ -173,247 +84,12 @@
   color: var(--mat-sys-on-surface);
 }
 
-.ilan-detay-danisman {
-  background: var(--mat-sys-surface-container-high);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-}
-
-.ilan-detay-danisman-icerik {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-.ilan-detay-danisman-foto {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--mat-sys-primary);
-  background: var(--mat-sys-surface-container-highest);
-}
-
-.ilan-detay-danisman-isim {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: var(--mat-sys-on-surface);
-}
-
-.ilan-detay-danisman-iletisim {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.ilan-detay-danisman-iletisim a {
-  color: var(--mat-sys-primary);
-  text-decoration: none;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 8px;
-  border-radius: 5px;
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  transition: background-color 0.2s;
-}
-
-.ilan-detay-danisman-iletisim a:hover {
-  background-color: var(--mat-sys-primary);
-  color: var(--mat-sys-on-primary);
-}
-
-.ilan-detay-guvenlik-ipuclari {
-  background: var(--mat-sys-tertiary-container);
-  border-radius: 12px;
-  padding: 20px;
-  color: var(--mat-sys-on-tertiary-container);
-}
-
-.ilan-detay-guvenlik-ipuclari h2 {
-  color: var(--mat-sys-on-tertiary-container);
-}
-
-.ilan-detay-guvenlik-ipuclari p {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-.ilan-detay-guvenlik-ipuclari .guvenlik-link {
-  color: var(--mat-sys-on-tertiary-container);
-  text-decoration: underline;
-  font-weight: 500;
-}
 
 .ilan-detay-notfound {
   text-align: center;
   color: #b00;
   font-size: 1.3rem;
   margin-top: 60px;
-}
-
-.thumbnail-carousel-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.image-gallery {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 10px;
-  flex-grow: 1;
-  justify-content: flex-start; 
-  padding-bottom: 10px; 
-  -webkit-overflow-scrolling: touch; 
-  scrollbar-width: none;
-}
-
-.image-gallery::-webkit-scrollbar {
-  display: none; 
-}
-
-.thumbnail-image {
-  flex-shrink: 0;
-  width: 100px;
-  height: 75px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.thumbnail-image.active {
-  border-color: var(--mat-sys-primary);
-}
-
-.thumbnail-image:hover {
-  border-color: var(--mat-sys-primary);
-  transform: scale(1.05);
-}
-
-.carousel-arrow {
-  background: var(--mat-sys-secondary-container);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--mat-sys-on-secondary-container);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease-in-out;
-  z-index: 10;
-}
-
-.main-image-arrow {
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    background-color: rgba(0, 0, 0, 0.5); 
-    color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-
-.main-image-arrow.left-arrow {
-    left: 15px; 
-}
-
-.main-image-arrow.right-arrow {
-    right: 15px; 
-}
-
-.carousel-arrow:hover:not(:disabled) {
-  background-color: var(--mat-sys-secondary);
-  color: var(--mat-sys-on-secondary);
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.fullscreen-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.fullscreen-modal-content {
-  position: relative;
-  max-width: 95vw;
-  max-height: 95vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fullscreen-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-.fullscreen-close-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1001;
-}
-
-.fullscreen-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 30px;
-  z-index: 1001;
-}
-
-.fullscreen-arrow.left-arrow {
-  left: 20px;
-}
-
-.fullscreen-arrow.right-arrow {
-  right: 20px;
 }
 
 @media (max-width: 1200px) {
@@ -428,91 +104,31 @@
     min-width: unset;
     max-width: 98vw;
     flex-direction: column;
-    gap: 0; 
+    gap: 0;
   }
   .ilan-detay-sayfa {
     padding: 20px;
-  }
-  .main-image-wrapper {
-    height: 300px; 
-    border-radius: 12px 12px 0 0; 
-  }
-  .ilan-detay-image {
-    border-radius: 0;
   }
   .ilan-detay-sidebar {
     border-left: none;
     border-top: 1px solid var(--mat-sys-outline-variant);
     padding-top: 25px;
   }
-
-  .image-gallery {
-    justify-content: flex-start;
-    padding: 0 10px;
-  }
-  .thumbnail-image {
-    width: 80px;
-    height: 60px;
-  }
-
-  .main-image-arrow {
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-      left: 10px; 
-      right: 10px;
-  }
-
   .ilan-detay-ana-icerik {
     padding: 20px;
   }
-
   .ilan-detay-title {
     font-size: 1.8rem;
     margin-bottom: 15px;
   }
-
-  .ilan-detay-fiyat {
-    font-size: 30px;
-    margin-top: 15px;
-  }
-
-  .ilan-detay-lokasyon-wrapper {
-    flex-direction: column; 
-    align-items: flex-start;
-  }
-
-  .ilan-detay-map-link {
-    font-size: 16px;
-  }
-
-  .ozet-tablo, .ilan-detay-danisman, .ilan-detay-guvenlik-ipuclari {
-    padding: 15px;
-  }
-  
-  .ilan-detay-sidebar h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-
-  .fullscreen-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    left: 90%;
-    right: 10%;
-  }
   .ilan-detay-kartı{
     max-width: 95%;
-    
   }
-
   .ilan-detay-sidebar{
     max-width: 70%;
   }
-
-  .ilan-detay-aciklama{
-    width: 70%;
+  .ilan-detay-ozet-tablo {
+    padding: 15px;
   }
 }
 
@@ -523,70 +139,18 @@
   .ilan-detay-kartı {
     border-radius: 10px;
   }
-  .main-image-wrapper {
-    height: 250px;
-    border-radius: 10px 10px 0 0;
-  }
   .ilan-detay-title {
     font-size: 1.5rem;
   }
-  .ilan-detay-fiyat {
-    font-size: 24px;
-  }
-  .ilan-detay-lokasyon,
-  .ilan-detay-map-link {
-    font-size: 15px;
-  }
-  .ilan-detay-aciklama h2,
-  .ilan-detay-harita h2 {
-    font-size: 1.3rem;
-  }
-  .ilan-detay-aciklama li {
-    font-size: 15px;
-  }
-  .thumbnail-image {
-    width: 70px;
-    height: 50px;
-  }
-  .carousel-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-  }
-  .main-image-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 18px;
-    left: 5px;
-    right: 5px;
-  }
-
-  .fullscreen-close-button {
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-  }
-
-  .fullscreen-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    left: 90%;
-    right: 10%;
+  .ilan-detay-sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
   }
   .ilan-detay-kartı{
     max-width: 95%;
-    
   }
-
   .ilan-detay-sidebar{
     max-width: 70%;
-  }
-
-  .ilan-detay-aciklama{
-    width: 70%;
   }
 }
 
@@ -601,48 +165,10 @@
   .ilan-detay-title {
     font-size: 19px;
   }
-  .ilan-detay-fiyat {
-    font-size: 20px;
-  }
-  .ilan-detay-lokasyon,
-  .ilan-detay-map-link {
-    font-size: 14px;
-  }
-  .thumbnail-image {
-    width: 60px;
-    height: 45px;
-  }
-  .main-image-arrow {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-  }
-
-  .fullscreen-close-button {
-    top: 5px;
-    right: 5px;
-    width: 25px;
-    height: 25px;
-    font-size: 16px;
-  }
-  .fullscreen-arrow {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    left: 90%;
-    right: 10%;
-  }
-
   .ilan-detay-kartı{
     max-width: 400px;
-    
   }
-
   .ilan-detay-sidebar{
     max-width: 350px;
-  }
-
-  .ilan-detay-aciklama{
-    width: 70%;
   }
 }

@@ -1,0 +1,266 @@
+/* Ana görsel ve küçük resim galerisi stilleri */
+.main-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  .ilan-detay-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  
+  .thumbnail-carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .image-gallery {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .image-gallery::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .thumbnail-image {
+    flex-shrink: 0;
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .thumbnail-image.active {
+    border-color: var(--mat-sys-primary);
+  }
+  
+  .thumbnail-image:hover {
+    border-color: var(--mat-sys-primary);
+    transform: scale(1.05);
+  }
+  
+  .carousel-arrow {
+    background: var(--mat-sys-secondary-container);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--mat-sys-on-secondary-container);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 10;
+  }
+  
+  .main-image-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+  }
+  
+  .main-image-arrow.left-arrow {
+      left: 15px;
+  }
+  
+  .main-image-arrow.right-arrow {
+      right: 15px;
+  }
+  
+  .carousel-arrow:hover:not(:disabled) {
+    background-color: var(--mat-sys-secondary);
+    color: var(--mat-sys-on-secondary);
+  }
+  
+  .carousel-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Tam ekran modal stilleri */
+  .fullscreen-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .fullscreen-modal-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .fullscreen-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .fullscreen-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+  }
+  
+  .fullscreen-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    z-index: 1001;
+  }
+  
+  .fullscreen-arrow.left-arrow {
+    left: 20px;
+  }
+  
+  .fullscreen-arrow.right-arrow {
+    right: 20px;
+  }
+  
+  /* Responsive stiller */
+  @media (max-width: 768px) {
+    .main-image-wrapper {
+      height: 300px;
+      border-radius: 12px 12px 0 0;
+    }
+    .main-image-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        left: 10px;
+        right: 10px;
+    }
+    .thumbnail-image {
+      width: 80px;
+      height: 60px;
+    }
+    .fullscreen-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      left: 90%; /* Bu değeri ayarlamanız gerekebilir */
+      right: 10%; /* Bu değeri ayarlamanız gerekebilir */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .main-image-wrapper {
+      height: 250px;
+      border-radius: 10px 10px 0 0;
+    }
+    .thumbnail-image {
+      width: 70px;
+      height: 50px;
+    }
+    .carousel-arrow {
+      width: 35px;
+      height: 35px;
+      font-size: 20px;
+    }
+    .main-image-arrow {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+      left: 5px;
+      right: 5px;
+    }
+    .fullscreen-close-button {
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+    }
+    .fullscreen-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      left: 90%;
+      right: 10%;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .thumbnail-image {
+      width: 60px;
+      height: 45px;
+    }
+    .main-image-arrow {
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+    }
+    .fullscreen-close-button {
+      top: 5px;
+      right: 5px;
+      width: 25px;
+      height: 25px;
+      font-size: 16px;
+    }
+    .fullscreen-arrow {
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      left: 90%;
+      right: 10%;
+    }
+  }
+  

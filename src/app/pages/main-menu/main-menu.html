@@ -1,85 +1,14 @@
 <div class="anamenu">
-  <div class="mainVideo-section">
-    <video autoplay loop muted playsinline class="background-video">
-      <source src="assets/asd.mp4" type="video/mp4">
-    </video>
-    <div class="ana-menu-comp">
-      <div class="ana-menu-icerik">
-        <h1 class="main-title">PENTA NEST </h1>
-        <h2 class="sub-title">Gayrimenkul ile ilgili bir karar aşamasında mısınız?</h2>
-        <h2 class="sub-title">Doğru yerdesiniz....</h2>
-        <div class="main-tikla">
-          <a href="/hakkimizda">Ayrıntılı Bilgi</a>
-        </div>
-      </div>
-      <div class="hemen-ara">
-        <a href="tel:+905302777585">
-          Hemen Ara <span class="phone-number">+905302777585</span>
-      </a>
-      </div>
-    </div>
-  </div>
+  <app-main-menu-hero></app-main-menu-hero>
 
-  <div class="danısmanlar-blok" id="danisman-blok">
-    <h2 class="danısman-baslık">Ekibimiz</h2>
-    <div class="danısman-section">
-      <div class="danısman-hasandugan">
-        <a [routerLink]="['/danisman', 'hasan-dugan']"
-          ><img
-            src="/assets/hasanduganpfp.png"
-            alt="Hasan Dugan"
-            class="Hasanpfp-Foto"
-        /></a>
-        <p>Hasan Dugan<br />Emlak Danışmanı</p>
-      </div>
-      <div class="danısman-serifecelik">
-        <a [routerLink]="['/danisman', 'serife-celik']"
-          ><img
-            src="/assets/serifecelikpfp.png"
-            alt="Şerife Çelik"
-            class="Serifepfp-Foto"
-        /></a>
-        <p>Şerife Çelik<br />Emlak Danışmanı</p>
-      </div>
-    </div>
-  </div>
+  <app-main-menu-consultants-block></app-main-menu-consultants-block>
 
-  <div class="one-cıkanlar-bolumu">
-    <h2 class="onecikanlar-text">Öne Çıkan İlanlarımız</h2>
-      <div class="onecikanlar-listesi">
-        <button (click)="geri()" class="geri-buton">←</button>
-        <ng-container *ngFor="let ilan of aktifIlanlar">
-          <a [routerLink]="['/ilan', ilan.id]" class="onecikanlar-link">
-            <div class="slider-card" [ngClass]="kaymaYonu === 'left' ? 'slide-left' : kaymaYonu === 'right' ? 'slide-right' : ''">
-              <img [src]="ilan.imageURL" alt="İlan Fotoğrafı" class="slider-card-img" />
-              <h3 class="slider-card-title">{{ ilan.title }}</h3>
-              <div class="slider-card-price">{{ ilan.price | number }} TL</div>
-              <div class="slider-card-location">{{ ilan.location }}</div>
-              <div class="slider-card-emlakci">{{ ilan.emlakci }}</div>
-            </div>
-          </a>
-        </ng-container>
-        <button (click)="ileri()" class="ileri-buton">→</button>
-      </div>
-  </div>
+  <app-main-menu-featured-listings-slider></app-main-menu-featured-listings-slider>
 
-  <a 
-  href="https://maps.app.goo.gl/2vbbvmn16V4Haq7o6" 
-  target="_blank" 
-  rel="noopener noreferrer" 
-  class="ofis-link-wrapper"
->
-  <div class="ofis-bolumu" id="ofis">
-    <img class="ofis-arkaplan" src="assets/pentanestofis.jpg" alt="PentaNest Ofis">
-    <div class="ofis-yazi-katmani">
-      <h2 class="asfdf">Ofisimize Bir Kahve İçmeye Bekleriz!</h2>
-      <p>Profesyonel ekibimizle tanışmak ve hayalinizdeki mülkü bulmak için sizi de bekliyoruz.</p>
-
-      <span class="konum-goster-yazisi">Konumu görmek için tıklayınız</span>
-
-    </div>
-  </div>
-</a>
+  <app-main-menu-office-location-block
+    locationLink="https://maps.app.goo.gl/2vbbvmn16V4Haq7o6"
+    officeImageUrl="assets/pentanestofis.jpg"
+  ></app-main-menu-office-location-block>
 
   <app-footer></app-footer>
 </div>

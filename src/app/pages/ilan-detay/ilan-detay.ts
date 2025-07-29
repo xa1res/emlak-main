@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule, NgIf, NgFor } from '@angular/common';
-import { Footer } from '../footer/footer'; 
+import { CommonModule, NgIf } from '@angular/common'; 
+import { Footer } from '../footer/footer';
 import { datas } from '../../../../public/assets/datas/generic-datas/data';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+import { IlanImageGalleryComponent } from '../../components/ilan-detay/ilan-image-gallery-component/ilan-image-gallery-component';
+import { IlanOzelliklerComponent } from '../../components/ilan-detay/ilan-ozellikler-component/ilan-ozellikler-component';
+import { IlanDanismanBilgisiComponent } from '../../components/ilan-detay/ilan-danisman-bilgisi-component/ilan-danisman-bilgisi-component';
+import { IlanKonumHaritaComponent } from '../../components/main-menu/ilan-konum-harita-component/ilan-konum-harita-component';
+
 
 interface Ilan {
   id: string;
@@ -19,7 +24,7 @@ interface Ilan {
   odaSayisi: string | null;
   ilanTarihi?: string;
   emlakTipi?: string;
-  binaYasi?: number | null; 
+  binaYasi?: number | null;
   bulunduguKat?: string | null;
   katSayisi?: number | null;
   isitma?: string | null;
@@ -35,7 +40,7 @@ interface Ilan {
   tapuDurumu?: string;
   kimden?: string;
   takas?: string | null;
-  haritaUrl?: string; 
+  haritaUrl?: string;
 }
 
 interface Danisman {
@@ -57,8 +62,11 @@ interface Danisman {
   imports: [
     CommonModule,
     NgIf,
-    NgFor,
-    Footer 
+    Footer,
+    IlanImageGalleryComponent,
+    IlanOzelliklerComponent,
+    IlanDanismanBilgisiComponent,
+    IlanKonumHaritaComponent
   ],
   templateUrl: './ilan-detay.html',
   styleUrl: './ilan-detay.css'
@@ -66,15 +74,8 @@ interface Danisman {
 export class IlanDetayComponent implements OnInit {
   ilan: Ilan | undefined;
   danisman: Danisman | undefined;
-  mainImageUrl: string = '';
-  imageGalleryUrls: string[] = [];
-  displayedThumbnails: string[] = [];
-  selectedIndex: number = 0;
-  readonly MAX_VISIBLE_THUMBNAILS: number = 7;
-  readonly THUMBNAIL_BUFFER_SIZE: number = 3; 
-  showFullscreenModal: boolean = false; 
 
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -85,100 +86,10 @@ export class IlanDetayComponent implements OnInit {
           if (foundIlan) {
             this.ilan = foundIlan as Ilan;
             this.danisman = danismanData as Danisman;
-            this.setupImageGallery();
             break;
           }
         }
       }
     });
-  }
-
-  setupImageGallery(): void {
-    if (!this.ilan || this.ilan.imageCount === 0) {
-      this.mainImageUrl = '/assets/pentanestlogo.png';
-      this.imageGalleryUrls = [];
-      this.displayedThumbnails = [];
-      this.selectedIndex = 0;
-      return;
-    }
-
-    this.imageGalleryUrls = [];
-    for (let i = 1; i <= this.ilan.imageCount; i++) {
-      this.imageGalleryUrls.push(`/assets/datas/generic-datas/ilan-foto/${this.ilan.id}-${i}.png`);
-    }
-
-    this.selectedIndex = 0;
-    this.mainImageUrl = this.imageGalleryUrls[this.selectedIndex];
-    this.updateDisplayedThumbnails();
-  }
-
-  selectImage(url: string): void {
-    this.mainImageUrl = url;
-    this.selectedIndex = this.imageGalleryUrls.indexOf(url);
-    this.updateDisplayedThumbnails();
-  }
-
-  updateDisplayedThumbnails(): void {
-    const totalImages = this.imageGalleryUrls.length;
-    const numVisible = this.MAX_VISIBLE_THUMBNAILS;
-    const halfVisible = Math.floor(numVisible / 2);
-    const buffer = this.THUMBNAIL_BUFFER_SIZE;
-
-    let startIndex: number;
-    let endIndex: number;
-
-    if (totalImages <= numVisible) {
-      startIndex = 0;
-      endIndex = totalImages;
-    } else if (this.selectedIndex < buffer) {
-      startIndex = 0;
-      endIndex = numVisible;
-    } else if (this.selectedIndex >= totalImages - buffer) {
-      startIndex = totalImages - numVisible;
-      endIndex = totalImages;
-    } else {
-      startIndex = this.selectedIndex - halfVisible;
-      endIndex = startIndex + numVisible;
-    }
-    this.displayedThumbnails = this.imageGalleryUrls.slice(startIndex, endIndex);
-  }
-
-  navigateThumbnails(direction: 'left' | 'right', event?: MouseEvent): void {
-    if (event) {
-      event.stopPropagation();
-    }
-    const newIndex = direction === 'left' ? this.selectedIndex - 1 : this.selectedIndex + 1;
-
-    if (newIndex >= 0 && newIndex < this.imageGalleryUrls.length) {
-      this.selectedIndex = newIndex;
-      this.mainImageUrl = this.imageGalleryUrls[this.selectedIndex];
-      this.updateDisplayedThumbnails();
-    }
-  }
-
-  openFullscreen(): void {
-    this.showFullscreenModal = true;
-  }
-
-  closeFullscreen(): void {
-    this.showFullscreenModal = false;
-  }
-
-  get aciklamaSatirlari(): string[] {
-    return this.ilan?.aciklama
-      ? this.ilan.aciklama.split('\n').filter((line: string) => line.trim())
-      : [];
-  }
-  
-  public getGuvenliUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-
-  get isLeftArrowDisabled(): boolean {
-    return this.selectedIndex === 0;
-  }
-
-  get isRightArrowDisabled(): boolean {
-    return this.selectedIndex === this.imageGalleryUrls.length - 1;
   }
 }

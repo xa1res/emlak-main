@@ -1,0 +1,116 @@
+.onecikanlar-text {
+    text-align: center;
+    font-size: 35px;
+  }
+  
+  .one-cıkanlar-bolumu {
+    padding: 40px 20px;
+    margin-bottom: 60px;
+    margin-top: 40px;
+  }
+  
+  .onecikanlar-listesi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 260px;
+  }
+  
+  .ileri-buton,
+  .geri-buton {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .onecikanlar-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .slider-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 512px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+  
+  .slider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .slider-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .slider-card-title {
+    font-size: 1.1rem;
+    margin: 0 0 8px 0;
+    text-align: center;
+  }
+  
+  .slider-card-price {
+    font-weight: bold;
+    color: #2a7;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  
+  .slider-card-location {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+  
+  .slider-card-emlakci {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  @keyframes slideLeftAnim {
+    0% {
+      transform: translateX(30px) scale(0.95) rotate(0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideRightAnim {
+    0% {
+      transform: translateX(-30px) scale(0.95) rotate(0deg);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0) scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+  
+  .slider-card.slide-left {
+    animation: slideLeftAnim 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .slider-card.slide-right {
+    animation: slideRightAnim 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  

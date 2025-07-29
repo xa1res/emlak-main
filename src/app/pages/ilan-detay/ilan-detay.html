@@ -3,164 +3,107 @@
     <div class="ilan-detay-ana-icerik">
       <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
       
-      <div class="main-image-wrapper" (click)="openFullscreen()">
-        <img [src]="mainImageUrl" alt="İlan Ana Fotoğrafı" class="ilan-detay-image" />
-        
-        <button class="carousel-arrow main-image-arrow left-arrow" (click)="navigateThumbnails('left', $event)" [disabled]="isLeftArrowDisabled">‹</button>
-        <button class="carousel-arrow main-image-arrow right-arrow" (click)="navigateThumbnails('right', $event)" [disabled]="isRightArrowDisabled">›</button>
-      </div>
+      <app-ilan-detay-image-gallery
+        [ilanId]="ilan.id"
+        [imageCount]="ilan.imageCount"
+      ></app-ilan-detay-image-gallery>
       
-      <div class="thumbnail-carousel-container">
-        <div class="image-gallery">
-          <img 
-            *ngFor="let imgUrl of displayedThumbnails" 
-            [src]="imgUrl" 
-            alt="İlan Küçük Fotoğrafı" 
-            class="thumbnail-image" 
-            (click)="selectImage(imgUrl); $event.stopPropagation();" 
-            [class.active]="mainImageUrl === imgUrl"
-          />
-        </div>
-      </div>
-      
-      <div class="ilan-detay-bilgiler">
-        <div class="ilan-detay-fiyat">{{ ilan.price | number }} TL</div>
-        <div class="ilan-detay-lokasyon-wrapper">
-          <span class="ilan-detay-lokasyon">
-            <b>Lokasyon:</b> {{ ilan.location }}
-          </span>
-          <a *ngIf="ilan.konumLinki" [href]="getGuvenliUrl(ilan.konumLinki)" target="_blank" class="ilan-detay-map-link"> Haritada Görüntüle </a>
-        </div>
-        <div *ngIf="ilan.aciklama" class="ilan-detay-aciklama">
-          <h2>Açıklama</h2>
-          <ul>
-            <li *ngFor="let item of aciklamaSatirlari">
-              {{ item.trim() }}
-            </li>
-          </ul>
-        </div>
+      <app-ilan-detay-ozellikler [ilan]="ilan"></app-ilan-detay-ozellikler>
 
-        <div *ngIf="ilan.haritaUrl" class="ilan-detay-harita">
-            <h2>Konum</h2>
-            <iframe 
-              [src]="getGuvenliUrl(ilan.haritaUrl)" 
-              width="100%" 
-              height="450" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-        
-      </div>
+      <app-ilan-detay-konum-harita [haritaUrl]="ilan.haritaUrl"></app-ilan-detay-konum-harita>
+      
     </div>
 
     <div class="ilan-detay-sidebar">
       <div class="ilan-detay-ozet-tablo">
         <h2>Özet Bilgiler</h2>
-        <div class="ozet-satir" *ngIf="ilan.odaSayisi">
+        <div class="ozet-satir" *ngIf="ilan?.odaSayisi">
           <div class="ozet-baslik">Oda Sayısı</div>
-          <div class="ozet-deger">{{ ilan.odaSayisi }}</div>
+          <div>{{ ilan.odaSayisi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.m2 !== null && ilan.m2 !== undefined">
+        <div class="ozet-satir" *ngIf="ilan?.m2">
           <div class="ozet-baslik">Metrekare (m²)</div>
-          <div class="ozet-deger">{{ ilan.m2 }}</div>
+          <div>{{ ilan.m2 }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.durum">
+        <div class="ozet-satir" *ngIf="ilan?.durum">
           <div class="ozet-baslik">Durum</div>
-          <div class="ozet-deger">{{ ilan.durum }}</div>
+          <div>{{ ilan.durum }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.ilanTarihi">
+        <div class="ozet-satir" *ngIf="ilan?.ilanTarihi">
           <div class="ozet-baslik">İlan Tarihi</div>
-          <div class="ozet-deger">{{ ilan.ilanTarihi }}</div>
+          <div>{{ ilan.ilanTarihi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.emlakTipi">
+        <div class="ozet-satir" *ngIf="ilan?.emlakTipi">
           <div class="ozet-baslik">Emlak Tipi</div>
-          <div class="ozet-deger">{{ ilan.emlakTipi }}</div>
+          <div>{{ ilan.emlakTipi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.binaYasi !== null && ilan.binaYasi !== undefined">
+        <div class="ozet-satir" *ngIf="ilan?.binaYasi">
           <div class="ozet-baslik">Bina Yaşı</div>
-          <div class="ozet-deger">{{ ilan.binaYasi }}</div>
+          <div>{{ ilan.binaYasi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.bulunduguKat">
+        <div class="ozet-satir" *ngIf="ilan?.bulunduguKat">
           <div class="ozet-baslik">Bulunduğu Kat</div>
-          <div class="ozet-deger">{{ ilan.bulunduguKat }}</div>
+          <div>{{ ilan.bulunduguKat }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.katSayisi !== null && ilan.katSayisi !== undefined">
+        <div class="ozet-satir" *ngIf="ilan?.katSayisi">
           <div class="ozet-baslik">Kat Sayısı</div>
-          <div class="ozet-deger">{{ ilan.katSayisi }}</div>
+          <div>{{ ilan.katSayisi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.isitma">
+        <div class="ozet-satir" *ngIf="ilan?.isitma">
           <div class="ozet-baslik">Isıtma</div>
-          <div class="ozet-deger">{{ ilan.isitma }}</div>
+          <div>{{ ilan.isitma }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.banyoSayisi">
+        <div class="ozet-satir" *ngIf="ilan?.banyoSayisi">
           <div class="ozet-baslik">Banyo Sayısı</div>
-          <div class="ozet-deger">{{ ilan.banyoSayisi }}</div>
+          <div>{{ ilan.banyoSayisi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.mutfakTipi">
+        <div class="ozet-satir" *ngIf="ilan?.mutfakTipi">
           <div class="ozet-baslik">Mutfak</div>
-          <div class="ozet-deger">{{ ilan.mutfakTipi }}</div>
+          <div>{{ ilan.mutfakTipi }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.balkon">
+        <div class="ozet-satir" *ngIf="ilan?.balkon">
           <div class="ozet-baslik">Balkon</div>
-          <div class="ozet-deger">{{ ilan.balkon }}</div>
+          <div>{{ ilan.balkon }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.asansor">
+        <div class="ozet-satir" *ngIf="ilan?.asansor">
           <div class="ozet-baslik">Asansör</div>
-          <div class="ozet-deger">{{ ilan.asansor }}</div>
+          <div>{{ ilan.asansor }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.otopark">
+        <div class="ozet-satir" *ngIf="ilan?.otopark">
           <div class="ozet-baslik">Otopark</div>
-          <div class="ozet-deger">{{ ilan.otopark }}</div>
+          <div>{{ ilan.otopark }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.esyali">
+        <div class="ozet-satir" *ngIf="ilan?.esyali">
           <div class="ozet-baslik">Eşyalı</div>
-          <div class="ozet-deger">{{ ilan.esyali }}</div>
+          <div>{{ ilan.esyali }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.kullanimDurumu">
+        <div class="ozet-satir" *ngIf="ilan?.kullanimDurumu">
           <div class="ozet-baslik">Kullanım Durumu</div>
-          <div class="ozet-deger">{{ ilan.kullanimDurumu }}</div>
+          <div>{{ ilan.kullanimDurumu }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.siteIcerisinde">
+        <div class="ozet-satir" *ngIf="ilan?.siteIcerisinde">
           <div class="ozet-baslik">Site İçerisinde</div>
-          <div class="ozet-deger">{{ ilan.siteIcerisinde }}</div>
+          <div>{{ ilan.siteIcerisinde }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.krediyeUygun">
+        <div class="ozet-satir" *ngIf="ilan?.krediyeUygun">
           <div class="ozet-baslik">Krediye Uygun</div>
-          <div class="ozet-deger">{{ ilan.krediyeUygun }}</div>
+          <div>{{ ilan.krediyeUygun }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.tapuDurumu">
+        <div class="ozet-satir" *ngIf="ilan?.tapuDurumu">
           <div class="ozet-baslik">Tapu Durumu</div>
-          <div class="ozet-deger">{{ ilan.tapuDurumu }}</div>
+          <div>{{ ilan.tapuDurumu }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.kimden">
+        <div class="ozet-satir" *ngIf="ilan?.kimden">
           <div class="ozet-baslik">Kimden</div>
-          <div class="ozet-deger">{{ ilan.kimden }}</div>
+          <div>{{ ilan.kimden }}</div>
         </div>
-        <div class="ozet-satir" *ngIf="ilan.takas">
+        <div class="ozet-satir" *ngIf="ilan?.takas">
           <div class="ozet-baslik">Takas</div>
-          <div class="ozet-deger">{{ ilan.takas }}</div>
+          <div>{{ ilan.takas }}</div>
         </div>
       </div>
       
-      <div class="ilan-detay-danisman">
-        <h2>Danışman Bilgisi</h2>
-        <div class="ilan-detay-danisman-icerik">
-          <img [src]="danisman.foto" alt="{{ danisman.isim }}" class="ilan-detay-danisman-foto" />
-          <div>
-            <div class="ilan-detay-danisman-isim">{{ danisman.isim }}</div>
-            <div class="ilan-detay-danisman-iletisim">
-              <a [href]="'tel:' + danisman.telefon">📞 {{ danisman.telefon }}</a>
-              <a [href]="'mailto:' + danisman.mail">✉️ {{ danisman.mail }}</a>
-              <a *ngIf="danisman.instagram" [href]="danisman.instagram" target="_blank">📸 Instagram</a>
-              <a *ngIf="danisman.whatsapp" [href]="danisman.whatsapp" target="_blank">💬 WhatsApp</a>
-              <a *ngIf="danisman.endeksa" [href]="danisman.endeksa" target="_blank">📊 Endeksa</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-ilan-detay-danisman-bilgisi [danisman]="danisman"></app-ilan-detay-danisman-bilgisi>
 
       
     </div>
@@ -170,12 +113,3 @@
 <ng-template #notFound>
   <div class="ilan-detay-notfound">İlan bulunamadı.</div>
 </ng-template>
-
-<div class="fullscreen-modal-overlay" *ngIf="showFullscreenModal" (click)="closeFullscreen()">
-  <div class="fullscreen-modal-content" (click)="$event.stopPropagation()">
-    <img [src]="mainImageUrl" alt="Tam Ekran Görüntü" class="fullscreen-image" />
-    <button class="fullscreen-close-button" (click)="closeFullscreen()">✖</button>
-    <button class="carousel-arrow fullscreen-arrow left-arrow" (click)="navigateThumbnails('left', $event)" [disabled]="isLeftArrowDisabled">‹</button>
-    <button class="carousel-arrow fullscreen-arrow right-arrow" (click)="navigateThumbnails('right', $event)" [disabled]="isRightArrowDisabled">›</button>
-  </div>
-</div>
