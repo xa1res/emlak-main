@@ -4,7 +4,7 @@ import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { Footer } from '../footer/footer';
 import { BLOG_POSTS } from '../../../../public/assets/datas/generic-datas/blog/data'; 
 
-import { BlogDetailContentComponent } from '../../components/blog/blog-detail-component/blog-card-component'; 
+import { BlogDetailContentComponent } from '../../components/blog/blog-detail-component/blog-detail-component'; 
 
 @Component({
   selector: 'app-blog-detail',
