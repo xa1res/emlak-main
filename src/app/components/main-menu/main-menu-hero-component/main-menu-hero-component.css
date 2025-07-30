@@ -301,6 +301,37 @@
       margin-left: 70px;
       font-size: 8px;
     }
+
+    
+    
+  }
+
+  @media (max-width: 350px) {
+    .ana-menu-icerik {
+      width: 100%;
+    }
+  
+    .main-title {
+      font-size: 40px;
+      width: 400px;
+      margin-left: 280px;
+    }
+  
+    .sub-title {
+      width: 300px;
+      font-size: 15px;
+      margin-left: 170px;
+    }
+  
+    .main-tikla {
+      margin-bottom: 200px;
+      margin-left: 70px;
+      font-size: 8px;
+    }
+
+    .hemen-ara{
+      font-size: 12px;
+    }
     
   }
   

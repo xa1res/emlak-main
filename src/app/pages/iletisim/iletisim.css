@@ -193,6 +193,7 @@
     .gonder-btn {
         font-size: 1.1rem;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -210,5 +211,9 @@
     .gonder-btn {
         font-size: 1rem;
         padding: 12px;
+    }
+
+    .haritaasd{
+        height: 350px;
     }
 }
