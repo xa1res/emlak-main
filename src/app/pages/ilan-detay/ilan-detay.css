@@ -13,7 +13,7 @@
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   display: grid;
-  grid-template-columns: 2fr 1fr; 
+  grid-template-columns: 2fr 1fr;
   width: 92%;
   overflow: hidden;
   gap: 20px;
@@ -33,6 +33,8 @@
   color: var(--mat-sys-on-surface);
   margin-bottom: 20px;
   word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; 
 }
 
 .ilan-detay-sidebar {
@@ -97,6 +99,40 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .ilan-detay-kartı {
+    grid-template-columns: 1fr; 
+    min-width: unset;
+    max-width: 98vw;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ilan-detay-sayfa {
+    padding: 20px;
+  }
+  .ilan-detay-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--mat-sys-outline-variant);
+    padding-top: 25px;
+    width: 85%;
+    margin: 0 auto; 
+    margin-left: 2.9%; 
+  }
+  .ilan-detay-ana-icerik {
+    padding: 20px;
+  }
+  .ilan-detay-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .ilan-detay-kartı{
+    max-width: 95%;
+  }
+  .ilan-detay-ozet-tablo {
+    padding: 15px;
+  }
+}
+
 @media (max-width: 768px) {
   .ilan-detay-kartı {
     grid-template-columns: 1fr; 
@@ -109,18 +145,18 @@
     padding: 20px;
   }
   .ilan-detay-sidebar {
-    border-left: none; 
+    border-left: none;
     border-top: 1px solid var(--mat-sys-outline-variant);
     padding-top: 25px;
-    width: 65%; 
+    width: 85%;
     margin: 0 auto; 
-    margin-left: 2.9%;
+    margin-left: 2.9%; 
   }
   .ilan-detay-ana-icerik {
     padding: 20px;
   }
   .ilan-detay-title {
-    font-size: 20px; 
+    font-size: 20px;
     margin-bottom: 15px;
   }
   .ilan-detay-kartı{
@@ -134,7 +170,7 @@
 @media (max-width: 600px) {
   .ilan-detay-sayfa {
     padding: 10px;
-    width: 	95%;
+    width: 95%; 
     margin-left: 4%;
   }
   .ilan-detay-kartı {
@@ -143,7 +179,7 @@
 
   .ilan-detay-ana-icerik {
     padding: 15px;
-    width: 56%;
+    width: 56%; 
   }
 
   .ilan-detay-title {
@@ -157,14 +193,15 @@
     max-width: 95%;
   }
   .ilan-detay-sidebar{
-    width: 58%;
+    width: 58%; 
+    margin-left: -5%; 
   }
 }
 
 @media (max-width: 400px) {
   .ilan-detay-sayfa {
     padding: 5px;
-    width: 95%; 
+    width: 95%;
     margin-left: 3%;
   }
   .ilan-detay-ana-icerik {
@@ -172,12 +209,13 @@
     width: 50%;
   }
   .ilan-detay-title {
-    font-size: 11px; 
+    font-size: 11px;
   }
   .ilan-detay-kartı{
-    max-width: 400px; 
+    max-width: 400px;
   }
   .ilan-detay-sidebar{
-    max-width: 58%; 
+    max-width: 58%;
+    margin-left: -5%;
   }
 }
