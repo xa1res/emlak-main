@@ -1,24 +1,17 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
-import { RouterModule } from '@angular/router'; 
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Footer } from '../footer/footer';
+import { BLOG_POSTS } from '../../../../public/assets/datas/generic-datas/blog/data';
 
-interface BlogPostDetail {
-  slug: string;
-  author: string;
-  date: string;
-  title: string;
-  image: string;
-  snippet: string;
-  fullContent: string;
-}
+import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
 
 @Component({
-  selector: 'app-blog-detail-content',
+  selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './blog-detail-component.html',
-  styleUrls: ['./blog-detail-component.css']
+  imports: [CommonModule, Footer, BlogPostCardComponent], 
+  templateUrl: './blog.html',
+  styleUrl: './blog.css'
 })
-export class BlogDetailContentComponent {
-  @Input() blogPost: BlogPostDetail | undefined;
+export class BlogComponent {
+  blogPosts = BLOG_POSTS;
 }
