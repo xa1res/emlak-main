@@ -1,4 +1,3 @@
-/* Ana görsel ve küçük resim galerisi stilleri */
 .main-image-wrapper {
     position: relative;
     width: 100%;
@@ -107,7 +106,6 @@
     cursor: not-allowed;
   }
   
-  /* Tam ekran modal stilleri */
   .fullscreen-modal-overlay {
     position: fixed;
     top: 0;
@@ -175,10 +173,9 @@
     right: 20px;
   }
   
-  /* Responsive stiller */
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     .main-image-wrapper {
-      height: 300px;
+      width: 95%;
       border-radius: 12px 12px 0 0;
     }
     .main-image-arrow {
@@ -196,8 +193,33 @@
       width: 40px;
       height: 40px;
       font-size: 24px;
-      left: 90%; /* Bu değeri ayarlamanız gerekebilir */
-      right: 10%; /* Bu değeri ayarlamanız gerekebilir */
+      left: 90%; 
+      right: 10%; 
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-image-wrapper {
+      width: 95%;
+      border-radius: 12px 12px 0 0;
+    }
+    .main-image-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        left: 10px;
+        right: 10px;
+    }
+    .thumbnail-image {
+      width: 80px;
+      height: 60px;
+    }
+    .fullscreen-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      left: 90%; 
+      right: 10%; 
     }
   }
   

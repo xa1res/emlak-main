@@ -4,15 +4,6 @@
   gap: 16px;
 }
 
-.ilan-detay-title {
-  font-size: 2.1rem;
-  font-weight: 700;
-  line-height: 1.5;
-  margin: 0;
-  color: var(--mat-sys-on-surface);
-  margin-bottom: 20px;
-  word-break: break-word;
-}
 
 .ilan-detay-fiyat {
   font-size: 40px;
@@ -76,6 +67,33 @@
   white-space: pre-wrap;
 }
 
+@media (max-width: 1000px) {
+  .ilan-detay-bilgiler {
+    padding: 0 20px;
+  }
+  .ilan-detay-fiyat {
+    font-size: 40px;
+    margin-top: 15px;
+  }
+  .ilan-detay-lokasyon-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ilan-detay-map-link {
+    font-size: 16px;
+  }
+  .ilan-detay-aciklama {
+    padding: 15px;
+  }
+  .ilan-detay-aciklama h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .ilan-detay-aciklama{
+    width: 80%;
+  }
+}
 
 @media (max-width: 768px) {
   .ilan-detay-bilgiler {
@@ -102,6 +120,10 @@
   .ilan-detay-aciklama h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+  }
+
+  .ilan-detay-aciklama{
+    width: 60%;
   }
 }
 

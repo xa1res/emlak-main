@@ -13,7 +13,7 @@
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr; /* Masaüstü görünümünde iki sütun */
   width: 92%;
   overflow: hidden;
   gap: 20px;
@@ -50,7 +50,6 @@
   color: var(--mat-sys-on-surface);
 }
 
-/* Özet tablo stilleri buraya taşındı */
 .ilan-detay-ozet-tablo {
   background: var(--mat-sys-surface-container-high);
   border-radius: 12px;
@@ -100,7 +99,7 @@
 
 @media (max-width: 768px) {
   .ilan-detay-kartı {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Mobil görünümde tek sütun (alt alta) */
     min-width: unset;
     max-width: 98vw;
     flex-direction: column;
@@ -110,22 +109,22 @@
     padding: 20px;
   }
   .ilan-detay-sidebar {
-    border-left: none;
+    border-left: none; 
     border-top: 1px solid var(--mat-sys-outline-variant);
     padding-top: 25px;
+    width: 60%; 
+    margin: 0 auto; 
+    margin-left: -2.9%;
   }
   .ilan-detay-ana-icerik {
     padding: 20px;
   }
   .ilan-detay-title {
-    font-size: 1.8rem;
+    font-size: 20px; 
     margin-bottom: 15px;
   }
   .ilan-detay-kartı{
     max-width: 95%;
-  }
-  .ilan-detay-sidebar{
-    max-width: 70%;
   }
   .ilan-detay-ozet-tablo {
     padding: 15px;
@@ -140,7 +139,7 @@
     border-radius: 10px;
   }
   .ilan-detay-title {
-    font-size: 1.5rem;
+    font-size: 13px;
   }
   .ilan-detay-sidebar h2 {
     font-size: 1.2rem;
@@ -157,18 +156,18 @@
 @media (max-width: 400px) {
   .ilan-detay-sayfa {
     padding: 5px;
-    width: 390px;
+    width: 390px; 
   }
   .ilan-detay-ana-icerik {
     padding: 15px;
   }
   .ilan-detay-title {
-    font-size: 19px;
+    font-size: 19px; 
   }
   .ilan-detay-kartı{
-    max-width: 400px;
+    max-width: 400px; 
   }
   .ilan-detay-sidebar{
-    max-width: 350px;
+    max-width: 350px; 
   }
 }
