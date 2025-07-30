@@ -198,6 +198,8 @@
 @media (max-width: 480px) {
     .iletisim-container {
         padding: 15px;
+        width: 75%;
+        margin-left: 10%;
     }
     .page-title {
         font-size: 2rem;
