@@ -96,6 +96,10 @@
       font-size: 15px;
       margin-bottom: 30px;
     }
+
+    .konum-goster-yazisi{
+      margin-right: -6%;
+    }
   }
   
   @media (max-width: 490px) {

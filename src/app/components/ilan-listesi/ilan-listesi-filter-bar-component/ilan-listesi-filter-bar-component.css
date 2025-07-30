@@ -1,81 +1,88 @@
 .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
-    background-color: #e8eaed;
-    padding: 25px 30px;
-    margin: 0px auto 30px auto;
-    border-radius: var(--kenar-yuvarlakligi, 16px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    width: 92.2%;
-    border: 1px solid #c8ccd0;
-    border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #e8eaed;
+  padding: 25px 30px;
+  margin: 0px auto 30px auto;
+  border-radius: var(--kenar-yuvarlakligi, 16px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 92.2%;
+  border: 1px solid #c8ccd0;
+  border-radius: 15px;
+}
+
+.filter-input,
+.filter-select {
+  padding: 12px 15px;
+  border: 1px solid var(--renk-kenarlik);
+  border-radius: var(--kenar-yuvarlakligi-kucuk, 8px);
+  font-size: 1rem;
+  color: var(--renk-metin);
+  background-color: #fcfcfc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  flex-grow: 1;
+  width: 200px;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: var(--renk-ana);
+  box-shadow: 0 0 0 2px rgba(0, 73, 156, 0.2);
+}
+
+.filter-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2C146.2l-14.4-14.4L146.2%2C272.7L24.4%2C131.8L10%2C146.2l136.2%2C136.2L287%2C146.2z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+}
+
+.clear-filters-btn {
+  padding: 12px 20px;
+  background-color: var(--renk-vurgu);
+  color: white;
+  border: none;
+  border-radius: var(--kenar-yuvarlakligi-kucuk, 8px);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+  background-color: #007bff;
+}
+
+.clear-filters-btn:hover {
+  background-color: #a00000;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    padding: 15px;
+    margin: 20px auto;
+    width: 80%;
+    margin-left: 5%;
   }
-  
   .filter-input,
-  .filter-select {
-    padding: 12px 15px;
-    border: 1px solid var(--renk-kenarlik);
-    border-radius: var(--kenar-yuvarlakligi-kucuk, 8px);
-    font-size: 1rem;
-    color: var(--renk-metin);
-    background-color: #fcfcfc;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    flex-grow: 1;
-    min-width: 120px;
-  }
-  
-  .filter-input:focus,
-  .filter-select:focus {
-    outline: none;
-    border-color: var(--renk-ana);
-    box-shadow: 0 0 0 2px rgba(0, 73, 156, 0.2);
-  }
-  
-  .filter-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2C146.2l-14.4-14.4L146.2%2C272.7L24.4%2C131.8L10%2C146.2l136.2%2C136.2L287%2C146.2z%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-    padding-right: 30px;
-  }
   
   .clear-filters-btn {
-    padding: 12px 20px;
-    background-color: var(--renk-vurgu);
-    color: white;
-    border: none;
-    border-radius: var(--kenar-yuvarlakligi-kucuk, 8px);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    white-space: nowrap;
-    background-color: #007bff;
+    width: 76%; 
+    margin: 0 auto; 
   }
-  
-  .clear-filters-btn:hover {
-    background-color: #a00000;
-    transform: translateY(-1px);
+
+  .filter-select{
+    width: 85%;
   }
-  
-  @media (max-width: 768px) {
-    .filter-bar {
-      flex-direction: column;
-      padding: 15px;
-      margin: 20px auto;
-    }
-    .filter-input,
-    .filter-select,
-    .clear-filters-btn {
-      width: 85%;
-    }
-  }
-  
-  @media (max-width: 600px) {
-  }
+}
+
+@media (max-width: 600px) {
+}

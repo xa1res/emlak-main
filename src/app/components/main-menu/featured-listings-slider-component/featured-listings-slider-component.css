@@ -1,3 +1,4 @@
+
 .onecikanlar-text {
   text-align: center;
   font-size: 35px;
@@ -9,14 +10,27 @@
   padding-bottom: 45px;
   padding-right: 5%;
   padding-left: 5%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.onecikanlar-container-with-arrows {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
+  margin-top: 20px;
 }
 
 .onecikanlar-listesi {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   gap: 20px; 
+  overflow-x: hidden; 
+  flex-grow: 1; 
 }
 
 .ileri-buton,
@@ -27,14 +41,18 @@
   cursor: pointer;
   padding: 10px;
   transition: transform 0.2s ease;
+  z-index: 1; 
+  flex-shrink: 0; 
 }
 
 .ileri-buton{
-  margin-right: 5px;
+  margin-right: 0px; 
+  margin-left: 5px;
 }
 
 .geri-buton{
-  margin-left: 5px;
+  margin-left: 0px; 
+  margin-right: 5px; 
 }
 
 .ileri-buton:hover,
@@ -150,12 +168,14 @@
 
 @media (max-width: 768px) {
   .onecikanlar-listesi {
-      flex-direction: column;
-      gap: 20px;
+      flex-direction: row; 
+      justify-content: center; 
+      width: auto; 
   }
   .onecikanlar-link {
-      flex-basis: calc(80% - 20px);
-      max-width: calc(80% - 20px);
+      flex-basis: 100%; 
+      max-width: 300px; 
+      margin: 0 10px; 
   }
   .slider-card-img {
       max-width: 70%;
