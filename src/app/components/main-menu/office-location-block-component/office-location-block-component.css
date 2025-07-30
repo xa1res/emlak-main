@@ -1,6 +1,6 @@
 .ofis-bolumu {
     position: relative;
-    margin: 100px auto;
+    margin: 100px auto ;
     width: 87.7%;
     height: 500px;
     border-radius: var(--kenar-yuvarlakligi, 16px);
