@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { datas } from '../../../../../public/assets/datas/generic-datas/data'; 
+import { datas } from '../../../../../public/assets/datas/generic-datas/data';
 
 interface Property {
   id: string;
@@ -14,11 +14,11 @@ interface Property {
 }
 
 @Component({
-  selector: 'app-main-menu-featured-listings-slider', 
+  selector: 'app-main-menu-featured-listings-slider',
   standalone: true,
   imports: [CommonModule, DecimalPipe, RouterModule],
   templateUrl: './featured-listings-slider-component.html',
-  styleUrls: ['./featured-listings-slider-component.css'] 
+  styleUrls: ['./featured-listings-slider-component.css']
 })
 export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   public oneCikanlar: Property[] = [];
@@ -26,6 +26,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   public kaymaYonu: 'none' | 'left' | 'right' = 'none';
   public animating = false;
   private slideInterval: any;
+  public isMobile: boolean = false; // Yeni eklenen özellik
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -38,6 +39,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+      this.checkScreenSize(); // Sayfa yüklendiğinde ekran boyutunu kontrol et
       this.startTimer();
     }
   }
@@ -46,6 +48,15 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       this.clearTimer();
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize(); 
+  }
+
+  private checkScreenSize(): void {
+    this.isMobile = isPlatformBrowser(this.platformId) && window.innerWidth <= 1200;
   }
 
   startTimer(): void {
@@ -66,8 +77,9 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   }
 
   get aktifIlanlar() {
+    const numToShow = this.isMobile ? 1 : 3;
     const ilanlar = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < numToShow; i++) {
       ilanlar.push(this.oneCikanlar[(this.aktifIndex + i) % this.oneCikanlar.length]);
     }
     return ilanlar;
@@ -76,8 +88,8 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   ileri() {
     if (this.animating) return;
     this.animating = true;
-    
-    this.aktifIndex = (this.aktifIndex + 1) % this.oneCikanlar.length;
+
+    this.aktifIndex = (this.aktifIndex + (this.isMobile ? 1 : 1)) % this.oneCikanlar.length; 
     
     this.kaymaYonu = 'left';
 
@@ -85,7 +97,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
       this.kaymaYonu = 'none';
       this.animating = false;
     }, 300);
-    
+
     if (isPlatformBrowser(this.platformId)) {
       this.resetTimer();
     }
@@ -94,11 +106,11 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   geri() {
     if (this.animating) return;
     this.animating = true;
-    
-    this.aktifIndex = (this.aktifIndex - 1 + this.oneCikanlar.length) % this.oneCikanlar.length;
+
+    this.aktifIndex = (this.aktifIndex - (this.isMobile ? 1 : 1) + this.oneCikanlar.length) % this.oneCikanlar.length;
     
     this.kaymaYonu = 'right';
-    
+
     setTimeout(() => {
       this.kaymaYonu = 'none';
       this.animating = false;
