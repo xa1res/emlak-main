@@ -73,8 +73,7 @@
     .filter-input,
     .filter-select,
     .clear-filters-btn {
-      width: 100%;
-      min-width: unset;
+      width: 85%;
     }
   }
   
