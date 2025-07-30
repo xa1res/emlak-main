@@ -59,7 +59,7 @@
   
   @media (max-width: 769px) {
     .blog-post-card {
-      width: 300px;
+      width: 87%;
       height: 500px;
     }
   }
