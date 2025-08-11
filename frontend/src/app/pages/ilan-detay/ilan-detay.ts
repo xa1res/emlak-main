@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { Footer } from '../footer/footer';
@@ -73,8 +73,8 @@ interface Danisman {
   styleUrl: './ilan-detay.css'
 })
 export class IlanDetayComponent implements OnInit {
-  ilan: Ilan | undefined;
-  danisman: Danisman | undefined;
+  ilan = signal<Ilan | null>(null);
+  danisman = signal<Danisman | null>(null);
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -86,8 +86,9 @@ export class IlanDetayComponent implements OnInit {
           ilan: this.http.get<Ilan>(`http://localhost:3000/api/ilanlar/${ilanId}`),
           danismanlar: this.http.get<Danisman[]>(`http://localhost:3000/api/danismanlar`)
         }).subscribe(({ ilan, danismanlar }) => {
-          this.ilan = ilan;
-          this.danisman = danismanlar.find(d => d.isim === ilan.emlakci);
+          this.ilan.set(ilan);
+          const bulunan = danismanlar.find(d => d.isim === ilan.emlakci) ?? null;
+          this.danisman.set(bulunan);
         });
       }
     });

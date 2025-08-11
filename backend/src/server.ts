@@ -9,15 +9,12 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Verileri sunucu başlangıcında bir kez işleyip bellekte tutma
 const allProperties: Property[] = datas.flatMap(danisman => danisman.properties);
 
-// Tüm ilanları döndüren API rotası
 app.get('/api/ilanlar', (req: Request, res: Response) => {
   res.json(allProperties);
 });
 
-// Belirli bir ilanı ID'sine göre döndüren API rotası
 app.get('/api/ilanlar/:id', (req: Request, res: Response) => {
   const ilanId = req.params.id;
   const bulunanIlan = allProperties.find((p: Property) => p.id === ilanId);
@@ -29,12 +26,10 @@ app.get('/api/ilanlar/:id', (req: Request, res: Response) => {
   }
 });
 
-// Tüm blog yazılarını döndüren API rotası
 app.get('/api/blog', (req: Request, res: Response) => {
   res.json(BLOG_POSTS);
 });
 
-// Belirli bir blog yazısını slug'ına göre döndüren API rotası
 app.get('/api/blog/:slug', (req: Request, res: Response) => {
   const blogSlug = req.params.slug;
   const blogPost = BLOG_POSTS.find((post: BlogPost) => post.slug === blogSlug);
@@ -46,12 +41,10 @@ app.get('/api/blog/:slug', (req: Request, res: Response) => {
   }
 });
 
-// Tüm danışmanları döndüren API rotası
 app.get('/api/danismanlar', (req: Request, res: Response) => {
   res.json(datas);
 });
 
-// Belirli bir danışmanı URL'sine göre döndüren API rotası
 app.get('/api/danismanlar/:url', (req: Request, res: Response) => {
   const danismanUrl = req.params.url;
   const danisman = datas.find((d: Danisman) => d.url === danismanUrl);
