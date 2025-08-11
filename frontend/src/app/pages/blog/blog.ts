@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
-import { HttpClient, HttpClientModule } from '@angular/common/http'; // HttpClient eklendi
-import { Observable } from 'rxjs'; // Observable eklendi
+import { BLOG_POSTS } from '../../../../public/assets/datas/generic-datas/blog/data';
 
 import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
 
@@ -19,18 +18,14 @@ interface BlogPost {
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, Footer, BlogPostCardComponent, HttpClientModule], // HttpClientModule eklendi
+  imports: [CommonModule, Footer, BlogPostCardComponent],
   templateUrl: './blog.html',
   styleUrl: './blog.css'
 })
 export class BlogComponent implements OnInit {
-  blogPosts: BlogPost[] = []; // Veri tipi güncellendi
-
-  constructor(private http: HttpClient) { }
+  blogPosts: BlogPost[] = [];
 
   ngOnInit(): void {
-    this.http.get<BlogPost[]>('http://localhost:3000/api/blog').subscribe(data => {
-      this.blogPosts = data;
-    });
+    this.blogPosts = BLOG_POSTS;
   }
 }
