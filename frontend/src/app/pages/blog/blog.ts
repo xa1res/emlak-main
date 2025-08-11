@@ -5,7 +5,7 @@ import { BLOG_POSTS } from '../../../../public/assets/datas/generic-datas/blog/d
 
 import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
 
-interface BlogPost {
+interface BlogPost { 
   slug: string;
   author: string;
   date: string;
