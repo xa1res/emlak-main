@@ -14,7 +14,7 @@ interface BlogPost {
   snippet: string;
   fullContent: string;
 }
-
+ 
 @Component({
   selector: 'app-blog',
   standalone: true,
