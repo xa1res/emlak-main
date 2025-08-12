@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { datas } from '../../../../../public/assets/datas/generic-datas/data';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
+// Types dosyasını bulamadığı için arayüzü buraya taşıdık
 interface Property {
   id: string;
   imageURL: string;
@@ -11,7 +13,32 @@ interface Property {
   location: string;
   emlakci: string;
   durum: string;
+  konumLinki: string;
+  aciklama: string;
+  m2: number;
+  odaSayisi: string | null;
+  ilanTarihi: string;
+  emlakTipi: string;
+  binaYasi: number | null;
+  bulunduguKat: string | null;
+  katSayisi: number | null;
+  isitma: string | null;
+  banyoSayisi: string | null;
+  mutfakTipi: string | null;
+  balkon: string | null;
+  asansor: string | null;
+  otopark: string | null;
+  esyali: string | null;
+  kullanimDurumu: string | null;
+  siteIcerisinde: string | null;
+  krediyeUygun: string | null;
+  tapuDurumu: string | null;
+  kimden: string | null;
+  takas: string | null;
+  haritaUrl: string | null;
+  imageCount: number;
 }
+
 
 @Component({
   selector: 'app-main-menu-featured-listings-slider',
@@ -26,21 +53,20 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   public kaymaYonu: 'none' | 'left' | 'right' = 'none';
   public animating = false;
   private slideInterval: any;
-  public isMobile: boolean = false; // Yeni eklenen özellik
+  public isMobile: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-  ) {
-    this.oneCikanlar = [
-      ...datas[0].properties.slice(0, 8),
-      ...datas[1].properties.slice(0, 8)
-    ];
-  }
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.checkScreenSize(); // Sayfa yüklendiğinde ekran boyutunu kontrol et
+      this.checkScreenSize();
       this.startTimer();
+      this.http.get<Property[]>(`${environment.backendUrl}/ilanlar`).subscribe(response => {
+        this.oneCikanlar = response.sort(() => 0.5 - Math.random()).slice(0, 8);
+      });
     }
   }
 
@@ -52,7 +78,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.checkScreenSize(); 
+    this.checkScreenSize();
   }
 
   private checkScreenSize(): void {
@@ -89,7 +115,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
     if (this.animating) return;
     this.animating = true;
 
-    this.aktifIndex = (this.aktifIndex + (this.isMobile ? 1 : 1)) % this.oneCikanlar.length; 
+    this.aktifIndex = (this.aktifIndex + (this.isMobile ? 1 : 1)) % this.oneCikanlar.length;
     
     this.kaymaYonu = 'left';
 

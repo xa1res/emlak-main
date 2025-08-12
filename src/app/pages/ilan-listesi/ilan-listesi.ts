@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { datas } from '../../../../public/assets/datas/generic-datas/data';
 import { Footer } from '../footer/footer';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 import { IlanListesiFilterBarComponent } from '../../components/ilan-listesi/ilan-listesi-filter-bar-component/ilan-listesi-filter-bar-component';
 import { IlanListesiGridComponent } from '../../components/ilan-listesi/ilan-listesi-grid-component/ilan-listesi-grid-component';
 
+// Types dosyasını bulamadığı için arayüzü buraya taşıdık
 interface Property {
   id: string;
   imageURL: string;
@@ -21,7 +23,28 @@ interface Property {
   aciklama: string;
   m2: number;
   odaSayisi: string | null;
+  ilanTarihi: string;
+  emlakTipi: string;
+  binaYasi: number | null;
+  bulunduguKat: string | null;
+  katSayisi: number | null;
+  isitma: string | null;
+  banyoSayisi: string | null;
+  mutfakTipi: string | null;
+  balkon: string | null;
+  asansor: string | null;
+  otopark: string | null;
+  esyali: string | null;
+  kullanimDurumu: string | null;
+  siteIcerisinde: string | null;
+  krediyeUygun: string | null;
+  tapuDurumu: string | null;
+  kimden: string | null;
+  takas: string | null;
+  haritaUrl: string | null;
+  imageCount: number;
 }
+
 
 @Component({
   selector: 'app-ilan-listesi',
@@ -62,15 +85,12 @@ export class IlanListesi implements OnInit {
     { value: 'm2Desc', label: 'M²\'ye Göre Azalan' },
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
-    datas.forEach(danisman => {
-      danisman.properties.forEach(property => {
-        this.allProperties.push(property);
-      });
-    });
-
     this.route.paramMap.subscribe(params => {
       this.ilanDurumu = params.get('durum');
       if (this.ilanDurumu === 'satilik') {
@@ -106,56 +126,24 @@ export class IlanListesi implements OnInit {
   }
 
   onFiltersCleared(): void {
+    this.applyCurrentFilters();
   }
 
   applyCurrentFilters(): void {
-    let filtered = [...this.allProperties];
+    const params: any = {
+      q: this.searchText,
+      durum: this.selectedDurumFilter,
+      minPrice: this.minPrice,
+      maxPrice: this.maxPrice,
+      minM2: this.minM2,
+      maxM2: this.maxM2,
+      odaSayisi: this.selectedOdaSayisi === 'Tümü' ? undefined : this.selectedOdaSayisi,
+      sortBy: this.selectedSortOption === 'default' ? undefined : this.selectedSortOption,
+    };
 
-    if (this.selectedDurumFilter !== 'all') {
-      filtered = filtered.filter(property => property.durum.toLowerCase() === this.selectedDurumFilter);
-    }
-
-    if (this.minPrice !== null) {
-      filtered = filtered.filter(property => property.price >= this.minPrice!);
-    }
-    if (this.maxPrice !== null) {
-      filtered = filtered.filter(property => property.price <= this.maxPrice!);
-    }
-
-    if (this.minM2 !== null) {
-      filtered = filtered.filter(property => property.m2 >= this.minM2!);
-    }
-    if (this.maxM2 !== null) {
-      filtered = filtered.filter(property => property.m2 <= this.maxM2!);
-    }
-
-    if (this.selectedOdaSayisi !== 'Tümü') {
-      filtered = filtered.filter(property => property.odaSayisi === this.selectedOdaSayisi);
-    }
-
-    if (this.searchText.trim() !== '') {
-      const lowerCaseSearchText = this.searchText.trim().toLowerCase();
-      filtered = filtered.filter(property =>
-        property.title.toLowerCase().includes(lowerCaseSearchText) ||
-        property.location.toLowerCase().includes(lowerCaseSearchText)
-      );
-    }
-
-    switch (this.selectedSortOption) {
-      case 'priceAsc':
-        filtered.sort((a, b) => a.price - b.price);
-        break;
-      case 'priceDesc':
-        filtered.sort((a, b) => b.price - a.price);
-        break;
-      case 'm2Asc':
-        filtered.sort((a, b) => a.m2 - b.m2);
-        break;
-      case 'm2Desc':
-        filtered.sort((a, b) => b.m2 - a.m2);
-        break;
-    }
-
-    this.properties = filtered;
+    this.http.get<any>(`${environment.backendUrl}/ilanlar/search`, { params })
+      .subscribe(response => {
+        this.properties = response.data;
+      });
   }
 }

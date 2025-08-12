@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  backendUrl: 'https://your-backend-url.vercel.app' // Backend'in Vercel URL'ini buraya yaz
+  backendUrl: 'https://your-heroku-app.herokuapp.com/api', // Heroku URL'inizi buraya ekleyin
+  apiUrl: 'https://your-heroku-app.herokuapp.com/api'      // Heroku URL'inizi buraya ekleyin
 };

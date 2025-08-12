@@ -1,4 +1,5 @@
 export const environment = {
-  production: false,
-  backendUrl: 'http://localhost:3000'
+  production: true,
+  backendUrl: 'https://emlak-backend.onrender.com/api',
+  apiUrl: 'https://emlak-backend.onrender.com/api'
 };

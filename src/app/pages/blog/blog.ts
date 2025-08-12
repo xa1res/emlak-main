@@ -1,9 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
-import { BLOG_POSTS } from '../../../../public/assets/datas/generic-datas/blog/data';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
+
+// Types dosyasını bulamadığı için arayüzü buraya taşıdık
+interface BlogPost {
+  slug: string;
+  author: string;
+  date: string;
+  title: string;
+  image: string;
+  snippet: string;
+  fullContent: string;
+}
 
 @Component({
   selector: 'app-blog',
@@ -12,6 +24,19 @@ import { BlogPostCardComponent } from '../../components/blog/blog-card-component
   templateUrl: './blog.html',
   styleUrl: './blog.css'
 })
-export class BlogComponent {
-  blogPosts = BLOG_POSTS;
+export class BlogComponent implements OnInit {
+  blogPosts: BlogPost[] = [];
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.http.get<BlogPost[]>(`${environment.backendUrl}/blog`).subscribe(
+      (data: BlogPost[]) => {
+        this.blogPosts = data;
+      },
+      error => {
+        console.error('Blog yazıları çekme hatası:', error);
+      }
+    );
+  }
 }
