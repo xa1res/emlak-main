@@ -1,4 +1,21 @@
-<div *ngIf="ilan && danisman; else notFound" class="ilan-detay-sayfa">
+<!-- Loading durumu -->
+<div *ngIf="loading" class="loading-container">
+  <div class="loading-spinner">
+    <p>İlan yükleniyor...</p>
+  </div>
+</div>
+
+<!-- Error durumu -->
+<div *ngIf="error && !loading" class="error-container">
+  <div class="error-message">
+    <h2>Hata!</h2>
+    <p>{{ error }}</p>
+    <button (click)="ngOnInit()" class="retry-button">Tekrar Dene</button>
+  </div>
+</div>
+
+<!-- İlan detay içeriği -->
+<div *ngIf="ilan && danisman && !loading && !error" class="ilan-detay-sayfa">
   <div class="ilan-detay-kartı">
     <div class="ilan-detay-ana-icerik">
       <h1 class="ilan-detay-title">{{ ilan.title }}</h1>
@@ -109,7 +126,14 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+
+<!-- İlan bulunamadı durumu -->
 <ng-template #notFound>
-  <div class="ilan-detay-notfound">İlan bulunamadı.</div>
+  <div class="ilan-detay-notfound">
+    <h2>İlan Bulunamadı</h2>
+    <p>Aradığınız ilan mevcut değil veya kaldırılmış olabilir.</p>
+    <a routerLink="/" class="home-link">Ana Sayfaya Dön</a>
+  </div>
 </ng-template>
+
+<app-footer></app-footer>

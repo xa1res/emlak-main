@@ -20,7 +20,11 @@ app.get('/api/ilanlar', (req: Request, res: Response) => {
 // Belirli bir ilanı ID'sine göre döndüren API rotası
 app.get('/api/ilanlar/:id', (req: Request, res: Response) => {
   const ilanId = req.params.id;
+  console.log('Aranan ilan ID:', ilanId);
+  console.log('Mevcut ilanlar:', allProperties.map(p => p.id));
+  
   const bulunanIlan = allProperties.find((p: Property) => p.id === ilanId);
+  console.log('Bulunan ilan:', bulunanIlan);
 
   if (bulunanIlan) {
     res.json(bulunanIlan);
