@@ -1,0 +1,23 @@
+<div class="filter-bar">
+  <select [(ngModel)]="selectedDurumFilter" (change)="onFilterChange()" class="filter-select">
+    <option *ngFor="let durum of durumFilterOptions" [value]="durum === 'Tümü' ? 'all' : durum.toLowerCase()">{{ durum }}</option>
+  </select>
+
+  <input type="text" [(ngModel)]="searchText" (input)="onFilterChange()" placeholder="Konum, başlık ara..." class="filter-input">
+  
+  <input type="number" [(ngModel)]="minPrice" (input)="onFilterChange()" placeholder="Min Fiyat" class="filter-input">
+  <input type="number" [(ngModel)]="maxPrice" (input)="onFilterChange()" placeholder="Max Fiyat" class="filter-input">
+  
+  <input type="number" [(ngModel)]="minM2" (input)="onFilterChange()" placeholder="Min m²" class="filter-input">
+  <input type="number" [(ngModel)]="maxM2" (input)="onFilterChange()" placeholder="Max m²" class="filter-input">
+
+  <select [(ngModel)]="selectedOdaSayisi" (change)="onFilterChange()" class="filter-select">
+    <option *ngFor="let oda of odaSayisiOptions" [value]="oda">{{ oda }}</option>
+  </select>
+
+  <select [(ngModel)]="selectedSortOption" (change)="onFilterChange()" class="filter-select">
+    <option *ngFor="let sort of sortOptions" [value]="sort.value">{{ sort.label }}</option>
+  </select>
+
+  <button (click)="onClearFilters()" class="clear-filters-btn">Filtreleri Temizle</button>
+</div>

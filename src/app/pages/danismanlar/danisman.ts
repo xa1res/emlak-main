@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, NgFor, NgIf, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { datas } from '../../../../public/assets/datas/generic-datas/data';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Footer } from '../footer/footer';
+import { map, switchMap } from 'rxjs/operators';
 
 import { ConsultantOverviewComponent } from '../../components/danismanlar/danisman-genel-component/danisman-genel-component';
 import { ConsultantPropertiesGridComponent } from '../../components/danismanlar/danisman-ilan-component/danisman-ilan-component';
@@ -44,22 +45,34 @@ interface Bilgi {
     Footer,
     RouterModule,
     ConsultantOverviewComponent,
-    ConsultantPropertiesGridComponent
+    ConsultantPropertiesGridComponent,
+    HttpClientModule
   ],
   templateUrl: './danisman.html',
   styleUrls: ['./danisman.css']
 })
 export class Danisman implements OnInit {
-  consultantData: Bilgi | undefined; 
+  consultantData: Bilgi | undefined;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private route: ActivatedRoute,
+    private http: HttpClient,
+  ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const consultantUrl = params.get('url');
-      if (consultantUrl) {
-        this.consultantData = datas.find((data: Bilgi) => data.url.toString() === consultantUrl);
-      }
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    this.route.paramMap.pipe(
+      map(params => params.get('url')),
+      switchMap(consultantUrl =>
+        this.http.get<Bilgi[]>(`http://localhost:3000/api/danismanlar`).pipe(
+          map(danismanlar => danismanlar.find(d => d.url === consultantUrl))
+        )
+      )
+    ).subscribe(danisman => {
+      this.consultantData = danisman;
     });
   }
 }

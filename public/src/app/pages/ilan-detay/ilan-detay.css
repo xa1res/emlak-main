@@ -1,0 +1,221 @@
+.ilan-detay-sayfa {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 70%;
+  background: var(--mat-sys-surface-container-lowest);
+  padding: 40px 40px;
+  box-sizing: border-box;
+}
+
+.ilan-detay-kartı {
+  background-color: rgb(240, 240, 240);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 92%;
+  overflow: hidden;
+  gap: 20px;
+}
+
+.ilan-detay-ana-icerik {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+}
+
+.ilan-detay-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--mat-sys-on-surface);
+  margin-bottom: 20px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal; 
+}
+
+.ilan-detay-sidebar {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-left: 1px solid var(--mat-sys-outline-variant);
+}
+
+.ilan-detay-sidebar h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--mat-sys-on-surface);
+}
+
+.ilan-detay-ozet-tablo {
+  background: var(--mat-sys-surface-container-high);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.ilan-detay-ozet-tablo h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--mat-sys-on-surface);
+}
+
+.ozet-satir {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+}
+
+.ozet-satir:last-child {
+  border-bottom: none;
+}
+
+.ozet-baslik {
+  font-weight: 500;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.ozet-deger {
+  color: var(--mat-sys-on-surface);
+}
+
+
+.ilan-detay-notfound {
+  text-align: center;
+  color: #b00;
+  font-size: 1.3rem;
+  margin-top: 60px;
+}
+
+@media (max-width: 1200px) {
+  .ilan-detay-kartı {
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ilan-detay-kartı {
+    grid-template-columns: 1fr; 
+    min-width: unset;
+    max-width: 98vw;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ilan-detay-sayfa {
+    padding: 20px;
+  }
+  .ilan-detay-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--mat-sys-outline-variant);
+    padding-top: 25px;
+    width: 85%;
+    margin: 0 auto; 
+    margin-left: 2.9%; 
+  }
+  .ilan-detay-ana-icerik {
+    padding: 20px;
+  }
+  .ilan-detay-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .ilan-detay-kartı{
+    max-width: 95%;
+  }
+  .ilan-detay-ozet-tablo {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ilan-detay-kartı {
+    grid-template-columns: 1fr; 
+    min-width: unset;
+    max-width: 98vw;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ilan-detay-sayfa {
+    padding: 20px;
+  }
+  .ilan-detay-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--mat-sys-outline-variant);
+    padding-top: 25px;
+    width: 85%;
+    margin: 0 auto; 
+    margin-left: 2.9%; 
+  }
+  .ilan-detay-ana-icerik {
+    padding: 20px;
+  }
+  .ilan-detay-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .ilan-detay-kartı{
+    max-width: 95%;
+  }
+  .ilan-detay-ozet-tablo {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ilan-detay-sayfa {
+    padding: 10px;
+    width: 95%; 
+    margin-left: 4%;
+  }
+  .ilan-detay-kartı {
+    border-radius: 10px;
+  }
+
+  .ilan-detay-ana-icerik {
+    padding: 15px;
+    width: 56%; 
+  }
+
+  .ilan-detay-title {
+    font-size: 13px;
+  }
+  .ilan-detay-sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .ilan-detay-kartı{
+    max-width: 95%;
+  }
+  .ilan-detay-sidebar{
+    width: 58%; 
+    margin-left: -5%; 
+  }
+}
+
+@media (max-width: 400px) {
+  .ilan-detay-sayfa {
+    padding: 5px;
+    width: 95%;
+    margin-left: 3%;
+  }
+  .ilan-detay-ana-icerik {
+    padding: 15px;
+    width: 50%;
+  }
+  .ilan-detay-title {
+    font-size: 11px;
+  }
+  .ilan-detay-kartı{
+    max-width: 400px;
+  }
+  .ilan-detay-sidebar{
+    max-width: 58%;
+    margin-left: -5%;
+  }
+}

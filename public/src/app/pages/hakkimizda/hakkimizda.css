@@ -1,0 +1,150 @@
+.hakkimizda-container {
+    width: 85%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--mat-sys-surface-container-low);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.38);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--mat-sys-on-surface);
+}
+
+
+.page-title {
+    font-size: 3rem;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.GoogleForm{
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+}
+
+.content-section {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--mat-sys-outline-variant);
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    color: var(--mat-sys-on-surface-variant);
+}
+
+.content-section ul {
+    list-style-type: disc;
+    padding-left: 25px;
+}
+
+.content-section ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--mat-sys-on-surface-variant);
+}
+
+.ekip-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.ekip-section h2 {
+    border-bottom: none;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--mat-sys-primary);
+}
+
+.ekip-uyeleri {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.ekip-uye {
+    background-color: var(--mat-sys-surface-container);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    width: 220px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ekip-uye:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ekip-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 30%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--mat-sys-primary-container);
+}
+
+.ekip-uye h3 {
+    font-size: 1.4rem;
+    color: var(--mat-sys-on-surface);
+    margin-bottom: 5px;
+}
+
+.ekip-uye p {
+    font-size: 1rem;
+    color: var(--mat-sys-on-surface-variant);
+}
+
+@media (max-width: 768px) {
+    .hakkimizda-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    .page-title {
+        font-size: 2.5rem;
+    }
+    .content-section h2 {
+        font-size: 1.7rem;
+    }
+    .content-section p, .content-section ul li {
+        font-size: 1rem;
+    }
+    .ekip-uye {
+        width: 180px;
+    }
+    .ekip-foto {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hakkimizda-container {
+        padding: 15px;
+        width: 75%;
+        margin-left: 10%;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+    .ekip-uye {
+        width: 100%;
+    }
+}

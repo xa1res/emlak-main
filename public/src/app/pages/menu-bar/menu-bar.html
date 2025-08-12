@@ -1,0 +1,97 @@
+<div class="menu-bar">
+  <div class="menu-bar-left">
+    <a
+      routerLink="/"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <img
+        src="/assets/pentanestlogo.png"
+        alt="PentaLogo"
+        class="PentaNestLogo-Menu-Foto"
+      />
+    </a>
+    <a
+      class="logoyani-isim"
+      routerLink="/"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <h2 class="logoyani-isim">Penta Nest</h2>
+    </a>
+  </div>
+
+  <div class="menu-bar-center-links">
+
+    <a class="menu-link"routerLink="/"routerLinkActive="active-link"[routerLinkActiveOptions]="{ exact: true }">Ana Sayfa</a>
+
+    <a class="menu-link"routerLink="/ilan-listesi/all"routerLinkActive="active-link">İlanlarımız</a>
+    
+    <a class="menu-link" routerLink="/main-menu" fragment="danisman-blok" routerLinkActive="active-link">Danışmanlar</a>
+
+    <a class="menu-link" routerLink="/blog" routerLinkActive="active-link">Blog</a>
+
+    <a class="menu-link" routerLink="/hakkimizda" routerLinkActive="active-link">Hakkımızda</a>
+
+    <a class="menu-link" routerLink="/iletisim" routerLinkActive="active-link">İletişim</a>
+  </div>
+
+  <div class="menu-bar-right">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Başlık, konum ara..."
+      class="search-input"
+    />
+    <button (click)="performSearch()" class="search-button">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+  <button mat-icon-button [matMenuTriggerFor]="appMenu" class="hamburger-menu-button">
+    <mat-icon>toc</mat-icon> </button>
+
+    <mat-menu class="mat-menu" #appMenu="matMenu">
+      <a
+        mat-menu-item
+        routerLink="/"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Ana Sayfa
+      </a>
+  
+      <a
+        mat-menu-item
+        routerLink="/ilan-listesi/all"
+        routerLinkActive="active-link"
+      >
+        İlanlarımız
+      </a>
+  
+      <a
+        mat-menu-item
+        routerLink="/main-menu"
+        fragment="danisman-blok"
+        routerLinkActive="active-link"
+      >
+        Danışmanlar
+      </a>
+  
+      <a mat-menu-item routerLink="/blog" routerLinkActive="active-link">
+        Blog
+      </a>
+  
+      <a
+        mat-menu-item
+        routerLink="/hakkimizda"
+        routerLinkActive="active-link"
+      >
+        Hakkımızda
+      </a>
+  
+      <a mat-menu-item routerLink="/iletisim" routerLinkActive="active-link">
+        İletişim
+      </a>
+    </mat-menu>
+</div>

@@ -1,0 +1,9 @@
+<div *ngIf="consultantData" class="danisman-sayfa">
+  <h1 class="page-main-title">Danışman Detayları</h1>
+
+  <app-danisman-overview [consultant]="consultantData"></app-danisman-overview>
+
+  <app-danisman-properties-grid [properties]="consultantData.properties"></app-danisman-properties-grid>
+</div>
+
+<app-footer></app-footer>
