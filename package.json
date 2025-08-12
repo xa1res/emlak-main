@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:vercel": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:proje2": "node dist/proje2/server/server.mjs"
@@ -22,13 +21,13 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cdk": "^20.1.2",
+    "@angular/cdk": "^20.1.5",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
     "@angular/forms": "^20.0.0",
     "@angular/google-maps": "^20.1.2",
-    "@angular/material": "^20.1.2",
+    "@angular/material": "^20.1.5",
     "@angular/platform-browser": "^20.0.0",
     "@angular/platform-server": "^20.0.0",
     "@angular/router": "^20.0.0",

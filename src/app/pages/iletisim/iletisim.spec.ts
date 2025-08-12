@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IletisimComponent } from './iletisim';
+import { Iletisim } from './iletisim';
 
 describe('Iletisim', () => {
-  let component: IletisimComponent;
-  let fixture: ComponentFixture<IletisimComponent>;
+  let component: Iletisim;
+  let fixture: ComponentFixture<Iletisim>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IletisimComponent]
+      imports: [Iletisim]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IletisimComponent);
+    fixture = TestBed.createComponent(Iletisim);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

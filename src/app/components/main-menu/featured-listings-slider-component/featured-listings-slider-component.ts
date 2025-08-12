@@ -26,7 +26,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   public kaymaYonu: 'none' | 'left' | 'right' = 'none';
   public animating = false;
   private slideInterval: any;
-  public isMobile: boolean = false;
+  public isMobile: boolean = false; // Yeni eklenen özellik
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -39,7 +39,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.checkScreenSize();
+      this.checkScreenSize(); // Sayfa yüklendiğinde ekran boyutunu kontrol et
       this.startTimer();
     }
   }
@@ -52,7 +52,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.checkScreenSize();
+    this.checkScreenSize(); 
   }
 
   private checkScreenSize(): void {
@@ -79,9 +79,6 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   get aktifIlanlar() {
     const numToShow = this.isMobile ? 1 : 3;
     const ilanlar = [];
-    if (this.oneCikanlar.length === 0) {
-      return [];
-    }
     for (let i = 0; i < numToShow; i++) {
       ilanlar.push(this.oneCikanlar[(this.aktifIndex + i) % this.oneCikanlar.length]);
     }
@@ -92,9 +89,8 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
     if (this.animating) return;
     this.animating = true;
 
-    const numToSlide = this.isMobile ? 1 : 1;
-    this.aktifIndex = (this.aktifIndex + numToSlide) % this.oneCikanlar.length;
-
+    this.aktifIndex = (this.aktifIndex + (this.isMobile ? 1 : 1)) % this.oneCikanlar.length; 
+    
     this.kaymaYonu = 'left';
 
     setTimeout(() => {
@@ -111,9 +107,8 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
     if (this.animating) return;
     this.animating = true;
 
-    const numToSlide = this.isMobile ? 1 : 1;
-    this.aktifIndex = (this.aktifIndex - numToSlide + this.oneCikanlar.length) % this.oneCikanlar.length;
-
+    this.aktifIndex = (this.aktifIndex - (this.isMobile ? 1 : 1) + this.oneCikanlar.length) % this.oneCikanlar.length;
+    
     this.kaymaYonu = 'right';
 
     setTimeout(() => {
