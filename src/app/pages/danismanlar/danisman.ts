@@ -1,3 +1,4 @@
+// src/app/pages/danismanlar/danisman.ts
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, NgFor, NgIf, isPlatformBrowser } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -5,6 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Footer } from '../footer/footer';
 import { map, switchMap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 import { ConsultantOverviewComponent } from '../../components/danismanlar/danisman-genel-component/danisman-genel-component';
 import { ConsultantPropertiesGridComponent } from '../../components/danismanlar/danisman-ilan-component/danisman-ilan-component';
@@ -67,7 +69,7 @@ export class Danisman implements OnInit {
     this.route.paramMap.pipe(
       map(params => params.get('url')),
       switchMap(consultantUrl =>
-        this.http.get<Bilgi[]>(`http://localhost:3000/api/danismanlar`).pipe(
+        this.http.get<Bilgi[]>(`${environment.apiUrl}/danismanlar`).pipe(
           map(danismanlar => danismanlar.find(d => d.url === consultantUrl))
         )
       )

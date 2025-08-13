@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { datas } from '../../../../../public/assets/datas/generic-datas/data';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+import { take, switchMap, map } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 interface Property {
   id: string;
@@ -11,6 +14,11 @@ interface Property {
   location: string;
   emlakci: string;
   durum: string;
+}
+
+interface Danisman {
+  properties: Property[];
+  isim: string;
 }
 
 @Component({
@@ -27,18 +35,16 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   public animating = false;
   private slideInterval: any;
   public isMobile: boolean = false;
+  private readonly apiUrl = environment.apiUrl;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-  ) {
-    this.oneCikanlar = [
-      ...datas[0].properties.slice(0, 8),
-      ...datas[1].properties.slice(0, 8)
-    ];
-  }
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+      this.fetchFeaturedListings();
       this.checkScreenSize();
       this.startTimer();
     }
@@ -49,6 +55,20 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
       this.clearTimer();
     }
   }
+  
+  fetchFeaturedListings(): void {
+    this.http.get<Danisman[]>(`${this.apiUrl}/danismanlar`).pipe(
+      take(1),
+      switchMap((danismanlar: Danisman[]) => {
+        const emlakciIsimleri = danismanlar.map(d => d.isim);
+        return this.http.get<Property[]>(`${this.apiUrl}/ilanlar`).pipe(
+          map((ilanlar: Property[]) => ilanlar.filter(ilan => emlakciIsimleri.includes(ilan.emlakci)))
+        )
+      })
+    ).subscribe((properties: Property[]) => {
+      this.oneCikanlar = properties.slice(0, 16); 
+    });
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -56,7 +76,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
   }
 
   private checkScreenSize(): void {
-    this.isMobile = isPlatformBrowser(this.platformId) && window.innerWidth <= 1200;
+    this.isMobile = isPlatformBrowser(this.platformId) && window.innerWidth <= 768; 
   }
 
   startTimer(): void {
@@ -76,7 +96,7 @@ export class FeaturedListingsSliderComponent implements OnInit, OnDestroy {
     this.startTimer();
   }
 
-  get aktifIlanlar() {
+  get aktifIlanlar(): Property[] {
     const numToShow = this.isMobile ? 1 : 3;
     const ilanlar = [];
     if (this.oneCikanlar.length === 0) {

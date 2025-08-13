@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
-import { BLOG_POSTS } from '../../../../public/assets/datas/generic-datas/blog/data';
-
 import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface BlogPost {
   slug: string;
@@ -14,7 +14,7 @@ interface BlogPost {
   snippet: string;
   fullContent: string;
 }
- 
+
 @Component({
   selector: 'app-blog',
   standalone: true,
@@ -25,7 +25,11 @@ interface BlogPost {
 export class BlogComponent implements OnInit {
   blogPosts: BlogPost[] = [];
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit(): void {
-    this.blogPosts = BLOG_POSTS;
+    this.http.get<BlogPost[]>(`${environment.apiUrl}/blogposts`).subscribe(posts => {
+      this.blogPosts = posts;
+    });
   }
 }

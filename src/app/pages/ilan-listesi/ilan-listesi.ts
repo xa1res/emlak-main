@@ -1,10 +1,12 @@
+// src/app/pages/ilan-listesi/ilan-listesi.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { datas } from '../../../../public/assets/datas/generic-datas/data';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { Footer } from '../footer/footer';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 import { IlanListesiFilterBarComponent } from '../../components/ilan-listesi/ilan-listesi-filter-bar-component/ilan-listesi-filter-bar-component';
 import { IlanListesiGridComponent } from '../../components/ilan-listesi/ilan-listesi-grid-component/ilan-listesi-grid-component';
@@ -33,7 +35,8 @@ interface Property {
     RouterModule,
     FormsModule,
     IlanListesiFilterBarComponent,
-    IlanListesiGridComponent
+    IlanListesiGridComponent,
+    HttpClientModule
   ],
   templateUrl: './ilan-listesi.html',
   styleUrls: ['./ilan-listesi.css']
@@ -42,6 +45,7 @@ export class IlanListesi implements OnInit {
   allProperties: Property[] = [];
   properties: Property[] = [];
   ilanDurumu: string | null = '';
+  loading: boolean = true;
 
   selectedDurumFilter: string = 'all';
   searchText: string = '';
@@ -62,15 +66,9 @@ export class IlanListesi implements OnInit {
     { value: 'm2Desc', label: 'M²\'ye Göre Azalan' },
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    datas.forEach(danisman => {
-      danisman.properties.forEach(property => {
-        this.allProperties.push(property);
-      });
-    });
-
     this.route.paramMap.subscribe(params => {
       this.ilanDurumu = params.get('durum');
       if (this.ilanDurumu === 'satilik') {
@@ -80,6 +78,7 @@ export class IlanListesi implements OnInit {
       } else {
         this.selectedDurumFilter = 'all';
       }
+      this.fetchProperties();
     });
 
     this.route.queryParamMap.subscribe(queryParams => {
@@ -89,6 +88,15 @@ export class IlanListesi implements OnInit {
       } else {
         this.searchText = '';
       }
+      this.applyCurrentFilters();
+    });
+  }
+
+  fetchProperties(): void {
+    this.loading = true;
+    this.http.get<Property[]>(`${environment.apiUrl}/ilanlar`).subscribe(properties => {
+      this.allProperties = properties;
+      this.loading = false;
       this.applyCurrentFilters();
     });
   }
@@ -106,6 +114,16 @@ export class IlanListesi implements OnInit {
   }
 
   onFiltersCleared(): void {
+    this.selectedDurumFilter = 'all';
+    this.searchText = '';
+    this.minPrice = null;
+    this.maxPrice = null;
+    this.minM2 = null;
+    this.maxM2 = null;
+    this.selectedOdaSayisi = 'Tümü';
+    this.selectedSortOption = 'default';
+    this.router.navigate(['/ilan-listesi/all']);
+    this.applyCurrentFilters();
   }
 
   applyCurrentFilters(): void {
