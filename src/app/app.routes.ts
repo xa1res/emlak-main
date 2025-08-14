@@ -37,12 +37,22 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/iletisim/iletisim').then(m => m.Iletisim),
   },
+
+  // === ADD-ONLY ===
+  // MainMenu'ya alias: /ana-sayfa
+  // (Mevcut düzenine dokunmadım, sadece bu rotayı ekledim.)
   {
-  path: 'danisman/:url',
-  loadComponent: () =>
-    import('./pages/danismanlar/danisman').then(m => m.Danisman),
-}
+    path: 'ana-sayfa',
+    loadComponent: () =>
+      import('./pages/main-menu/main-menu').then(m => m.MainMenu),
+  },
+  // === /ADD-ONLY ===
 
+  {
+    path: 'danisman/:url',
+    loadComponent: () =>
+      import('./pages/danismanlar/danisman').then(m => m.Danisman),
+  },
 
-  ,{ path: '**', redirectTo: 'ilan-listesi/all' },
+  { path: '**', redirectTo: 'ilan-listesi/all' },
 ];
