@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { Footer } from '../footer/footer';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 import { IlanListesiFilterBarComponent } from '../../components/ilan-listesi/ilan-listesi-filter-bar-component/ilan-listesi-filter-bar-component';
@@ -35,16 +35,21 @@ interface Property {
     FormsModule,
     IlanListesiFilterBarComponent,
     IlanListesiGridComponent,
-    HttpClientModule
+    // Not: Root’ta provideHttpClient(withFetch()) kullandığın için
+    // burada HttpClientModule import etmek zorunlu değil.
   ],
   templateUrl: './ilan-listesi.html',
   styleUrls: ['./ilan-listesi.css']
 })
 export class IlanListesi implements OnInit {
+  private http = inject(HttpClient);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
   allProperties: Property[] = [];
   properties: Property[] = [];
   ilanDurumu: string | null = '';
-  loading: boolean = true;
+  loading = true;
 
   selectedDurumFilter: string = 'all';
   searchText: string = '';
@@ -56,7 +61,9 @@ export class IlanListesi implements OnInit {
   selectedSortOption: string = 'default';
 
   durumFilterOptions: string[] = ['Tümü', 'Satılık', 'Kiralık'];
-  odaSayisiOptions: string[] = ['Tümü', 'Stüdyo', '1+0', '1+1', '2+1', '3+1', '3+2', '4+1', '4+2', '5+1', '5+2', '6+1', '6+2 ve üzeri'];
+  odaSayisiOptions: string[] = [
+    'Tümü', 'Stüdyo', '1+0', '1+1', '2+1', '3+1', '3+2', '4+1', '4+2', '5+1', '5+2', '6+1', '6+2 ve üzeri'
+  ];
   sortOptions: { value: string, label: string }[] = [
     { value: 'default', label: 'Sıralama Seçin' },
     { value: 'priceAsc', label: 'Fiyata Göre Artan' },
@@ -65,39 +72,44 @@ export class IlanListesi implements OnInit {
     { value: 'm2Desc', label: 'M²\'ye Göre Azalan' },
   ];
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
-
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.ilanDurumu = params.get('durum');
-      if (this.ilanDurumu === 'satilik') {
-        this.selectedDurumFilter = 'satilik';
-      } else if (this.ilanDurumu === 'kiralik') {
-        this.selectedDurumFilter = 'kiralik';
-      } else {
-        this.selectedDurumFilter = 'all';
-      }
+      this.selectedDurumFilter =
+        this.ilanDurumu === 'satilik' ? 'satilik' :
+        this.ilanDurumu === 'kiralik' ? 'kiralik' : 'all';
+
       this.fetchProperties();
     });
 
     this.route.queryParamMap.subscribe(queryParams => {
       const searchParam = queryParams.get('search');
-      if (searchParam) {
-        this.searchText = searchParam;
-      } else {
-        this.searchText = '';
-      }
+      this.searchText = searchParam ? searchParam : '';
       this.applyCurrentFilters();
     });
   }
 
+  /** 🔧 DÜZELTİLDİ: /api/api/ilanlar yerine tek /api kullan */
   fetchProperties(): void {
     this.loading = true;
-    // Buradaki URL'yi backend'deki gerçek API adresine göre güncelledik.
-    this.http.get<Property[]>(`${environment.apiUrl}/api/ilanlar`).subscribe(properties => {
-      this.allProperties = properties;
-      this.loading = false;
-      this.applyCurrentFilters();
+
+    this.http.get<any>(`${environment.apiUrl}/Ilanlar`).subscribe({
+      next: (res) => {
+        // Backend bazen { meta, data: [...] } döndürüyor → data’yı al
+        const items = Array.isArray(res)
+          ? res
+          : (res?.data ?? res?.Data ?? res?.items ?? res?.Items ?? []);
+
+        this.allProperties = (items ?? []) as Property[];
+        this.loading = false;
+        this.applyCurrentFilters();
+      },
+      error: (err) => {
+        console.error('İlanlar yüklenemedi:', err);
+        this.allProperties = [];
+        this.loading = false;
+        this.applyCurrentFilters();
+      }
     });
   }
 
@@ -130,48 +142,32 @@ export class IlanListesi implements OnInit {
     let filtered = [...this.allProperties];
 
     if (this.selectedDurumFilter !== 'all') {
-      filtered = filtered.filter(property => property.durum.toLowerCase() === this.selectedDurumFilter);
+      filtered = filtered.filter(p => (p.durum ?? '').toLowerCase() === this.selectedDurumFilter);
     }
 
-    if (this.minPrice !== null) {
-      filtered = filtered.filter(property => property.price >= this.minPrice!);
-    }
-    if (this.maxPrice !== null) {
-      filtered = filtered.filter(property => property.price <= this.maxPrice!);
-    }
+    if (this.minPrice !== null) filtered = filtered.filter(p => p.price >= this.minPrice!);
+    if (this.maxPrice !== null) filtered = filtered.filter(p => p.price <= this.maxPrice!);
 
-    if (this.minM2 !== null) {
-      filtered = filtered.filter(property => property.m2 >= this.minM2!);
-    }
-    if (this.maxM2 !== null) {
-      filtered = filtered.filter(property => property.m2 <= this.maxM2!);
-    }
+    if (this.minM2 !== null) filtered = filtered.filter(p => p.m2 >= this.minM2!);
+    if (this.maxM2 !== null) filtered = filtered.filter(p => p.m2 <= this.maxM2!);
 
     if (this.selectedOdaSayisi !== 'Tümü') {
-      filtered = filtered.filter(property => property.odaSayisi === this.selectedOdaSayisi);
+      filtered = filtered.filter(p => p.odaSayisi === this.selectedOdaSayisi);
     }
 
     if (this.searchText.trim() !== '') {
-      const lowerCaseSearchText = this.searchText.trim().toLowerCase();
-      filtered = filtered.filter(property =>
-        property.title.toLowerCase().includes(lowerCaseSearchText) ||
-        property.location.toLowerCase().includes(lowerCaseSearchText)
+      const q = this.searchText.trim().toLowerCase();
+      filtered = filtered.filter(p =>
+        (p.title ?? '').toLowerCase().includes(q) ||
+        (p.location ?? '').toLowerCase().includes(q)
       );
     }
 
     switch (this.selectedSortOption) {
-      case 'priceAsc':
-        filtered.sort((a, b) => a.price - b.price);
-        break;
-      case 'priceDesc':
-        filtered.sort((a, b) => b.price - a.price);
-        break;
-      case 'm2Asc':
-        filtered.sort((a, b) => a.m2 - b.m2);
-        break;
-      case 'm2Desc':
-        filtered.sort((a, b) => b.m2 - a.m2);
-        break;
+      case 'priceAsc': filtered.sort((a, b) => a.price - b.price); break;
+      case 'priceDesc': filtered.sort((a, b) => b.price - a.price); break;
+      case 'm2Asc': filtered.sort((a, b) => a.m2 - b.m2); break;
+      case 'm2Desc': filtered.sort((a, b) => b.m2 - a.m2); break;
     }
 
     this.properties = filtered;

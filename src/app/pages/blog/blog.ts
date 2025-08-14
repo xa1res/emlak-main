@@ -1,35 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Footer } from '../footer/footer';
-import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
-import { HttpClient } from '@angular/common/http';
+import { Router, RouterModule } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-
-interface BlogPost {
-  slug: string;
-  author: string;
-  date: string;
-  title: string;
-  image: string;
-  snippet: string;
-  fullContent: string;
-}
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, Footer, BlogPostCardComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './blog.html',
-  styleUrl: './blog.css'
+  styleUrls: ['./blog.css']
 })
-export class BlogComponent implements OnInit {
-  blogPosts: BlogPost[] = [];
+export class Blog implements OnInit {
+  private http = inject(HttpClient);
+  private router = inject(Router);
 
-  constructor(private http: HttpClient) {}
+  blogs: any[] = [];
+  loading = true;
 
   ngOnInit(): void {
-    this.http.get<BlogPost[]>(`${environment.apiUrl}/blogposts`).subscribe(posts => {
-      this.blogPosts = posts;
+    this.fetchBlogs();
+  }
+
+  private fetchBlogs(): void {
+    this.loading = true;
+
+    // DİKKAT: tek /api kullanıyoruz (environment.apiUrl = '/api')
+    const params = new HttpParams(); // gerekiyorsa filtre ekleyebilirsin
+    this.http.get<any>(`${environment.apiUrl}/Blog`, { params }).subscribe({
+      next: (res) => {
+        // {data:[...]} / {Data:[...]} / dizi senaryolarını destekle
+        this.blogs = Array.isArray(res)
+          ? res
+          : (res?.data ?? res?.Data ?? res?.items ?? res?.Items ?? []);
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Bloglar yüklenemedi:', err);
+        this.blogs = [];
+        this.loading = false;
+      }
     });
+  }
+
+  goDetail(id: string) {
+    this.router.navigate(['/blog', id]); // routes'ta /blog/:id olacak
   }
 }

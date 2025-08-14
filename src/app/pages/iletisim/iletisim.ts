@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Footer } from '../footer/footer'; 
-import { MatIconModule } from '@angular/material/icon'; 
+import { MatIconModule } from '@angular/material/icon';
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-iletisim',
   standalone: true,
-  imports: [CommonModule, Footer, MatIconModule], 
+  imports: [
+    CommonModule,
+    MatIconModule, // ✅ Angular Material ikon modülü eklendi
+    Footer
+  ],
   templateUrl: './iletisim.html',
-  styleUrl: './iletisim.css'
+  styleUrls: ['./iletisim.css']
 })
-export class IletisimComponent {
-
+export class Iletisim {
+  // Bileşen kodların burada
 }

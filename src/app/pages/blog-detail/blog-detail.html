@@ -1,8 +1,21 @@
-<app-blog-detail-content [blogPost]="blogPost"></app-blog-detail-content>
+<div class="blog-detay-sayfa">
+  <a routerLink="/blog" class="geri">← Tüm Bloglar</a>
 
-<div *ngIf="!blogPost" class="blog-detail-not-found">
-  <p>Üzgünüz, aradığınız blog yazısı bulunamadı.</p>
-  <a routerLink="/blog" class="back-to-blog-list">← Tüm Yazılara Geri Dön</a>
+  <div *ngIf="loading" class="loading">Yükleniyor…</div>
+  <div *ngIf="!loading && !blog" class="bos">Blog yazısı bulunamadı.</div>
+
+  <article *ngIf="!loading && blog">
+    <h1 class="baslik">{{ blog.title || blog.baslik }}</h1>
+
+    <img *ngIf="blog.imageURL || blog.cover"
+         [src]="blog.imageURL || blog.cover"
+         alt=""
+         class="kapak" />
+
+    <p class="ozet" *ngIf="blog.summary || blog.ozet">
+      {{ blog.summary || blog.ozet }}
+    </p>
+
+    <div class="icerik" [innerHTML]="blog.fullContent || blog.FullContent || blog.content"></div>
+  </article>
 </div>
-
-<app-footer></app-footer>

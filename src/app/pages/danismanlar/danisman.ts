@@ -5,7 +5,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Footer } from '../footer/footer';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 import { ConsultantOverviewComponent } from '../../components/danismanlar/danisman-genel-component/danisman-genel-component';
@@ -43,6 +44,7 @@ interface Bilgi {
   standalone: true,
   imports: [
     CommonModule,
+    NgIf,
     MatIconModule,
     Footer,
     RouterModule,
@@ -60,19 +62,44 @@ export class Danisman implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private route: ActivatedRoute,
     private http: HttpClient,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
+
     this.route.paramMap.pipe(
       map(params => params.get('url')),
-      switchMap(consultantUrl =>
-        this.http.get<Bilgi[]>(`${environment.apiUrl}/danismanlar`).pipe(
-          map(danismanlar => danismanlar.find(d => d.url === consultantUrl))
-        )
-      )
+      switchMap(consultantUrl => {
+        if (!consultantUrl) return of(undefined);
+
+        // ✅ API: tek /api kullan, endpoint: /Danismanlar
+        return this.http.get<any>(`${environment.apiUrl}/Danismanlar`).pipe(
+          // {data:[...]} / {Data:[...]} / doğrudan dizi — hepsini destekle
+          map(res => {
+            const list: Bilgi[] = Array.isArray(res)
+              ? res
+              : (res?.data ?? res?.Data ?? []);
+            // url eşleşmesi (küçük/büyük harf duyarsız)
+            const target = consultantUrl.toLowerCase();
+            return list.find(d => (d.url ?? '').toLowerCase() === target);
+          }),
+          // Eski/alternatif endpoint’e düş (opsiyonel)
+          catchError(() =>
+            this.http.get<any>(`${environment.apiUrl}/Danisman`).pipe(
+              map(res => {
+                const list: Bilgi[] = Array.isArray(res)
+                  ? res
+                  : (res?.data ?? res?.Data ?? []);
+                const target = consultantUrl.toLowerCase();
+                return list.find(d => (d.url ?? '').toLowerCase() === target);
+              }),
+              catchError(() => of(undefined))
+            )
+          )
+        );
+      })
     ).subscribe(danisman => {
       this.consultantData = danisman;
     });

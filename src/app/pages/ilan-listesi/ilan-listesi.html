@@ -1,7 +1,8 @@
 <div class="liste-sayfa">
   <div>
     <h1 class="baslik">
-      {{ selectedDurumFilter === 'satilik' ? 'Satılık İlanlar' : (selectedDurumFilter === 'kiralik' ? 'Kiralık İlanlar' : 'Tüm İlanlar') }}
+      {{ selectedDurumFilter === 'satilik' ? 'Satılık İlanlar'
+        : (selectedDurumFilter === 'kiralik' ? 'Kiralık İlanlar' : 'Tüm İlanlar') }}
     </h1>
   </div>
 
@@ -20,7 +21,7 @@
     (filtersChanged)="onFiltersChanged($event)"
     (filtersCleared)="onFiltersCleared()"
   ></app-ilan-listesi-filter-bar>
-  
+
   <p style="text-align: center; margin-top: 10px; font-size: 1.1em; color: var(--renk-metin-acik);">
     Toplam {{ properties.length }} ilan bulundu.
   </p>

@@ -5,6 +5,7 @@ import { CommonModule, NgIf, isPlatformBrowser } from '@angular/common';
 import { Footer } from '../footer/footer';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { forkJoin, catchError, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
 import { IlanImageGalleryComponent } from '../../components/ilan-detay/ilan-image-gallery-component/ilan-image-gallery-component';
@@ -72,12 +73,12 @@ interface Danisman {
     HttpClientModule
   ],
   templateUrl: './ilan-detay.html',
-  styleUrl: './ilan-detay.css'
+  styleUrls: ['./ilan-detay.css'] // ✅ 'styleUrl' değil, 'styleUrls'
 })
 export class IlanDetayComponent implements OnInit {
   ilan: Ilan | undefined;
   danisman: Danisman | undefined;
-  loading: boolean = true;
+  loading = true;
   error: string | null = null;
 
   constructor(
@@ -86,42 +87,68 @@ export class IlanDetayComponent implements OnInit {
     private http: HttpClient,
   ) {}
 
+  private unwrap<T>(res: any): T {
+    // dizi ise direkt, değilse {data}/{Data} içinden al
+    return (Array.isArray(res) ? res : (res?.data ?? res?.Data ?? res)) as T;
+  }
+
+  private getIlan$(id: string) {
+    // NOT: environment.apiUrl = '/api' → ekstra '/api' ekleme
+    return this.http
+      .get<any>(`${environment.apiUrl}/Ilanlar/${encodeURIComponent(id)}`)
+      .pipe(map(res => this.unwrap<Ilan>(res)));
+  }
+
+  private getDanismanlar$() {
+    // Önce /Danismanlar dene; 404 olursa /Danisman'a düş
+    return this.http.get<any>(`${environment.apiUrl}/Danismanlar`).pipe(
+      map(res => this.unwrap<Danisman[]>(res)),
+      catchError(() =>
+        this.http
+          .get<any>(`${environment.apiUrl}/Danisman`)
+          .pipe(map(res => this.unwrap<Danisman[]>(res)), catchError(() => of([] as Danisman[])))
+      )
+    );
+  }
+
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
+      // SSR'de veri çekmeyi atla (mevcut yapını bozmayalım)
       return;
     }
-    
+
     this.route.paramMap.subscribe(params => {
       const ilanId = params.get('id');
-      if (ilanId) {
-        this.loading = true;
-        this.error = null;
-        
-        forkJoin({
-          ilan: this.http.get<Ilan>(`${environment.apiUrl}/ilanlar/${ilanId}`).pipe(
-            catchError((error: HttpErrorResponse) => {
-              this.error = `İlan yüklenirken hata oluştu: ${error.status} ${error.statusText}`;
-              return of(null);
-            })
-          ),
-          danismanlar: this.http.get<Danisman[]>(`${environment.apiUrl}/danismanlar`).pipe(
-            catchError((error: HttpErrorResponse) => {
-              return of([]);
-            })
-          )
-        }).subscribe(({ ilan, danismanlar }) => {
-          if (ilan) {
-            this.ilan = ilan;
-            this.danisman = danismanlar.find(d => d.isim === ilan.emlakci);
-          } else {
-            this.error = 'İlan bulunamadı';
-          }
-          this.loading = false;
-        });
-      } else {
+      if (!ilanId) {
         this.error = 'İlan ID bulunamadı';
         this.loading = false;
+        return;
       }
+
+      this.loading = true;
+      this.error = null;
+
+      forkJoin({
+        ilan: this.getIlan$(ilanId).pipe(
+          catchError((e: HttpErrorResponse) => {
+            this.error = `İlan yüklenirken hata: ${e.status} ${e.statusText}`;
+            return of(null);
+          })
+        ),
+        danismanlar: this.getDanismanlar$(),
+      }).subscribe(({ ilan, danismanlar }) => {
+        if (ilan) {
+          // harita linki alan adını eşitle
+          if (!ilan.haritaUrl && ilan.konumLinki) ilan.haritaUrl = ilan.konumLinki;
+          if (ilan.imageCount == null) ilan.imageCount = 0;
+
+          this.ilan = ilan;
+          this.danisman = (danismanlar || []).find(d => d.isim === ilan.emlakci);
+        } else if (!this.error) {
+          this.error = 'İlan bulunamadı';
+        }
+        this.loading = false;
+      });
     });
   }
 }
