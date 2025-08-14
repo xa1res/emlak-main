@@ -1,4 +1,3 @@
-// src/app/pages/ilan-listesi/ilan-listesi.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -94,7 +93,8 @@ export class IlanListesi implements OnInit {
 
   fetchProperties(): void {
     this.loading = true;
-    this.http.get<Property[]>(`${environment.apiUrl}/ilanlar`).subscribe(properties => {
+    // Buradaki URL'yi backend'deki gerçek API adresine göre güncelledik.
+    this.http.get<Property[]>(`${environment.apiUrl}/api/ilanlar`).subscribe(properties => {
       this.allProperties = properties;
       this.loading = false;
       this.applyCurrentFilters();
