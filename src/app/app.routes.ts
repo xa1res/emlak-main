@@ -37,7 +37,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/iletisim/iletisim').then(m => m.Iletisim),
   },
-
+ 
   // === ADD-ONLY ===
   // MainMenu'ya alias: /ana-sayfa
   // (Mevcut düzenine dokunmadım, sadece bu rotayı ekledim.)
