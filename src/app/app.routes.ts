@@ -69,5 +69,5 @@ export const routes: Routes = [
   },
 
   // Fallback
-  { path: '**', redirectTo: 'ilan-listesi/all' },
+  { path: '**', redirectTo: 'main-menu' },
 ];
