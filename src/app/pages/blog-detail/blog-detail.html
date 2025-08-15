@@ -1,21 +1,9 @@
-<div class="blog-detay-sayfa">
-  <a routerLink="/blog" class="geri">← Tüm Bloglar</a>
+<div class="blog-detail-wrapper">
+  <ng-container *ngIf="loading">Yükleniyor…</ng-container>
+  <ng-container *ngIf="!loading && !blog">Blog yazısı bulunamadı.</ng-container>
 
-  <div *ngIf="loading" class="loading">Yükleniyor…</div>
-  <div *ngIf="!loading && !blog" class="bos">Blog yazısı bulunamadı.</div>
-
-  <article *ngIf="!loading && blog">
-    <h1 class="baslik">{{ blog.title || blog.baslik }}</h1>
-
-    <img *ngIf="blog.imageURL || blog.cover"
-         [src]="blog.imageURL || blog.cover"
-         alt=""
-         class="kapak" />
-
-    <p class="ozet" *ngIf="blog.summary || blog.ozet">
-      {{ blog.summary || blog.ozet }}
-    </p>
-
-    <div class="icerik" [innerHTML]="blog.fullContent || blog.FullContent || blog.content"></div>
-  </article>
+  <app-blog-detail-content
+    *ngIf="!loading && blogPost"
+    [blogPost]="blogPost">
+  </app-blog-detail-content>
 </div>

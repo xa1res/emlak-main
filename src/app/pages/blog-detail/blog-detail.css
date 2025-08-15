@@ -1,12 +1,4 @@
-
-.blog-detail-not-found {
-  text-align: center;
-  margin-top: 80px;
-  font-size: 1.5em;
-  color: #c0392b;
+.blog-detail-wrapper{
+  padding:24px 0;
+  background:#f3f4f8;
 }
-
-.blog-detail-not-found .back-to-blog-list {
-  margin-top: 20px;
-}
-

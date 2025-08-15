@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Footer } from '../footer/footer';
-import { CommonModule } from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
+
+import { Footer } from '../footer/footer';
 
 import { MainMenuHeroComponent } from '../../components/main-menu/main-menu-hero-component/main-menu-hero-component';
 import { ConsultantsBlockComponent } from '../../components/main-menu/consultants-block-component/consultants-block-component';
@@ -25,27 +25,25 @@ import { OfficeLocationBlockComponent } from '../../components/main-menu/office-
   styleUrls: ['./main-menu.css']
 })
 export class MainMenu implements AfterViewInit, OnDestroy {
+
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private route: ActivatedRoute
-  ) {
-  }
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.route.fragment.subscribe(fragment => {
-        if (fragment === 'danisman-blok') {
-          setTimeout(() => {
-            const el = document.getElementById('danisman-blok');
-            if (el) {
-              el.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 100);
-        }
-      });
-    }
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    // URL fragment varsa danışman bloğuna kaydır
+    this.route.fragment.subscribe(fragment => {
+      if (fragment === 'danisman-blok') {
+        setTimeout(() => {
+          const el = document.getElementById('danisman-blok');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    });
   }
 
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void {}
 }

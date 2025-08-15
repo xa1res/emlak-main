@@ -1,20 +1,14 @@
-<div class="blog-sayfa">
-  <h1 class="baslik">Blog Yazıları</h1>
+<div class="blog-page-container">
+  <h1>Blog Yazılarımız</h1>
 
   <div *ngIf="loading" class="loading">Yükleniyor…</div>
-  <div *ngIf="!loading && blogs.length === 0" class="bos">Henüz blog bulunamadı.</div>
 
-  <!-- Eğer kart componentinin selector'ü "app-blog-post-card-component" ise -->
-  <div *ngIf="!loading && blogs.length">
-    <ng-container *ngFor="let b of blogs">
-      <!-- Kart componentini kullanmak istersen: -->
-      <!-- <app-blog-post-card-component [post]="b" (click)="goDetail(b.id)"></app-blog-post-card-component> -->
-
-      <!-- Selector'ü farklıysa ya da emin değilsen, aşağıdaki basit markup her zaman çalışır: -->
-      <article class="blog-card" (click)="goDetail(b.id)" style="cursor:pointer">
-        <h3 class="blog-baslik">{{ b.title || b.baslik }}</h3>
-        <p class="blog-ozet">{{ b.summary || b.ozet }}</p>
-      </article>
-    </ng-container>
+  <div *ngIf="!loading && posts.length" class="blog-posts-grid">
+    <app-blog-post-card
+      *ngFor="let p of posts"
+      [post]="p">
+    </app-blog-post-card>
   </div>
+
+  <div *ngIf="!loading && !posts.length" class="empty">Henüz blog bulunamadı.</div>
 </div>

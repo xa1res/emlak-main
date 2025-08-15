@@ -1,13 +1,23 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { BlogPostCardComponent } from '../../components/blog/blog-card-component/blog-post-card-component';
+
+interface BlogPostVM {
+  slug: string;
+  author: string;
+  date: string;
+  title: string;
+  image: string;
+  snippet: string;
+}
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, BlogPostCardComponent],
   templateUrl: './blog.html',
   styleUrls: ['./blog.css']
 })
@@ -15,35 +25,38 @@ export class Blog implements OnInit {
   private http = inject(HttpClient);
   private router = inject(Router);
 
-  blogs: any[] = [];
-  loading = true;
+  loading = false;
+  posts: BlogPostVM[] = [];
 
   ngOnInit(): void {
-    this.fetchBlogs();
+    this.fetch();
   }
 
-  private fetchBlogs(): void {
+  private fetch() {
     this.loading = true;
-
-    // DİKKAT: tek /api kullanıyoruz (environment.apiUrl = '/api')
-    const params = new HttpParams(); // gerekiyorsa filtre ekleyebilirsin
-    this.http.get<any>(`${environment.apiUrl}/Blog`, { params }).subscribe({
+    this.http.get<any>(`${environment.apiUrl}/Blog`).subscribe({
       next: (res) => {
-        // {data:[...]} / {Data:[...]} / dizi senaryolarını destekle
-        this.blogs = Array.isArray(res)
-          ? res
-          : (res?.data ?? res?.Data ?? res?.items ?? res?.Items ?? []);
+        const arr = Array.isArray(res) ? res : (res?.data ?? []);
+        this.posts = (arr || []).map((b: any) => ({
+          slug: b.slug ?? b.Slug ?? '',
+          author: b.author ?? b.Author ?? 'admin',
+          date: b.date ?? b.Date ?? '',
+          title: b.title ?? b.Title ?? '',
+          image: b.image ?? b.Image ?? '',
+          snippet: b.snippet ?? b.Snippet ?? ''
+        }));
         this.loading = false;
       },
       error: (err) => {
         console.error('Bloglar yüklenemedi:', err);
-        this.blogs = [];
+        this.posts = [];
         this.loading = false;
       }
     });
   }
 
-  goDetail(id: string) {
-    this.router.navigate(['/blog', id]); // routes'ta /blog/:id olacak
+  goDetail(slug: string) {
+    if (!slug) return;
+    this.router.navigate(['/blog', slug]);
   }
 }

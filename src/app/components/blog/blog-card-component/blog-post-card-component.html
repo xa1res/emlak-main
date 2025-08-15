@@ -1,10 +1,10 @@
 <div *ngIf="post" class="blog-post-card">
-    <img [src]="post.image" [alt]="post.title" class="post-thumbnail">
-    <div class="post-meta">
-      <span class="post-author">{{ post.author }}</span>
-      <span class="post-date">{{ post.date }}</span>
-    </div>
-    <h2 class="post-title">{{ post.title }}</h2>
-    <p class="post-snippet">{{ post.snippet }}</p>
-    <a [routerLink]="['/blog', post.slug]" class="read-more-link">Daha Fazlasını Oku</a>
+  <img [src]="post.image" [alt]="post.title" class="post-thumbnail">
+  <div class="post-meta">
+    <span class="post-author">{{ post.author }}</span>
+    <span class="post-date">{{ post.date }}</span>
   </div>
+  <h2 class="post-title">{{ post.title }}</h2>
+  <p class="post-snippet">{{ post.snippet }}</p>
+  <a [routerLink]="['/blog', post.slug]" class="read-more-link">Daha Fazlasını Oku</a>
+</div>

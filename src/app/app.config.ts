@@ -1,14 +1,18 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    // Anchor scroll ve konum geri yüklemeyi aç
+    provideRouter(
+      routes,
+      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
+    ),
     provideHttpClient(
       withInterceptorsFromDi(),
-      withFetch() // ✅ NG0280x uyarılarını çözer, SSR uyumlu
+      withFetch() // SSR/Fetch uyumu için
     ),
   ],
 };

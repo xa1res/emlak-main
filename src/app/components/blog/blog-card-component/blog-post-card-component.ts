@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 interface BlogPost {
@@ -19,5 +19,5 @@ interface BlogPost {
   styleUrls: ['./blog-post-card-component.css']
 })
 export class BlogPostCardComponent {
-  @Input() post: BlogPost | undefined;
+  @Input() post!: BlogPost;
 }

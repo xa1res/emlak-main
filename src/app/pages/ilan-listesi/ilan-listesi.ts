@@ -94,7 +94,7 @@ export class IlanListesi implements OnInit {
   fetchProperties(): void {
     this.loading = true;
     // Buradaki URL'yi backend'deki gerçek API adresine göre güncelledik.
-    this.http.get<Property[]>(`${environment.apiUrl}/api/ilanlar`).subscribe(properties => {
+    this.http.get<Property[]>(`${environment.apiUrl}/Ilanlar`).subscribe(properties => {
       this.allProperties = properties;
       this.loading = false;
       this.applyCurrentFilters();
