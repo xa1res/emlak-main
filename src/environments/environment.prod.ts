@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: '/api', // prod’da aynı domain altından /api
-  // serverApiUrl: 'https://api.senin-domainin.com/api'  // prod SSR’de kullanacaksan ayarla
+  apiUrl: 'https://penta-backend.onrender.com/api', // prod’da aynı domain altından /api
+  serverApiUrl: 'https://penta-backend.onrender.com/api'  // prod SSR’de kullanacaksan ayarla
 };
